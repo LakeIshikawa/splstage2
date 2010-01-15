@@ -1,0 +1,6 @@
+// ã≠ïóÅEãCê‚
+
+GRAPHIC_SRC "graphics\\teki\\ookami\\boss2_breathe.png"
+DATA        0, 1, 2, 3
+INTERVAL    0.2, 0.4, 0.6, 0.8
+MODE        LOOP

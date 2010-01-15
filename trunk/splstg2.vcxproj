@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{EFD8FE74-FCFA-4A7A-8BAD-DAC86BDAA6BE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.21006.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    </OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Program Files %28x86%29\Microsoft DirectX SDK %28November 2008%29\Include;F:\Program Files\Microsoft SDKs\Windows\v6.0A\Include;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Program Files\Microsoft SDKs\Windows\v6.0A\Lib;F:\Program Files %28x86%29\Microsoft DirectX SDK %28November 2008%29\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/GR %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;dsound.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>splstg2.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)splstg2.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/GR %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>splstg2.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Effect\ChargeEffect.cpp" />
+    <ClCompile Include="src\Effect\HitEffect.cpp" />
+    <ClCompile Include="src\Item\PickUpEffect.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Options.cpp" />
+    <ClCompile Include="src\Stage\SpecialScreens\StaffRoll.cpp" />
+    <ClCompile Include="src\Stage\SpecialScreens\StageSelect.cpp" />
+    <ClCompile Include="src\Stage\SpecialScreens\TeamLogo.cpp" />
+    <ClCompile Include="src\stdafx.cpp" />
+    <ClCompile Include="src\Light\Light.cpp" />
+    <ClCompile Include="src\Light\LightManager.cpp" />
+    <ClCompile Include="src\Jiki\InterfaceView.cpp" />
+    <ClCompile Include="src\Jiki\Jiki.cpp" />
+    <ClCompile Include="src\Teki\Arrow.cpp" />
+    <ClCompile Include="src\Teki\Boss\Queen\Actions\ASQueenBase.cpp" />
+    <ClCompile Include="src\Teki\Boss\Queen\FriendObjects\AppleGenerator.cpp" />
+    <ClCompile Include="src\Teki\Boss\Queen\FriendObjects\Chandelier.cpp" />
+    <ClCompile Include="src\Teki\Boss\Queen\FriendObjects\Heart.cpp" />
+    <ClCompile Include="src\Teki\Boss\Queen\FriendObjects\Kagami.cpp" />
+    <ClCompile Include="src\Teki\Boss\Queen\FriendObjects\Rod.cpp" />
+    <ClCompile Include="src\Teki\Boss\Queen\FriendObjects\Thorn.cpp" />
+    <ClCompile Include="src\Teki\Boss\Queen\FriendObjects\Trump.cpp" />
+    <ClCompile Include="src\Teki\Boss\Queen\Queen.cpp" />
+    <ClCompile Include="src\Teki\Kaeru.cpp" />
+    <ClCompile Include="src\Teki\KaeruKing.cpp" />
+    <ClCompile Include="src\Teki\KariudoKen.cpp" />
+    <ClCompile Include="src\Teki\KariudoKen2.cpp" />
+    <ClCompile Include="src\Teki\KariudoYumi.cpp" />
+    <ClCompile Include="src\Teki\KariudoYumi2.cpp" />
+    <ClCompile Include="src\Teki\KariudoYumi3.cpp" />
+    <ClCompile Include="src\Teki\Koumori.cpp" />
+    <ClCompile Include="src\Teki\Kumo.cpp" />
+    <ClCompile Include="src\Teki\KumoPink.cpp" />
+    <ClCompile Include="src\Teki\Teki.cpp" />
+    <ClCompile Include="src\Teki\TrumpSoldier.cpp" />
+    <ClCompile Include="src\Teki\UgokuKi.cpp" />
+    <ClCompile Include="src\Teki\Boss\Majo\Apple.cpp" />
+    <ClCompile Include="src\Teki\Boss\Majo\LightKobito.cpp" />
+    <ClCompile Include="src\Teki\Boss\Majo\LightKobitoBlue.cpp" />
+    <ClCompile Include="src\Teki\Boss\Majo\LightKobitoGreen.cpp" />
+    <ClCompile Include="src\Teki\Boss\Majo\LightKobitoRed.cpp" />
+    <ClCompile Include="src\Teki\Boss\Majo\Majo.cpp" />
+    <ClCompile Include="src\Teki\Boss\Majo\RollingApple.cpp" />
+    <ClCompile Include="src\Teki\Boss\Majo\ThrowApple.cpp" />
+    <ClCompile Include="src\Teki\Boss\BossShareActions\ASFadeOutAndStageClear.cpp" />
+    <ClCompile Include="src\Teki\Boss\BossShareActions\ASJumpingDeath.cpp" />
+    <ClCompile Include="src\Teki\Boss\BossShareActions\ASWaitForMaku.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiBase.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackAspire.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackEntering.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackFaint.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackHitback.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackInspire.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiDamage.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiJumpAttack.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiJumpingDeath.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ASOokamiStraightAttack.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\Ookami.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\OokamiHouse.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\OokamiHouseBrick.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\ParticleGenerator.cpp" />
+    <ClCompile Include="src\Teki\Boss\Ookami\Storm.cpp" />
+    <ClCompile Include="src\Management\DXController.cpp" />
+    <ClCompile Include="src\Management\Fader.cpp" />
+    <ClCompile Include="src\Management\GameControl.cpp" />
+    <ClCompile Include="src\Management\MakuController.cpp" />
+    <ClCompile Include="src\Management\SoundController.cpp" />
+    <ClCompile Include="src\Management\TxtGraphicController.cpp" />
+    <ClCompile Include="src\Management\UserLightControl.cpp" />
+    <ClCompile Include="src\Management\Cheats\CheatsController.cpp" />
+    <ClCompile Include="src\Management\Cheats\ChtDie.cpp" />
+    <ClCompile Include="src\Management\Cheats\ChtInflictDamage.cpp" />
+    <ClCompile Include="src\Management\Cheats\ChtJumpToStage.cpp" />
+    <ClCompile Include="src\Stage\FixScrollMap.cpp" />
+    <ClCompile Include="src\Stage\Haichi.cpp" />
+    <ClCompile Include="src\Stage\HaichiObj.cpp" />
+    <ClCompile Include="src\Stage\Map.cpp" />
+    <ClCompile Include="src\Stage\ScrollBackground.cpp" />
+    <ClCompile Include="src\Stage\SeigenJikan.cpp" />
+    <ClCompile Include="src\Stage\Stage.cpp" />
+    <ClCompile Include="src\Stage\StageManager.cpp" />
+    <ClCompile Include="src\Stage\Zokusei.cpp" />
+    <ClCompile Include="src\Stage\SpecialScreens\GameOverScr.cpp" />
+    <ClCompile Include="src\Stage\SpecialScreens\TGSThanksForPlaying.cpp" />
+    <ClCompile Include="src\Stage\SpecialScreens\TitleScr.cpp" />
+    <ClCompile Include="src\Stage\Checkpoint\CheckpointController.cpp" />
+    <ClCompile Include="src\Mob\Collidable.cpp" />
+    <ClCompile Include="src\Mob\CollidableSingleFrame.cpp" />
+    <ClCompile Include="src\Mob\LightResponseAble.cpp" />
+    <ClCompile Include="src\Mob\MobManager.cpp" />
+    <ClCompile Include="src\Mob\Movable.cpp" />
+    <ClCompile Include="src\Mob\ActionControllable\ActionControllable.cpp" />
+    <ClCompile Include="src\Mob\ActionControllable\ActionState.cpp" />
+    <ClCompile Include="src\Mob\MobDrawer\SimpleDrawer.cpp" />
+    <ClCompile Include="src\Collision\Circle.cpp" />
+    <ClCompile Include="src\Collision\Collision.cpp" />
+    <ClCompile Include="src\Collision\CollisionDrawer.cpp" />
+    <ClCompile Include="src\Collision\CollisionSet.cpp" />
+    <ClCompile Include="src\Collision\CollShape.cpp" />
+    <ClCompile Include="src\Collision\Rect.cpp" />
+    <ClCompile Include="src\Animation\Animation.cpp" />
+    <ClCompile Include="src\Animation\AnimationSet.cpp" />
+    <ClCompile Include="src\Object\Ashiba.cpp" />
+    <ClCompile Include="src\Object\AshibaInvisible.cpp" />
+    <ClCompile Include="src\Object\AshibaMovable.cpp" />
+    <ClCompile Include="src\Object\AshibaTenbin.cpp" />
+    <ClCompile Include="src\Object\FireStand.cpp" />
+    <ClCompile Include="src\Object\MikataKobito.cpp" />
+    <ClCompile Include="src\Object\StgClrDoor.cpp" />
+    <ClCompile Include="src\Object\Tekkyu.cpp" />
+    <ClCompile Include="src\Object\TekkyuStand.cpp" />
+    <ClCompile Include="src\Object\Tenbin.cpp" />
+    <ClCompile Include="src\Settings\Settings.cpp" />
+    <ClCompile Include="src\Settings\SharedParams.cpp" />
+    <ClCompile Include="src\Event\Event.cpp" />
+    <ClCompile Include="src\Event\EventManager.cpp" />
+    <ClCompile Include="src\Event\GameOverEvt.cpp" />
+    <ClCompile Include="src\Event\ResetAllEvt.cpp" />
+    <ClCompile Include="src\Event\ResetMobEvt.cpp" />
+    <ClCompile Include="src\Event\RestoreTekiAfterCheckpoint.cpp" />
+    <ClCompile Include="src\Event\StageClearEvt.cpp" />
+    <ClCompile Include="src\Sound\Bgm.cpp" />
+    <ClCompile Include="src\Sound\dsutil.cpp" />
+    <ClCompile Include="src\MapCollision\MapCollider.cpp" />
+    <ClCompile Include="src\MapCollision\PointMapCollider.cpp" />
+    <ClCompile Include="src\Teki\Usagi.cpp" />
+    <ClCompile Include="src\Units\MutekiJikan.cpp" />
+    <ClCompile Include="src\ParticleEmitter\ParticleEmitter.cpp" />
+    <ClCompile Include="src\ParticleEmitter\PeHibashira.cpp" />
+    <ClCompile Include="src\Item\Item.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Effect\ChargeEffect.h" />
+    <ClInclude Include="src\Effect\HitEffect.h" />
+    <ClInclude Include="src\Item\PickUpEffect.h" />
+    <ClInclude Include="src\Main.h" />
+    <ClInclude Include="src\Options.h" />
+    <ClInclude Include="src\Resource.h" />
+    <ClInclude Include="src\Stage\SpecialScreens\StaffRoll.h" />
+    <ClInclude Include="src\Stage\SpecialScreens\StageSelect.h" />
+    <ClInclude Include="src\Stage\SpecialScreens\TeamLogo.h" />
+    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\Light\Light.h" />
+    <ClInclude Include="src\Light\LightManager.h" />
+    <ClInclude Include="src\Jiki\InterfaceView.h" />
+    <ClInclude Include="src\Jiki\Jiki.h" />
+    <ClInclude Include="src\Teki\Arrow.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenAttackInit.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenBase.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenChandelierAttack.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenDamage.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenRodAttack.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenThornAttack.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenTrumpsAttack.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenWaitForMaku.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\FriendObjects\AppleGenerator.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\FriendObjects\Chandelier.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\FriendObjects\Heart.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\FriendObjects\Kagami.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\FriendObjects\Rod.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\FriendObjects\Thorn.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\FriendObjects\Trump.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Queen.h" />
+    <ClInclude Include="src\Teki\Kaeru.h" />
+    <ClInclude Include="src\Teki\KaeruKing.h" />
+    <ClInclude Include="src\Teki\KariudoKen.h" />
+    <ClInclude Include="src\Teki\KariudoKen2.h" />
+    <ClInclude Include="src\Teki\KariudoYumi.h" />
+    <ClInclude Include="src\Teki\KariudoYumi2.h" />
+    <ClInclude Include="src\Teki\KariudoYumi3.h" />
+    <ClInclude Include="src\Teki\Koumori.h" />
+    <ClInclude Include="src\Teki\Kumo.h" />
+    <ClInclude Include="src\Teki\KumoPink.h" />
+    <ClInclude Include="src\Teki\Teki.h" />
+    <ClInclude Include="src\Teki\TekiTemplate.h" />
+    <ClInclude Include="src\Teki\TrumpSoldier.h" />
+    <ClInclude Include="src\Teki\UgokuKi.h" />
+    <ClInclude Include="src\Teki\Boss\Majo\Apple.h" />
+    <ClInclude Include="src\Teki\Boss\Majo\LightKobito.h" />
+    <ClInclude Include="src\Teki\Boss\Majo\LightKobitoBlue.h" />
+    <ClInclude Include="src\Teki\Boss\Majo\LightKobitoGreen.h" />
+    <ClInclude Include="src\Teki\Boss\Majo\LightKobitoRed.h" />
+    <ClInclude Include="src\Teki\Boss\Majo\Majo.h" />
+    <ClInclude Include="src\Teki\Boss\Majo\RollingApple.h" />
+    <ClInclude Include="src\Teki\Boss\Majo\ThrowApple.h" />
+    <ClInclude Include="src\Teki\Boss\BossShareActions\ASFadeOutAndStageClear.h" />
+    <ClInclude Include="src\Teki\Boss\BossShareActions\ASJumpingDeath.h" />
+    <ClInclude Include="src\Teki\Boss\BossShareActions\ASWaitForMaku.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiBase.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackAspire.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackEntering.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackFaint.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackHitback.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiBlowAttackInspire.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiDamage.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiJumpAttack.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiJumpingDeath.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ASOokamiStraightAttack.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\Ookami.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\OokamiHouse.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\OokamiHouseBrick.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\OokamiHouseRog.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\OokamiHouseStraw.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\ParticleGenerator.h" />
+    <ClInclude Include="src\Teki\Boss\Ookami\Storm.h" />
+    <ClInclude Include="src\Management\CustomDxDraw.h" />
+    <ClInclude Include="src\Management\DXController.h" />
+    <ClInclude Include="src\Management\Fader.h" />
+    <ClInclude Include="src\Management\GameControl.h" />
+    <ClInclude Include="src\Management\MakuController.h" />
+    <ClInclude Include="src\Management\NowLoadingTextDisplayer.h" />
+    <ClInclude Include="src\Management\SoundController.h" />
+    <ClInclude Include="src\Management\TxtGraphicController.h" />
+    <ClInclude Include="src\Management\UserLightControl.h" />
+    <ClInclude Include="src\Management\Cheats\Cheat.h" />
+    <ClInclude Include="src\Management\Cheats\CheatsController.h" />
+    <ClInclude Include="src\Management\Cheats\ChtDie.h" />
+    <ClInclude Include="src\Management\Cheats\ChtInflictDamage.h" />
+    <ClInclude Include="src\Management\Cheats\ChtJumpToStage.h" />
+    <ClInclude Include="src\Stage\FixScrollMap.h" />
+    <ClInclude Include="src\Stage\Haichi.h" />
+    <ClInclude Include="src\Stage\HaichiObj.h" />
+    <ClInclude Include="src\Stage\HaichiObjStatic.h" />
+    <ClInclude Include="src\Stage\Map.h" />
+    <ClInclude Include="src\Stage\ScrollBackground.h" />
+    <ClInclude Include="src\Stage\SeigenJikan.h" />
+    <ClInclude Include="src\Stage\Stage.h" />
+    <ClInclude Include="src\Stage\StageManager.h" />
+    <ClInclude Include="src\Stage\Zokusei.h" />
+    <ClInclude Include="src\Stage\SpecialScreens\GameOverScr.h" />
+    <ClInclude Include="src\Stage\SpecialScreens\TGSThanksForPlaying.h" />
+    <ClInclude Include="src\Stage\SpecialScreens\TitleScr.h" />
+    <ClInclude Include="src\Stage\Checkpoint\Checkpoint.h" />
+    <ClInclude Include="src\Stage\Checkpoint\CheckpointController.h" />
+    <ClInclude Include="src\Mob\Collidable.h" />
+    <ClInclude Include="src\Mob\CollidableSingleFrame.h" />
+    <ClInclude Include="src\Mob\ICollidable.h" />
+    <ClInclude Include="src\Mob\IPositionable.h" />
+    <ClInclude Include="src\Mob\LightResponseAble.h" />
+    <ClInclude Include="src\Mob\MobManager.h" />
+    <ClInclude Include="src\Mob\Movable.h" />
+    <ClInclude Include="src\Mob\ActionControllable\ActionControllable.h" />
+    <ClInclude Include="src\Mob\ActionControllable\ActionState.h" />
+    <ClInclude Include="src\Mob\ActionControllable\IActionThread.h" />
+    <ClInclude Include="src\Mob\MobDrawer\IAlphaCapable.h" />
+    <ClInclude Include="src\Mob\MobDrawer\MobDrawer.h" />
+    <ClInclude Include="src\Mob\MobDrawer\SimpleDrawer.h" />
+    <ClInclude Include="src\Collision\Circle.h" />
+    <ClInclude Include="src\Collision\Collision.h" />
+    <ClInclude Include="src\Collision\CollisionDrawer.h" />
+    <ClInclude Include="src\Collision\CollisionSet.h" />
+    <ClInclude Include="src\Collision\CollShape.h" />
+    <ClInclude Include="src\Collision\Rect.h" />
+    <ClInclude Include="src\Animation\Animation.h" />
+    <ClInclude Include="src\Animation\AnimationSet.h" />
+    <ClInclude Include="src\Object\Ashiba.h" />
+    <ClInclude Include="src\Object\AshibaInvisible.h" />
+    <ClInclude Include="src\Object\AshibaMovable.h" />
+    <ClInclude Include="src\Object\AshibaTenbin.h" />
+    <ClInclude Include="src\Object\FireStand.h" />
+    <ClInclude Include="src\Mob\IRideCapable.h" />
+    <ClInclude Include="src\Object\MikataKobito.h" />
+    <ClInclude Include="src\Object\StgClrDoor.h" />
+    <ClInclude Include="src\Object\Tekkyu.h" />
+    <ClInclude Include="src\Object\TekkyuStand.h" />
+    <ClInclude Include="src\Object\Tenbin.h" />
+    <ClInclude Include="src\Settings\Entry.h" />
+    <ClInclude Include="src\Settings\EntryFloat.h" />
+    <ClInclude Include="src\Settings\EntryString.h" />
+    <ClInclude Include="src\Settings\Settings.h" />
+    <ClInclude Include="src\Settings\SharedParams.h" />
+    <ClInclude Include="src\Event\Event.h" />
+    <ClInclude Include="src\Event\EventManager.h" />
+    <ClInclude Include="src\Event\GameOverEvt.h" />
+    <ClInclude Include="src\Event\ResetAllEvt.h" />
+    <ClInclude Include="src\Event\ResetMobEvt.h" />
+    <ClInclude Include="src\Event\RestoreTekiAfterCheckpoint.h" />
+    <ClInclude Include="src\Event\StageClearEvt.h" />
+    <ClInclude Include="src\Sound\Bgm.h" />
+    <ClInclude Include="src\Sound\dsutil.h" />
+    <ClInclude Include="src\Sound\dxutil.h" />
+    <ClInclude Include="src\MapCollision\MapCollider.h" />
+    <ClInclude Include="src\MapCollision\PointMapCollider.h" />
+    <ClInclude Include="src\Teki\Usagi.h" />
+    <ClInclude Include="src\Units\MutekiJikan.h" />
+    <ClInclude Include="src\ParticleEmitter\Particle.h" />
+    <ClInclude Include="src\ParticleEmitter\ParticleEmitter.h" />
+    <ClInclude Include="src\ParticleEmitter\PeHibashira.h" />
+    <ClInclude Include="src\ParticleEmitter\PtZigZagVertWave.h" />
+    <ClInclude Include="src\Item\Item.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

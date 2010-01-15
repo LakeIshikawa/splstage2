@@ -1,0 +1,6 @@
+// ºﬁ¨›ÃﬂçUåÇ
+
+GRAPHIC_SRC "graphics\\teki\\ookami\\boss2_junp.png"
+DATA        0, 1, 2, 3
+INTERVAL    0.05 0.1, 0.15, 0.2
+MODE        LOOP
