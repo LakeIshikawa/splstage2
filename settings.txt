@@ -1,0 +1,615 @@
+//ﾌﾟﾛｸﾞﾗﾑ用
+{MAX_TEN:10}
+
+//ﾌﾚｰﾑﾀｲﾑ
+{FrameTime:0.041}
+
+//ﾗｲﾄ
+{LIGHT_BASE :0x77}		/* ﾗｲﾄの明度 0xff=濃い */
+{ KURAYAMI  :0x45}			/* 環境の暗闇度 0x00=暗い */
+{ USER_LIGHT_HANKEI :100}
+
+//自機
+{ HERSIZE     :120}			/* ﾋﾛｲﾝのｸﾞﾗﾌｨｯｸｻｲｽﾞ */
+{ SPWALK      :2.5}			/* ﾋﾛｲﾝの歩く速度 */	//1.0f
+{ SPANI       :0.4}			/* ｱﾆﾒｰｼｮﾝ補間時間 */
+{ ACCKOGEKI   :5}			/* [攻撃]時の加速。1秒間に4pix */
+{ END_TIME    :8.0}			/* [攻撃]目回し状態になる時間 */
+{ STAN_TIME   :4.0}			/* [攻撃]目回し中の時間 */
+{ STAN_ANI    :0.1}			/* [攻撃]目回し中ｴﾌｪｸﾄのｱﾆﾒｰｼｮﾝ補間時間 */
+{ HANTEN_TIME :0.5}			/* [反転]するための最大照射時間 */
+{ JUMP_SHOSP  :-12.0}			/* [ｼﾞｬﾝﾌﾟ]初速度(跳ぶ高さ) */
+{ GRAVITY     :0.3}			/* 重力 */
+{ DRILL_HEIGTH:80}			/* [ﾄﾞﾘﾙｷｯｸ]が使える高さ */
+{ DRILL_SP    :8.0}			/* [ﾄﾞﾘﾙｷｯｸ]の速度 */
+{ FUYU_SP     :1.0}			/* [浮遊]の速度 */
+{ DAMAGE_SP   :-3.0}			/* [ﾀﾞﾒｰｼﾞ]初速度(跳ぶ高さ) */
+{ MUTEKI_TIME : 3.0}			/* [ﾀﾞﾒｰｼﾞ]無敵時間 */
+{ TENMETU_TIME:0.2}			/* [ﾀﾞﾒｰｼﾞ]無敵中の点滅 */
+{ HISATU_TIME :15.0}			/* [必殺技]終了時間 */
+{ HISATU_LTSP :0.3}			/* [必殺技]ﾗｲﾄ速度(元の速度/HISATU_LTSP) */
+{ HISATU_HRSP :10}			/* [必殺技]ﾋﾛｲﾝ速度(元の速度/HISATU_HRSP) */
+{ HISATSU_MAXSP : 10 }			/* 必殺技中での最大速度 */
+{ HISATU_FADE :0.03}			/* [必殺技]ﾌｪｰﾄﾞ速度 */
+{ HERINITX    :350}			/* ヒロインの出現地 */
+{ HERINITY    :424}			/* ヒロインの出現地 */
+{ STAGE_INIT_WAIT: 3.0}			/* ｽﾃｰｼﾞの最初の待機時間 */
+{ HER_TRSP_A  :0.5}			/* 半透明度　0.0=全透明 1.0=非透明 */
+{ HER_DIE_TIME:1.0}			/* 死ぬ前の時間 */
+{ CHAINX      :40 }			/* チェインレベルの表示X */
+{ CHAINY      :112 }			/* チェインレベルの表示Y */
+{ CHAINSX     :280 }			/* チェインレベルの横幅 */
+{ CHAINSY     :80 }			/* チェインレベルの縦幅 */
+{ HITFX_SX    :56 }			/* 打撃画像の横幅 */
+{ HITFX_SY    :56 }			/* 打撃画像の縦幅 */
+{ CHARGEFX_SX :130 }			/* 必殺ｴﾌｪｸﾄ中心の幅 */ 
+{ CHARGEFX_SY :130 }			/* 必殺ｴﾌｪｸﾄ中心の縦 */
+{ CHARGEFX_SP :0.02 }			/* 必殺ｴﾌｪｸﾄ中心の濃くなる速度 */
+{ CHARGEFX_PTRAD: 80 }			/* 粒の出現円の半径 */
+{ CHARGEFX_PTSP: 8.5 }			/* 粒の速度 */
+{ CHARGEFX_PTALSP: 0.1 }		/* 粒のｱﾙﾌｧ速度 */
+{ CHARGEFX_PTTIME: 0.05 }		/* 粒の出現ﾀｲﾏｰ */
+{ CHARGEFX_TMSP : 0.05 }		/* 真ん中の点滅速度 */
+
+//ｹﾞｰｼﾞ類
+{ LIFE_MAX    :5}			/* [ﾗｲﾌ]MAX */
+{ LIFE_SHOKI  :5}			/* [ﾗｲﾌ]初期値 */
+{ EMP_MAX     :10.0}			/* [ｴﾝﾊﾟｼｰ]MAX */
+{ EMP_SHOKI   :10}			/* [ｴﾝﾊﾟｼｰ]初期値 */
+{ EMP_UP      :5}			/* [ｴﾝﾊﾟｼｰ]5体倒すと上がる数値*/
+{ EMP_DOWN    :1}			/* [ｴﾝﾊﾟｼｰ]ﾀﾞﾒｰｼﾞで下がる数値 */
+{ TEN_MAX     :100.0}			/* [ﾃﾝｼｮﾝ]MAX */
+{ TEN_UTIME   :20.0}			/* [ﾃﾝｼｮﾝ]ﾗｲﾄでのﾃﾝｼｮﾝ増加時間 */
+{ TEN_DTIME   :20.0}			/* [ﾃﾝｼｮﾝ]ﾗｲﾄでのﾃﾝｼ-ｮﾝ減少時間 */
+{ TEN_UP1     :5}			/* [ﾃﾝｼｮﾝ]TEN_TIME毎に上がる数値 */
+{ TEN_UP2     :10}			/* [ﾃﾝｼｮﾝ]敵を倒して上がる数値 */
+{ TEN_UP3     :20}			/* [ﾃﾝｼｮﾝ]ﾒﾘｯﾄｱｲﾃﾑで上がる数値 */
+{ TEN_DOWN1   :10}			/* [ﾃﾝｼｮﾝ]TEN_TIME毎に下がる数値 */
+{ TEN_DOWN2   :5}			/* [ﾃﾝｼｮﾝ]敵からの攻撃で下がる数値 */
+//ｹﾞｰｼﾞ表示
+{ DODAI_SX    :300}			/* [土台]の幅のｸﾞﾗﾌｨｯｸｻｲｽﾞ */
+{ DODAI_SY    :100}			/* [土台]の高さｸﾞﾗﾌｨｯｸｻｲｽﾞ */
+{ DODAI_X     :10}			/* [土台]の表示座標X */
+{ DODAI_Y     :10}			/* [土台]の表示座標Y */
+{ CLOKESIZE   :100}			/* [時計]のｸﾞﾗﾌｨｯｸｻｲｽﾞ */
+{ CLOKEANITIME:0.07}			/* [時計]の点滅ｱﾆﾒｰｼｮﾝ補間時間 */
+{ PINSIZE     :48}			/* [時計針]のｸﾞﾗﾌｨｯｸｻｲｽﾞ */
+{ PIN_X       :25}			/* [時計針]の表示座標X */
+{ PIN_Y       :25}			/* [時計針]の表示座標Y */
+{ LIFESIZE    :24}			/* [残機]のｸﾞﾗﾌｨｯｸｻｲｽﾞ */
+{ LIFE_X      :115}			/* [残機]の表示座標X */
+{ EMPSIZE     :48}			/* [ﾗｲﾌ]林檎１個のｸﾞﾗﾌｨｯｸｻｲｽﾞ */
+{ TENSIZE     :48}			/* [ﾃﾝｼｮﾝ]葉１個のｸﾞﾗﾌｨｯｸｻｲｽﾞ */
+{ TEN_ALPHA   :0.3}			/* [ﾃﾝｼｮﾝ]葉の透明度(0.5→半透明 1.0→透明無し) */
+
+//ｹﾞｰﾑｵｰﾊﾞｰ
+{ MAKU_UP    :72}			/* 幕が上がってる時 */
+{ MAKU_DOWN  :550}			/* 幕が下がってる時 */
+{ MAKU_UD  :4}				/* ﾌﾚｰﾑ毎に下がる数値 */
+
+//ﾏｯﾌﾟﾁｯﾌﾟ
+{ CHSZX       :8}			/* 横幅 */
+{ CHSZY       :8}			/* 縦ｻｲｽﾞ */
+{ CHNLN       :64}			/* 画像の一行の個数 */
+{ CHIPNX      :100}			/* 一画面の一行のﾏｯﾌﾟﾁｯﾌﾟ個数 */
+{ CHIPNY      :75}			/* 一画面の一列のﾏｯﾌﾟﾁｯﾌﾟ個数 */
+
+{ CHIP_HIT     :0}			/* 当たり判定付きのﾁｯﾌﾟ	*/
+{ CHIP_NOHIT   :1}			/* 当たり判定抜きのﾁｯﾌﾟ	*/
+{ CHIP_AMHIT   :2}			/* 足元のみが当たり判定付いているのﾁｯﾌﾟ	*/
+{ CHIP_KGHIT   :3}			/* 攻撃効果の当たり判定付きﾁｯﾌﾟ	*/
+{ CHIP_GMNGAIDN:4}			/* 画面外の例外 下 */
+{ CHIP_GMNGAIUP:5}			/* 画面外の例外	上 */
+{ CHIP_GMNGAIRT:6}			/* 画面外の例外	右 */
+{ CHIP_GMNGAILT:7}			/* 画面外の例外	左 */
+
+//画面
+{ SCRSZX       :800}			/* 画面の横幅 */
+{ SCRSZY       :600}			/* 画面の縦ｻｲｽﾞ */
+
+//設定
+{ FRAMERATE    :40}			/* ﾌﾚｰﾑﾚｰﾄ */
+
+//ｽｸﾛｰﾙ
+{ ALPHA_LINE   :150}			/* ﾏｳｽが画面の端っこからこれだけ離れてたらｽｸﾛｰﾙ1開始(遅) */
+{ BETA_LINE    :50}			/* ﾏｳｽが画面の端っこからこれだけ離れてたらｽｸﾛｰﾙ2開始(速) */
+{ SCR_SP1      :3.0}			/* ｽｸﾛｰﾙ1の速度(速) */
+{ SCR_SP2      :8.0}			/* ｽｸﾛｰﾙ2の速度(速) */
+{ HER_SCRW     :80}			/* ﾋﾛｲﾝの端っこからの最小距離 */
+
+//フェード
+{ FADE_INCR    :0.04}			/* フェードの速度 */
+
+//ﾀｲﾄﾙ
+{ TITLE_MAP   :"data\\opening_data.txt"} /* ﾀｲﾄﾙのﾏｯﾌﾟﾃﾞｰﾀ */
+{ TITLE_HAICHI:"data\\opening_teki.txt"} /* ﾀｲﾄﾙの配置 */
+
+// ﾁｭｰﾄﾘｱﾙ
+{ TUT1_MAP   :"data\\tutorial\\1\\tyuto1_data.txt"}	/* ﾏｯﾌﾟﾃﾞｰﾀ */
+{ TUT1_HAICHI:"data\\tutorial\\1\\tyuto1_teki.txt"}	/* 配置 */
+{ TUT1_ZOKUSEI:"data\\tutorial\\1\\tyuto1_zk.txt"}	/* 属性 */
+{ TUT2_MAP   :"data\\tutorial\\2\\tyuto2_data.txt"}	/* ﾏｯﾌﾟﾃﾞｰﾀ */
+{ TUT2_HAICHI:"data\\tutorial\\2\\tyuto2_teki.txt"}	/* 配置 */
+{ TUT2_ZOKUSEI:"data\\tutorial\\2\\tyuto2_zk.txt"}	/* 属性 */
+{ TUT3_MAP   :"data\\tutorial\\3\\tyuto3_data.txt"}	/* ﾏｯﾌﾟﾃﾞｰﾀ */
+{ TUT3_HAICHI:"data\\tutorial\\3\\tyuto3_teki.txt"}	/* 配置 */
+{ TUT3_ZOKUSEI:"data\\tutorial\\3\\tyuto3_zk.txt"}	/* 属性 */
+{ TUT4_MAP   :"data\\tutorial\\4\\tyuto4_data.txt"}	/* ﾏｯﾌﾟﾃﾞｰﾀ */
+{ TUT4_HAICHI:"data\\tutorial\\4\\tyuto4_teki.txt"}	/* 配置 */
+{ TUT4_ZOKUSEI:"data\\tutorial\\4\\tyuto4_zk.txt"}	/* 属性 */
+{ TUT5_MAP   :"data\\tutorial\\5\\tyuto5_data.txt"}	/* ﾏｯﾌﾟﾃﾞｰﾀ */
+{ TUT5_HAICHI:"data\\tutorial\\5\\tyuto5_teki.txt"}	/* 配置 */
+{ TUT5_ZOKUSEI:"data\\tutorial\\5\\tyuto5_zk.txt"}	/* 属性 */
+{ TUT6_MAP   :"data\\tutorial\\6\\tyuto6_data.txt"}	/* ﾏｯﾌﾟﾃﾞｰﾀ */
+{ TUT6_HAICHI:"data\\tutorial\\6\\tyuto6_teki.txt"}	/* 配置 */
+{ TUT6_ZOKUSEI:"data\\tutorial\\6\\tyuto6_zk.txt"}	/* 属性 */
+
+
+//ｽﾃｰｼﾞ
+{ STAGE1_MAP   :"data\\st11_data.txt"}	/* ｽﾃｰｼﾞ1のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE1_HAICHI:"data\\st11_teki.txt"}	/* ｽﾃｰｼﾞ1の配置 */
+{ STAGE1_ZOKUSEI:"data\\st11_zk.txt"}	/* ｽﾃｰｼﾞ1の属性 */
+{ STAGE12_MAP   :"data\\st12_data.txt"}	/* ｽﾃｰｼﾞ1のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE12_HAICHI:"data\\st12_teki.txt"}	/* ｽﾃｰｼﾞ1の配置 */
+{ STAGE12_ZOKUSEI:"data\\st12_zk.txt"}	/* ｽﾃｰｼﾞ1の属性 */
+{ STAGE1_BOSS_MAP:"data\\boss_data.txt"}/* ｽﾃｰｼﾞ1のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE1_BOSS_HAICHI:"data\\boss_teki.txt"}/* ｽﾃｰｼﾞ1のﾏｯﾌﾟﾃﾞｰﾀ */
+
+{ STAGE2_MAP   :"data\\st21_data.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE2_HAICHI:"data\\st21_teki.txt"}	/* ｽﾃｰｼﾞ2の配置 */
+{ STAGE2_ZOKUSEI:"data\\st21_zk.txt"}	/* ｽﾃｰｼﾞ2の属性 */
+{ STAGE22_MAP   :"data\\st22_data.txt"}		/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE22_HAICHI:"data\\st22_teki.txt"}		/* ｽﾃｰｼﾞ2の配置 */
+{ STAGE22_ZOKUSEI:"data\\st22_zk.txt"}		/* ｽﾃｰｼﾞ2の属性 */
+{ STAGE2_BOSS_MAP:"data\\boss2_data.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE2_BOSS_HAICHI:"data\\boss2_teki.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
+
+{ STAGE4_MAP   :"data\\st41_data.txt"}	/* ｽﾃｰｼﾞ4のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE4_HAICHI:"data\\st41_teki.txt"}	/* ｽﾃｰｼﾞ4の配置 */
+{ STAGE4_ZOKUSEI:"data\\st41_zk.txt"}	/* ｽﾃｰｼﾞ4の属性 */
+{ STAGE42_MAP   :"data\\st42_data.txt"}	/* ｽﾃｰｼﾞ4-2のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE42_HAICHI:"data\\st42_teki.txt"}	/* ｽﾃｰｼﾞ4-2の配置 */
+{ STAGE42_ZOKUSEI:"data\\st42_zk.txt"}	/* ｽﾃｰｼﾞ4-2の属性 */
+{ STAGE4_BOSS_MAP:"data\\boss4_data.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE4_BOSS_HAICHI:"data\\boss4_teki.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
+
+//制限時間
+{STAGE1_TIME:360}			/* ｽﾃｰｼﾞ1 制限時間 */
+{STAGE1_BOSS_TIME:360}			/* ｽﾃｰｼﾞ1_BOSS 制限時間 */
+{STAGE2_TIME:360}			/* ｽﾃｰｼﾞ2 制限時間 */
+{STAGE2_BOSS_TIME:360}			/* ｽﾃｰｼﾞ2_BOSS 制限時間 */
+{STAGE4_TIME:360}			/* ｽﾃｰｼﾞ4 制限時間 */
+{STAGE4_BOSS_TIME:360}			/* ｽﾃｰｼﾞ4_BOSS 制限時間 */
+
+//配置
+{ SHUTSUGEN_POINTX :800}		/* 敵が出現するX座標です */
+
+// ｽﾃｰｼﾞタイトル
+{ STGTITLE_Y     :240}			/* y座標 */
+{ STGTITLE_SX    :400}			/* 画像の横幅 */ 
+{ STGTITLE_SY    :80}			/* 画像の縦幅 */
+{ STGTITLE_SPX   :29.75}		/* X速度 */
+{ STGACTSTART_Y  :200}			/* y座標 */
+{ STGACTSTART_SX :680}			/* 画像の横幅 */ 
+{ STGACTSTART_SY    :180}		/* 画像の縦幅 */
+
+// ｽﾃｰｼﾞ選択画面
+{ STGSELECT_TITSX :500}			/* ﾀｲﾄﾙ画像の横幅 */
+{ STGSELECT_TITSY :80}			/* ﾀｲﾄﾙ画像の縦幅 */
+{ STGSELECT_TITY  :100}			/* ﾀｲﾄﾙ画像のY位置 */
+{ STGSELECT_IMGSX :360}			/* ｲﾒｰｼﾞ画像の横幅 */
+{ STGSELECT_IMGSY :270}			/* ｲﾒｰｼﾞ画像の縦幅 */
+{ STGSELECT_IMGY  :175}			/* ｲﾒｰｼﾞ画像のY位置 */
+{ STGSELECT_ALLSX :540}			/* 全体図画像の横幅 */
+{ STGSELECT_ALLSY :45}			/* 全体図画像の縦幅 */
+{ STGSELECT_ALLY  :475}			/* 全体図画像のY位置 */
+{ STGSELECT_ALL1SX :36}			/* 全体図の項目の横幅 */
+{ STGSELECT_CURSORSX :40}		/* ｶｰｿﾙの横幅 */
+{ STGSELECT_CURSORSY :40}		/* ｶｰｿﾙの縦幅 */
+{ STGSELECT_LARX  :110}			/* 左の矢印のX位置 */
+{ STGSELECT_RARX  :630}			/* 左の矢印のX位置 */
+{ STGSELECT_ARY  :280}			/* 矢印のY位置 */
+{ STGSELECT_ARSX :60}			/* 矢印の画像の幅 */
+{ STGSELECT_ARSY :60}			/* 矢印の画像の幅 */
+{ STGSELECT_LARX  :110}			/* 矢印の位置 */
+{ STGSELECT_SLDDIST: 600 }		/* ｽﾗｲﾄﾞｲﾝのときの空白 */
+{ STGSELECT_SLDSP: 13 }			/* ｽﾗｲﾄﾞｲﾝの速度 */
+{ STGSELECT_FRAMESX: 370 }		/* フレームの横幅 */
+{ STGSELECT_FRAMESY: 280 }		/* フレームの縦幅 */
+
+//敵
+{ SHINIPATT_SHOSP  :5.6} 		/* */
+{ SHINIPATT_SPX    :1} 			/* */
+
+//ヒロインの番号
+{ HEROINE_NO       :256}		/* ヘロイン */
+
+//敵の番号
+{ KUMO_NO          :1}			/* 蜘蛛   */
+{ KAERU_NO         :2}			/* 蛙	  */
+{ KOMORI_NO        :3}			/* 蝙蝠	  */
+{ KARIYUMI_NO      :4}			/* 狩人弓 */
+{ KARIKEN_NO       :5}			/* 狩人剣 */
+{ UGOKUKI_NO       :6}			/* 動く木 */
+{ KOBITOA_NO       :7}			/* 小人A  */
+{ KARIKEN2_NO      :9 }			/* 狩人剣2 */
+{ KARIYUMI2_NO     :0xA }		/* 狩人弓2 */
+{ KAERU_KING_NO    :0xB }		/* かえる王*/
+{ USAGI_NO         :0x10 }		/* ウサギ */
+{ KARIYUMI3_NO     :0x11 }		/* 狩人弓3 */
+{ TRUMPHEISPADENO  :0xc }               /* スペードトランプ兵 */
+{ TRUMPHEIHEARTNO  :0xd }               /* ハートトランプ兵 */
+{ TRUMPHEIDIAMONDNO  :0xe }             /* ダイヤランプ兵 */
+{ TRUMPHEICLOVERNO  :0xf }              /* クローバランプ兵 */
+{ KUMOPINK_NO      :0x21 }		/* クモピンク */
+{ ITRINGO          :0x30}  		/* りんご */
+{ ITAORINGO        :0x31}		/* 青りんご */
+{ ITKINRINGO       :0x32}		/* 金りんご */
+
+{ BOSS_MAJO_NO     :0x1E}			/* 魔女	  */
+{ BOSS_OOKAMI_NO   :0x2E}			/* 狼	　*/
+{ BOSS_QUEEN_NO    :0x3E}			/* 女王   */
+
+//オブジェクトの番号
+{ STGCLRDOOR_NO    :0x1F}		/* ステージクリアのドア */
+
+{ ASHIBA_NO        :0x71}		/* 足場 	*/
+{ MOVASHIBA_NO     :0x75}		/* 動く足場	*/
+{ ASHIBA2_NO        :0x81}		/* 足場 	*/
+{ MOVASHIBA2_NO     :0x85}		/* 動く足場	*/
+{ ASHIBA3_NO        :0x91}		/* 足場 	*/
+{ INVASHIBA3_NO      :0x93 }		/* 見えない足場 */
+{ MOVASHIBA3_NO     :0x95}		/* 動く足場	*/
+{ TENBIN_NO        :0x87}		/* 天秤		*/
+{ TEKKYU_NO        :0xA7 }		/* 鉄球(装置)   */
+{ FIREUP_NO        :0xA9 }     		/* 噴出す火(上) */
+{ FIREDN_NO        :0xAB }     		/* 噴出す火(下) */
+
+//チェックポイント
+{ CHECKPOINT_NO    :0x6F}		/* チェックポイント */
+
+//ｵﾌﾞｼﾞｪｸﾄの番号
+{ ARROW_NO         :100}		/* 矢	*/
+
+////GroupIds
+{ GRID_KOUGEKI     :0}			/* 攻撃のｸﾞﾙｰﾌﾟ */
+{ GRID_BOGYO       :1}			/* 防御のｸﾞﾙｰﾌﾟ */
+{ GRID_ITO         :2}			/* 蜘蛛の糸	*/
+{ GRID_HANTEN      :3}			/* 反転をさせる	*/
+{ GRID_BOUND       :4}			/* ﾊﾞｳﾃﾞｨﾝｸﾞﾎﾞｯｸｽ */
+{ GRID_HOUSE       :5}			/* 家を入るための当たり判定 */
+
+
+//////////////////////////////////敵の設定//////////////////////////////////////
+
+//蜘蛛
+{ ITO_SP           :2.5}		/* 糸の上に歩いてる状態の移動速度 */
+{ TEISHI_TIME      :1.0}		/* 停止時間 */
+{ MOVE_DIST        :200} 		/* 糸移動距離 */
+{ ARUKI_SP         :1.25}		/* 地面で歩きまわしてるときの速度 */
+{ KUMOSX           :56}			/* 実画像の幅	*/
+{ KUMOSY           :56}			/* 実画像の高さ */
+{ ITO_LEN          :210}		/* 糸の長さ(画像より伸ばせないので注意 */
+
+//蜘蛛ピンク
+{ KPITO_SP           :2.5}		/* 糸の上に歩いてる状態の移動速度 */
+{ KPTEISHI_TIME      :1.0}		/* 停止時間 */
+{ KPMOVE_DIST        :200} 		/* 糸移動距離 */
+{ KPARUKI_SP         :1.25}		/* 地面で歩きまわしてるときの速度 */
+{ KUMOPINKSX         :96}		/* 実画像の幅	*/
+{ KUMOPINKSY         :96}		/* 実画像の高さ */
+{ KPITO_LEN          :210}		/* 糸の長さ(画像より伸ばせないので注意 */
+
+//蛙
+{ KAERUSX          :56}			/* 実画像の幅	*/
+{ KAERUSY          :56}			/* 実画像の高さ */
+{ JUMPSTART_TIME   :0.1}		/* ｼﾞｬﾝﾌﾟの直前の間 */
+{ TAIKI_TIME       :1.0}		/* ｼﾞｬﾝﾌﾟとｼﾞｬﾝﾌﾟのｲﾝﾀｰﾊﾞﾙ */
+{ JMPSPX           :2.5}                /* ｼﾞｬﾝﾌﾟの初速(X) */
+{ JMPTAKASA        :100}		/* ｼﾞｬﾝﾌﾟの高さ(ﾋﾟｸｾﾙ) */
+
+//蛙王
+{ KAERUKSX          :88}		/* 実画像の幅	*/
+{ KAERUKSY          :88}		/* 実画像の高さ */
+{ KJUMPSTART_TIME   :0.1}		/* ｼﾞｬﾝﾌﾟの直前の間 */
+{ KTAIKI_TIME       :1.0}		/* ｼﾞｬﾝﾌﾟとｼﾞｬﾝﾌﾟのｲﾝﾀｰﾊﾞﾙ */
+{ KJMPSPX           :2.5}                /* ｼﾞｬﾝﾌﾟの初速(X) */
+{ KJMPTAKASA        :100}		/* ｼﾞｬﾝﾌﾟの高さ(ﾋﾟｸｾﾙ) */
+
+//ウサギ
+{ USAGISX           :72}		/* 実画像の幅	*/
+{ USAGISY           :72}		/* 実画像の高さ */
+{ UJUMPSTART_TIME   :0.1}		/* ｼﾞｬﾝﾌﾟの直前の間 */
+{ UTAIKI_TIME       :1.0}		/* ｼﾞｬﾝﾌﾟとｼﾞｬﾝﾌﾟのｲﾝﾀｰﾊﾞﾙ */
+{ UJMPSPX           :2.5}                /* ｼﾞｬﾝﾌﾟの初速(X) */
+{ UJMPTAKASA        :100}		/* ｼﾞｬﾝﾌﾟの高さ(ﾋﾟｸｾﾙ) */
+
+//蝙蝠
+{ KOMOSX           :56}			/* 実画像の幅	*/
+{ KOMOSY           :56}			/* 実画像の高さ */
+{ MAAI_HABA        :200}		/* 間合いの幅	*/
+{ KOMOSPX          :4}  		/* 空中のX速度	*/
+{ KOMORAISE        :0.3}		/* 上昇力	*/
+{ KOMOCHOTEN       :50}			/* 放物線の頂点	*/
+
+//狩人弓
+{ KARIYUMISX       :120}		/* 実画像の幅	*/
+{ KARIYUMISY       :120}		/* 実画像の高さ */
+{ KARIYUMI_WTM     :4.0}		/* 待機時間		*/
+{ KARIYUMI_WTM2    :1.5}		/* 矢と矢の間の時間	*/
+{ YUMITGT1         :80}			/* 自機の手前？	*/
+{ YUMITGT2         :-80}		/* 自機の後ろ？	*/
+{ KARIYUMI_NKHI    :70}		/* 自機との距離がこれより小さくなったら矢を撃つのをやめる */
+
+//狩人弓2
+{ KARIYUMI2SX       :120}		/* 実画像の幅	*/
+{ KARIYUMI2SY       :120}		/* 実画像の高さ */
+{ KARIYUMI2_WTM     :4.0}		/* 待機時間		*/
+{ KARIYUMI2_WTM2    :1.5}		/* 矢と矢の間の時間	*/
+{ YUMI2TGT1         :80}			/* 自機の手前？	*/
+{ YUMI2TGT2         :-80}		/* 自機の後ろ？	*/
+{ KARIYUMI2_NKHI    :70}		/* 自機との距離がこれより小さくなったら矢を撃つのをやめる */
+
+//狩人弓3
+{ KARIYUMI3SX       :120}		/* 実画像の幅	*/
+{ KARIYUMI3SY       :120}		/* 実画像の高さ */
+{ KARIYUMI3_WTM     :4.0}		/* 待機時間		*/
+{ KARIYUMI3_WTM2    :1.5}		/* 矢と矢の間の時間	*/
+{ YUMI3TGT1         :80}			/* 自機の手前？	*/
+{ YUMI3TGT2         :-80}		/* 自機の後ろ？	*/
+{ KARIYUMI3_NKHI    :70}		/* 自機との距離がこれより小さくなったら矢を撃つのをやめる */
+
+//矢
+{ ARROWSX          :48}			/* 矢の幅		*/
+{ ARROWSY          :12}			/* 矢の高さ		*/
+{ ARROWSPXDIV      :60}			/* 矢の横速度系		*/
+{ ARROWMAXSPY      :8}			/* 矢の落ちる最大速度   */
+{ ARROWSHMTTIME    :2.0}		/* 矢が刺さってから消えるまでの時間 */
+
+//狩人剣
+{ KARIKENSX        :120}		/* 実画像の幅	*/
+{ KARIKENSY        :120}		/* 実画像の高さ */
+{ KARIKENSPX       :2}		/* 歩く速度　	*/
+{ KARIKENKGHANI    :75}		/* 攻撃範囲	*/
+{ KARIKENWTM1      :0.2}		/* 攻撃前のﾃﾞｨﾚｰ*/
+{ KARIKENWTM2      :0.2}		/* 攻撃後のﾃﾞｨﾚｰ*/
+
+//狩人剣2
+{ KARIKEN2SX        :120}		/* 実画像の幅	*/
+{ KARIKEN2SY        :120}		/* 実画像の高さ */
+{ KARIKEN2SPX       :2}		/* 歩く速度　	*/
+{ KARIKEN2KGHANI    :75}		/* 攻撃範囲	*/
+{ KARIKEN2WTM1      :0.2}		/* 攻撃前のﾃﾞｨﾚｰ*/
+{ KARIKEN2WTM2      :0.2}		/* 攻撃後のﾃﾞｨﾚｰ*/
+
+//動く木
+{ UGOKUKISX        :120}		/* 実画像の幅	*/
+{ UGOKUKISY        :184}		/* 実画像の高さ */
+{ UGOKUKIHANI      :100}		/* 発動範囲	*/
+{ UGOKUKISPX       :1}			/* 歩く速度	*/
+
+//魔女
+{ MAJOSX           :72}			/* 実画像の幅	*/
+{ MAJOSY           :72}			/* 実画像の高さ	*/
+{ MAJO_DOORSX      :120}		/* 実画像の幅	*/
+{ MAJO_DOORSY      :120}		/* 実画像の高さ	*/
+{ MAJO_ARUKI_SPX   :3.75}		/* 歩く速度     */
+{ MAJO_HP          :7}			/* ﾗｲﾌｫﾎﾟｲﾝﾄ　  */
+{ APPLESZX         :48}			/* 実画像の幅	*/
+{ APPLESZY         :48}			/* 実画像の高さ	*/
+{ APPLE_RLSP       :3.75}		/* 転がり速度	*/
+{ APPLE_KTSP       :0.2}		/* 回転角速度	*/
+{ APPLE_THROW_HG:  :120}		/* りんごの飛ぶ高さ */
+{ APPLE_THROW_SPX  :3.0}		/* りんごのX速度*/
+{ APPLE_BRTM       :1.0}                /* りんごが砕けてから未表示までの時間 */
+{ LKOBITO_SX       :88}			/* 実画像の幅	*/
+{ LKOBITO_SY       :88}			/* 実画像の高さ	*/
+{ LKOBITO_BLUESPX  :1.25}		/* 青バージョンの歩き速度 */
+{ LKOBITO_REDSPX   :3.75}		/* 赤バージョンの歩き速度 */
+{ LKOBITO_GREENSPX :1.25}		/* 緑バージョンの歩き速度 */
+{ LKOBITO_ENTX     :800}		/* ライト小人の出現地 */
+{ LKOBITO_ENTY     :67}			/* ライト小人の出現地 */
+{ LKOBITO_JTK      :100}		/* ジャンプ頂点Y */
+{ LKOBITO_BOUNDTK1 :40}			/* 小人が跳ね返る高さ、魔女がドアの場合 */
+{ LKOBITO_BOUNDTK2 :20}			/* 小人が跳ね返る高さ、魔女が窓の場合 */
+{ LKOBITO_FSPX     :5.0}           	/* 脱出速度      */
+
+// 狼
+{ OOKAMI_HP        :8 }			/* 初期HP */
+{ OOKAMI_STARTX    :800 }               /* 初期 X */
+{ OOKAMI_STARTY    :400 }               /* 初期 Y */
+{ OOKAMI_SX        :128}		/* 実画像の幅	 */
+{ OOKAMI_SY        :136}		/* 実画像の高さ	 */
+{ OOKAMI_STRATKSPX :9.0}		/* 直進攻撃の速度*/
+{ OOKAMI_MTKTIME   :3.0}		/* 無敵時間 */
+{ OOKAMI_JMPSHOSOKUY: 10.0}		/* ｼﾞｬﾝﾌﾟの初速	 */
+{ OOKAMI_ENTERRX   : 622 }		/* 右からどこまで入って来る */
+{ OOKAMI_ENTERLX   : 50 }		/* 左からどこまで入って来る */
+{ OOKAMI_ENTERSPX  : 2 }		/* 入って来る速度*/
+{ OOKAMI_HSSX      :136 }               /* 家の横幅 */
+{ OOKAMI_HSSY      :168 }               /* 家の縦幅 */
+{ OOKAMI_HSSP      :2.5 }               /* 家の出現速度 */
+{ OOKAMI_HSPY      :536 }               /* 家の出現速度 */
+{ OOKAMI_HSPX1     :187 }               /* 家の出現位置1 */
+{ OOKAMI_HSPX2     :332 }               /* 家の出現位置2 */
+{ OOKAMI_HSPX3     :477 }               /* 家の出現位置3 */
+{ OOKAMI_BRSX      :622 }               /* 息の横幅 */
+{ OOKAMI_BRSY      :176 }               /* 息の縦幅 */
+{ OOKAMI_BRPX1     :178 }               /* 息の出現位置1 */
+{ OOKAMI_BRPY1     :360 }               /* 息の出現位置1 */
+{ OOKAMI_BRPX2     :0 }                 /* 息の出現位置2 */
+{ OOKAMI_BRPY2     :360 }               /* 息の出現位置2 */
+{ OOKAMI_HSPTSX    :48 }		/* 破片の横幅 */
+{ OOKAMI_HSPTSY    :48 }		/* 破片の縦幅 */
+{ OOKAMI_HSPTROTSP :0.1 }		/* 破片の回転速度 */
+{ OOKAMI_BKHTSPX   :2.0 }		/* ﾋｯﾄﾊﾞｯｸのX速度 */
+{ OOKAMI_BKHTSPY   :6.9 }		/* ﾋｯﾄﾊﾞｯｸのY初速 */
+{ STORM_SP         :3.0 } 		/* 強風の力 */
+
+// 女王
+{ QUEEN_HP        :8 }			/* 初期HP */
+{ QUEEN_STARTX    :340 }               	/* 初期 X */
+{ QUEEN_STARTY    :200 }        	/* 初期 Y */
+{ QUEEN_SX        :120}			/* 実画像の幅	 */
+{ QUEEN_SY        :160}			/* 実画像の高さ	 */
+{ QUEEN_MTKTIME   :3.0}			/* 無敵時間 */
+{ KAGAMIX         :340}			/* 鏡の位置X */
+{ KAGAMIY         :208}			/* 鏡の位置Y*/
+{ KAGAMISX        :120}			/* 鏡のサイズX */
+{ KAGAMISY        :160}			/* 鏡のサイズY*/
+{ KAGAMI_NIJISP   :0.04}		/* 虹の速度 */
+{ KAGAMI_SHFTIME  :2.0}			/* シャッフルの時間 */
+{ KAGAMI_STILLTIME  :2.0}		/* ｼｬｯﾌﾙが終わってから動作に入るまでの時間 */
+{ CHANDX          :213 }		/* ｼｬﾝﾃﾞﾘｱの初期X */
+{ CHANDY          :49 }			/* ｼｬﾝﾃﾞﾘｱの初期Y */
+{ CHANDSX         :376 }		/* ｼｬﾝﾃﾞﾘｱの横幅 */
+{ CHANDSY         :128 }		/* ｼｬﾝﾃﾞﾘｱの縦幅 */
+{ CHANDCHAINDX    :172 }		/* 鎖の相対座標 */
+{ CHANDCHAINDY    :-350}		/* 鎖の相対座標 */
+{ CHANDCHAINSX    :32 }			/* 鎖の横幅 */
+{ CHANDCHAINSY    :448 }		/* 鎖の縦幅 */
+{ CHANDRAISESP    :3.75 }		/* 戻るときの速度 */
+{ CHANDWTTIME     :3.0 } 		/* 床に眠る時間 */
+{ CHANDRAISESP2   :6.25 }		/* 戻るときの速度 */
+{ CHANDWTTIME2    :2.0 } 		/* 床に眠る時間 */
+{ THORNX1         :658 }		/* 茨の出現X */
+{ THORNX2         :574 }		/* 茨の出現X */
+{ THORNX3         :490 }		/* 茨の出現X */
+{ THORNX4         :406 }		/* 茨の出現X */
+{ THORNX5         :322 }		/* 茨の出現X */
+{ THORNX6         :238 }		/* 茨の出現X */
+{ THORNX7         :154 }		/* 茨の出現X */
+{ THORNX8         :70 }			/* 茨の出現X */
+{ THORNSP         :10.5 }		/* 茨の生える速度 */
+{ THORNSP2        :14.5 }		/* 茨の生える速度・威力強 */
+{ THORNSX         :64 }                 /* 画像の横幅 */
+{ THORNSY         :220 }                /* 画像の縦幅 */
+{ THORNTRIGH      :100 }		/* これだけ高くなったら次の茨が生えてくる */
+{ TRUMPX          :380 }                /* トランプの出現地 */
+{ TRUMPY          :180 }                /* トランプの出現地 */
+{ TRUMPSX         :40 }                 /* トランプの横幅 */
+{ TRUMPSY         :40 }                 /* トランプの縦幅 */
+{ TRUMPSHOSP      :-9.0 }               /* 初速 */
+{ TRUMPTOPY       :-188 }               /* ここまで上がっていく*/
+{ TRUMPFALLSP     : 6.0 }		/* 落下速度 */
+{ TRUMPROW1       : 125 }		/* 一列目 */
+{ TRUMPROW2       : 325 }		/* 二列目 */
+{ TRUMPROW3       : 475 }		/* 三列目 */
+{ TRUMPROW4       : 675 }		/* 四列目 */
+{ RODX            : 382 }		/* 位置 */
+{ RODY            : 25 }		/* 位置 */
+{ RODSX           : 40 }		/* 横幅 */
+{ RODSY           : 248 }		/* 縦幅 */
+{ RODSPANG        : 45 }		/* 角速度 */
+{ HEARTSX         : 40 }		/* 横幅 */
+{ HEARTSY         : 40 }		/* 縦幅 */
+{ HEARTSP         : 2.5 }               /* 速度 */
+{ HEART_KAITENSP  : 0.08 }		/* ハートの回転速度 */
+{ APPLE_BEFOREAPP: 5.0 }               /* ﾘﾝｺﾞが消えるまでの時間 */
+{ APPLE_BEFOREDISAPP1: 5.0 }            /* ﾘﾝｺﾞが復活するまでの時間 */
+{ APPLE_BEFOREDISAPP2: 10.0 }            /* ﾘﾝｺﾞが復活するまでの時間(長時間) */
+{ APPLE_GENLTX    : 102 }  		/* 左ﾘﾝｺﾞの出現X */
+{ APPLE_GENRTX    : 648 }  		/* 右ﾘﾝｺﾞの出現X */
+{ APPLE_GENY      : 200 }		/* ﾘﾝｺﾞの出現Y */
+{ APPLE_TENTIMES  : 4 }			/* 点滅回数 */
+{ TRUMPHEISX      : 208 }		/* ﾄﾗﾝﾌﾟ兵の横幅 */
+{ TRUMPHEISY      : 208 }		/* ﾄﾗﾝﾌﾟ兵の縦幅 */
+{ TRUMPHEISP      : 2.0 }		/* ﾄﾗﾝﾌﾟ兵の速度 */
+{ TRUMPHEIHANI    : 60 }                /* ﾋﾛｲﾝがこれ以上近づいたら */
+
+// ステージクリアの文字
+{ STGCLRMOJI_SX    :600}		/* 画像の横幅		*/
+{ STGCLRMOJI_SY    :120}		/* 画像の縦幅		*/
+{ STGCLMOJI_DTIME  :4.0}                /* 表示時間 		*/
+{ STGCLMOJI_FSP    :0.02}		/* フェード速度 	*/
+{ STGCLMOJI_BFTIME :2.0}                /* 文字が表示される前のポーズ時間 */
+
+// ﾀｲﾑｱｯﾌﾟの文字
+{ TIMEUPMOJI_SX    :600}		/* 画像の横幅		*/
+{ TIMEUPMOJI_SY    :120}		/* 画像の縦幅		*/
+{ TIMEUPMOJI_DTIME :4.0}                /* 表示時間 		*/
+{ TIMEUPMOJI_FSP   :0.02}		/* フェード速度 	*/
+{ TIMEUPMOJI_BFTIME :2.0}                /* 文字が表示される前のポーズ時間 */
+
+// 便利なもの
+{ FLOORY           :544 } 		/* 地面の高さ */
+{ STD_FADEIN_SP    :0.1 }		/* ﾌｪｰﾄﾞｲﾝの速度(トランプなど) */
+//////////////////////////////オブジェクトの設定//////////////////////////////////
+
+//ステージクリアーのドアー
+{ STGCLRDOORSX     :162}		/* 実画像の幅	*/
+{ STGCLRDOORSY     :98}			/* 実画像の高さ */
+
+//足場
+{ ASHIBASX         :144 }		/* 実画像の幅	*/
+{ ASHIBASY         :48}			/* 実画像の高さ */
+{ ASHIBAMOV_SP     :3.5}		/* 速度		*/
+{ ASHIBA2SX        :144 }		/* 実画像の幅	*/
+{ ASHIBA2SY        :48}			/* 実画像の高さ */
+{ ASHIBA2MOV_SP    :3.5}		/* 速度		*/
+{ ASHIBA3SX        :160 }		/* 実画像の幅	*/
+{ ASHIBA3SY        :40 }		/* 実画像の高さ */
+{ ASHIBA3MOV_SP    :3.5}		/* 速度		*/
+
+//天秤
+{ TENASHIBASX      :128 }		/* 実画像の幅	*/
+{ TENASHIBASY      :600}		/* 実画像の高さ */
+{ TENBIN_DFOR      :0.1}		/* 天秤が下がる力 */
+{ TENASHIBA_MAXSP  :3}		/* 天秤足場の最大速度*/
+{ TENASHIBA_MAXSA  :200}		/* 天秤の腕が動く縦幅 */
+{ TENASHIBA_BACKSP :1.5}		/* 天秤の腕が戻る速度*/
+
+//鉄球
+{ TEKKYUSTDSX      :120}		/* 実画像の幅	*/
+{ TEKKYUSTDSY      :48}			/* 実画像の高さ */
+{ TEKKYUSTD_PRODTIME1 :2.0}		/* 一回目の発射までの時間 */
+{ TEKKYUSTD_PRODTIME2 :5.0}		/* 二回目からの発射までの時間 */
+{ TEKKYUSTD_MAXTEKKYU :2}		/* 画面内にこれ以上の鉄球がある場合、発射しない */
+{ TEKKYUSX         :104}		/* 実画像の幅	*/
+{ TEKKYUSY         :104}		/* 実画像の高さ */
+{ TEKKYU_STARTY    :-52}                /* 装置相対座標・初期Y */
+{ TEKKYU_RLSP      :-2.0} 		/* 転がる速度 */
+{ TEKKYU_RLANGSP   :-0.1} 		/* 転がる角速度 */
+{ TEKKYU_REBHG     :50}			/* 弾む高さ(一回目のﾊﾞｳﾝﾄﾞ)
+{ TEKKYU_SHOMETSUTIME :5.0}             /* とまってから消滅するまでの時間 */
+
+// 噴出す火
+{ FIRESTDSX      :128}			/* 実画像の幅	*/
+{ FIRESTDSY      :64}			/* 実画像の高さ */
+{ FIRESTD_PRODTIME :3.0}		/* 発射までの時間 */
+{ HIBASHIRA_LNPART :15 }		/* 一行のパーティｸﾙ数 */
+{ HIBASHIRA_FIREINT:0.03 }		/* 一行の発射から次の行の発射までの時間 */
+{ HIBASHIRA_BASESPX:4.0 }     	 	/* 上下の基本速度 */
+{ HIBASHIRA_HEIGHT :100}		/* 高さ */
+{ HIBASHIRA_PTLFTIME: 10.0}		/* ﾊﾟｰﾃｨｸﾙが消えるときのずれ係数 */
+{ FIREPART_ZZHABA  :0.2}		/* ﾊﾟｰﾃｨｸﾙの動揺の幅(X軸) */
+{ FIREPART_ZZSOKUDO:2.0}		/* ﾊﾟｰﾃｨｸﾙの動揺速度(X軸) */
+
+// 見方小人
+{ MKOBITOSX        :88}			/* 実画像の幅	*/
+{ MKOBITOSY        :88}			/* 実画像の高さ */
+{ MKOBITOSPX       :2}		/* 徒歩速度	*/
+{ MKOBITO_LTIME    :3.0}                /* 何秒照らされたらアイテム投げる */
+{ MKOBITO_WTIME    :2.0}                /* 何秒歩いたら反転する */
+{ MKOBITO_URONUM   :5}                  /* 往復する回数×２*/
+{ MKOBITOJNPSHOSP :5.0}                /* ジャンプの初速*/
+{ ITEMSX           :48 }		/* 実画像の幅	*/
+{ ITEMSY           :48}			/* 実画像の高さ */
+{ ITEMSPX          :6.0}		/* 横速度	*/
+{ ITEMSHOSP        :-6.3}		/* 初速度	*/
+{ ITEMFXSX         :56}			/* 実画像の幅	*/
+{ ITEMFXSY         :56}			/* 実画像の高さ */
+{ ITEMFXSHOSP      :-8.0}		/* 上昇の初速   */
+{ ITEMFXACCY       :0.2}		/* ﾌﾞﾚｰｷ速度    */
+{ ITEMFXFADESP     :0.02}               /* ﾌｪｰﾄﾞｱｳﾄ速度	*/
+{ ITEM_TENUP       :20 }		/* テンションアップ */
+{ ITEM_EMPUP       :1 }			/* エンパシーアップ */
+
+
+// エンディング
+{ CONGRATSX        :616}		/* Congratulations幅 */
+{ CONGRATSY        :96}			/* Congratulations縦 */
+{ CONGRATSTIME     :3.0}		/* Congratulations表示時間 */
+{ STAFF_SCRSP      :1.75 }		/* スタッフロールのｽｸﾛｰﾙ速度 */
+{ STAFF_SX         :560 }		/* ロール幅 */
+{ STAFF_SY         :4000 }		/* ロール縦 */

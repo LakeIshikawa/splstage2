@@ -1,0 +1,119 @@
+﻿#include ".\stagemanager.h"
+#include "..\\Management\\GameControl.h"
+#include "..\\Stage\\Map.h"
+#include "..\\Light\\Light.h"
+#include "SpecialScreens\\GameOverScr.h"
+#include "SpecialScreens\\TGSThanksForPlaying.h"
+#include "SpecialScreens\\TitleScr.h"
+
+#define GAME_OVER_IDX 5
+
+#define STG_LOOP_POINT 3 // このステージが終わったらタイトル画面に戻る
+
+/*
+	ここでﾏｯﾌﾟﾁｯﾌﾟのテクスチャを読み込みます
+*/
+StageManager::StageManager(void)
+{
+	mCurrentIndex = 1;
+
+	//ﾀｲﾄﾙ
+	maStages[0] = new TitleScr( 
+		GS("TITLE_MAP"),
+		GS("TITLE_HAICHI"), 
+		string("graphics\\back.png"),
+		string("graphics\\m_cp00.png"),
+		SoundController::STG1
+		);
+
+	// ｽﾃｰｼﾞを作成
+	maStages[1] = new Stage( 
+		GS("STAGE1_MAP"),
+		GS("STAGE1_HAICHI"), 
+		string("graphics\\back.png"),
+		string("graphics\\m_cp00.png"),
+		SoundController::STG1
+		);
+
+	maStages[2] = new Stage( 
+		GS("STAGE1_BOSS_MAP"),
+		GS("STAGE1_BOSS_HAICHI"), 
+		string("graphics\\back.png"),
+		string("graphics\\m_cp01.png"),
+		SoundController::BOSS1
+		);
+
+	maStages[2] = new TGSThanksForPlaying();
+
+	maStages[GAME_OVER_IDX] = new GameOverScr();
+
+
+}
+
+StageManager::~StageManager(void)
+{
+}
+
+/*
+	ｽﾃｰｼﾞﾏﾈｰｼﾞｬｰの処理
+*/
+void StageManager::Process()
+{
+	maStages[mCurrentIndex]->Process();
+}
+
+/*
+	ﾏﾈｰｼﾞｬの初期化
+*/
+void StageManager::Init()
+{
+	maStages[mCurrentIndex]->Load();
+}
+
+// ｹﾞｯﾀｰ
+float StageManager::GetCurScrollPointer()
+{
+	return maStages[mCurrentIndex]->GetMap()->GetScrollP();
+}
+
+// ｹﾞｯﾀｰ
+Map* StageManager::GetCurMap()
+{
+	return maStages[mCurrentIndex]->GetMap();
+}
+
+// ステージフォーワード
+void StageManager::StageGoForward()
+{
+	// 現在のオブジェクトが消滅
+	GAMECONTROL->GetMobManager()->Reset();
+	maStages[mCurrentIndex]->UnLoad();
+
+	mCurrentIndex = (mCurrentIndex + 1) % STG_LOOP_POINT;
+
+	maStages[mCurrentIndex]->Load();
+}
+
+/*
+	ゲームオーバー画面へいきます。
+
+	前提：　画面が既にフェードアウトされた状態で
+	この関数が呼ばれること
+*/
+void StageManager::GoToGameOver()
+{
+	GAMECONTROL->GetMobManager()->Reset();
+
+	mCurrentIndex = GAME_OVER_IDX;
+	maStages[mCurrentIndex]->Load();
+}
+/*
+	ﾀｲﾄﾙ画面。
+*/
+void StageManager::GoToTitle()
+{
+	GAMECONTROL->GetMobManager()->Reset();
+
+	mCurrentIndex = 0;
+	maStages[mCurrentIndex]->Load();
+}

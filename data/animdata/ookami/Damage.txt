@@ -1,0 +1,6 @@
+// ÀÞÒ°¼Þ
+
+GRAPHIC_SRC "graphics\\teki\\ookami\\boss2_damege.png"
+DATA        0, 1
+INTERVAL    0.2, 0.4
+MODE        LOOP
