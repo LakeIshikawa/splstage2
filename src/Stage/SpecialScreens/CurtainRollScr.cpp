@@ -64,6 +64,9 @@ void CurtainRollScr::Load()
 	GAMECONTROL->GetUserLightControl()->GetControlLight()->SetPos(-1200, -1200);
 
 	GAMECONTROL->GetSoundController()->PauseBGM();
+	GAMECONTROL->GetSoundController()->ResetBGMs();				
+
+	GAMECONTROL->GetMobManager()->Remove( GAMECONTROL->GetJiki() );
 
 	GAMECONTROL->GetMaku()->SetClosed();
 
@@ -324,6 +327,7 @@ void CurtainRollScr::UpdateStage()
 			heroine->GetAnimationSet()->SetCurAnimation(HERAN_ATT);
 			heroine->SetSp( GF("SPWALK"), 0 ) ;
 			heroine->SetAcc( GF("ACCKOGEKI") / SP->FRAMERATE, 0 );
+			GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_hiroin_tijoukougeki.wav");
 		WAIT_END
 		break;
 
@@ -335,6 +339,7 @@ void CurtainRollScr::UpdateStage()
 				actors[i]->GetAnimationSet()->SetCurAnimation( TEKI_DIE );
 				actors[i]->SetSp( GF("SHINIPATT_SPX"), -GF("SHINIPATT_SHOSP") );
 				actors[i]->SetAcc( 0, SP->GRAVITY );
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kougekimeityuu.wav");
 			}
 		}
 
@@ -346,6 +351,7 @@ void CurtainRollScr::UpdateStage()
 			heroine->SetAcc(0,0);
 			heroine->GetAnimationSet()->SetCurAnimation(HERAN_ATTEND);
 			mStage = HEROINE_ATTACKEND;
+			GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_hiroin_tijoukougeki.wav");
 		}
 		break;
 
@@ -383,6 +389,4 @@ void CurtainRollScr::UpdateStage()
 		}
 		break;
 	}
-
-
 }
