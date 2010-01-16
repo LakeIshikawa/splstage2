@@ -32,6 +32,23 @@ int WINAPI WinMain(HINSTANCE hInstance,
                    LPSTR lpCmdLine,
                    int nCmdShow)
 {
+	//--- SINGLE INSTANCE APPLICATION ---
+	 // Try to open the mutex.
+    HANDLE hMutex = OpenMutex(
+      MUTEX_ALL_ACCESS, 0, "GekidanShimi_SplendidStage_4444");
+
+    if (!hMutex)
+      // Mutex doesn稚 exist. This is
+      // the first instance so create
+      // the mutex.
+      hMutex = 
+        CreateMutex(0, 0, "GekidanShimi_SplendidStage_4444");
+    else
+      // The mutex exists so this is the
+      // the second instance so return.
+      return 0;
+
+
     // the handle for the window, filled by a function
     HWND hWnd;
     // this struct holds information for the window class

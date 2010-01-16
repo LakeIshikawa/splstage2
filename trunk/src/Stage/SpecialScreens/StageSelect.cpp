@@ -158,7 +158,7 @@ void StageSelect::ProcessUserControl()
 		int right = left + GI("STGSELECT_IMGSX");
 
 		// ½Ã°¼ÞŠJŽn‚ª‘I‘ð‚³‚ê‚½‚©
-		if( lx >= left && lx <= right && ly>=top && ly <= bottom && selectedIdx <= saveStageTdx ){
+		if( lx >= left && lx <= right && ly>=top && ly <= bottom && selectedIdx <= saveStageTdx && scroll == 0){
 			GAMECONTROL->GetMaku()->Close();
 			GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
 			stage = 4;
