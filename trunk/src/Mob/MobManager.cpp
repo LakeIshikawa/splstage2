@@ -95,7 +95,7 @@ void MobManager::Request(int rNo, int rXPx, int rYPx, bool rTransferOwnership)
 	if( rNo == GI("KARIKEN2_NO")) 	newobj = new KariudoKen2( rXPx, rYPx );
 	if( rNo == GI("UGOKUKI_NO")) 	newobj = new UgokuKi( rXPx, rYPx );
 	if( rNo == GI("BOSS_MAJO_NO") )	newobj = new Majo();
-	if( rNo == GI("STGCLRDOOR_NO") )newobj = new StgClrDoor( rXPx, rYPx, 1.0f );
+	if( rNo == GI("STGCLRDOOR_NO") )newobj = new StgClrDoor( rXPx, rYPx, 101.0f );
 	if( rNo == GI("ASHIBA_NO") )	newobj = new Ashiba( rXPx, rYPx, 1.0f, "graphics\\object\\stage_1_asiba.png", GI("ASHIBASX"), GI("ASHIBASY") );
 	//if( rNo == GI("INVASHIBA_NO") )	newobj = new AshibaInvisible( rXPx, rYPx, 1.0f );
 	if( rNo == GI("TEKKYU_NO") )	newobj = new TekkyuStand( rXPx, rYPx, 1.0f );
