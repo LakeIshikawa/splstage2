@@ -163,6 +163,7 @@ Jiki::Jiki(int rXPx, int rYPy)
 
 	mX		= rXPx;
 	mY		= rYPy;
+	mZ 		= 100.0f;
 	mSpX	= 0;
 	mSpY	= 0;
 	mAccX	= 0;
