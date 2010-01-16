@@ -101,7 +101,9 @@
     <ClCompile Include="src\Effect\HitEffect.cpp" />
     <ClCompile Include="src\Item\PickUpEffect.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Mob\MovieActor.cpp" />
     <ClCompile Include="src\Options.cpp" />
+    <ClCompile Include="src\Stage\SpecialScreens\CurtainRollScr.cpp" />
     <ClCompile Include="src\Stage\SpecialScreens\StaffRoll.cpp" />
     <ClCompile Include="src\Stage\SpecialScreens\StageSelect.cpp" />
     <ClCompile Include="src\Stage\SpecialScreens\TeamLogo.cpp" />
@@ -233,8 +235,10 @@
     <ClInclude Include="src\Effect\HitEffect.h" />
     <ClInclude Include="src\Item\PickUpEffect.h" />
     <ClInclude Include="src\Main.h" />
+    <ClInclude Include="src\Mob\MovieActor.h" />
     <ClInclude Include="src\Options.h" />
     <ClInclude Include="src\Resource.h" />
+    <ClInclude Include="src\Stage\SpecialScreens\CurtainRollScr.h" />
     <ClInclude Include="src\Stage\SpecialScreens\StaffRoll.h" />
     <ClInclude Include="src\Stage\SpecialScreens\StageSelect.h" />
     <ClInclude Include="src\Stage\SpecialScreens\TeamLogo.h" />

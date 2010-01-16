@@ -173,6 +173,8 @@
 { STAGE4_BOSS_MAP:"data\\boss4_data.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
 { STAGE4_BOSS_HAICHI:"data\\boss4_teki.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
 
+{ CURTROLL_MAP :"data\\opening_data.txt" } /* ｶｰﾃﾝﾛｰﾙのﾏｯﾌﾟ */
+
 //制限時間
 {STAGE1_TIME:360}			/* ｽﾃｰｼﾞ1 制限時間 */
 {STAGE1_BOSS_TIME:360}			/* ｽﾃｰｼﾞ1_BOSS 制限時間 */
@@ -216,6 +218,12 @@
 { STGSELECT_SLDSP: 13 }			/* ｽﾗｲﾄﾞｲﾝの速度 */
 { STGSELECT_FRAMESX: 370 }		/* フレームの横幅 */
 { STGSELECT_FRAMESY: 280 }		/* フレームの縦幅 */
+
+// ｶｰﾃﾝﾛｰﾙ
+{ THANKSSX         :600 }		/* 画像の横幅 */
+{ THANKSSY         :100 }		/* 画像の縦幅 */
+{ SEEYOUSX         :550 }		/* 画像の横幅 */
+{ SEEYOUSY         :100 }		/* 画像の縦幅 */
 
 //敵
 { SHINIPATT_SHOSP  :5.6} 		/* */

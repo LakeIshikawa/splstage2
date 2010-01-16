@@ -23,6 +23,7 @@ Animation* Animation::Clone()
 	newAnim->mGraphicSource = mGraphicSource;
 	newAnim->mLoopCount = mLoopCount;
 	newAnim->mLoopStartIdx = mLoopStartIdx;
+	newAnim->mRotAngle = mRotAngle;
 
 	return newAnim;
 }
@@ -37,6 +38,8 @@ Animation::Animation()
 	mLoopStartIdx   = 0;
 
 	mGraphicSource	= "";
+
+	mRotAngle = 0.0f;
 	
 	Rewind();
 }
@@ -143,6 +146,13 @@ void Animation::SetLoopStartIdx(int rLoopStartIdx) {
 }
 
 /************************************************************//**
+*	\param rAngle 回転角度
+****************************************************************/
+void Animation::SetRotAngle(float rAngle) {
+	mRotAngle = rAngle;
+}
+
+/************************************************************//**
 *	巻き戻し
 ****************************************************************/
 void Animation::Rewind() {
@@ -171,6 +181,13 @@ int Animation::GetLoopCount() {
 ****************************************************************/
 string Animation::GetGraphicSource() {
 	return mGraphicSource;
+}
+
+/************************************************************//**
+*	\return 回転角度
+****************************************************************/
+float Animation::GetRotAngle() {
+	return mRotAngle;
 }
 
 /************************************************************//**

@@ -19,7 +19,7 @@ Ashiba::Ashiba(int rXPx, int rYPx, float rZ, string rGraphic, int rSizeX, int rS
 	AddTarget(GAMECONTROL->GetJiki());
 
 	AddFrame(0);
-	AddIndexedRect(0, SP->GRID_BOUND, 0, 0, 5, ASHIBASX, ASHIBASY);
+	AddIndexedRect(0, SP->GRID_BOUND, 0, 0, 0, ASHIBASX, 1);
 }
 
 /**

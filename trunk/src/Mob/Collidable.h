@@ -38,14 +38,6 @@ public:
 	//! Œü‚«‚ğæ“¾
 	bool GetMuki() { return Movable::GetMuki(); }
 
-protected:
-	//•Ï”
-	CollisionSet* pCollision;
-	list<ICollidable*> mlTargets;
-	CollisionDrawer* mDrawer;
-
-
-	//ŠÖ”
 	void AddRect(int rFrameIdx, int rGroupId, int rLeft, int rTop, int rRight, int rBottom);
 	void AddIndexedRect(int rFrameIdx, int rGroupId, int rShapeIdx, int rLeft, int rTop, int rRight, int rBottom);
 	void AddCircle(int rFrameIdx, int rGroupId, int rX, int rY, int rHankei);
@@ -54,4 +46,10 @@ protected:
 
 	void AddFrame(int rBango);
 	void SetCurFrame(int rBango);
+
+protected:
+	//•Ï”
+	CollisionSet* pCollision;
+	list<ICollidable*> mlTargets;
+	CollisionDrawer* mDrawer;
 };
