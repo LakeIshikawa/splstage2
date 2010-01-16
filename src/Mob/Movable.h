@@ -72,6 +72,8 @@ public:
 	void SetFrameSizeX(int rX, int rY) { mSizeX = rX; mSizeY = rY; }
 	//! ｾｯﾄ
 	void SetMuki(bool rM) { mMuki = rM; }
+	//! ｾｯﾄ
+	void SetZ(float rZ) { mZ = rZ; }
 
 
 protected:

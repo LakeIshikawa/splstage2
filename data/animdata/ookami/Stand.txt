@@ -1,0 +1,7 @@
+// ê√é~
+
+
+GRAPHIC_SRC "graphics\\teki\\ookami\\boss2_stand.png"
+DATA        0, 1, 2, 1
+INTERVAL    0.15, 0.3, 0.45, 0.60
+MODE        LOOP

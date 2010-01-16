@@ -7,10 +7,11 @@
 #include "SpecialScreens\\StageSelect.h"
 #include "SpecialScreens\\StaffRoll.h"
 #include "SpecialScreens\\TeamLogo.h"
+#include "SpecialScreens\\CurtainRollScr.h"
 
-#define GAME_OVER_IDX 19
+#define GAME_OVER_IDX 20
 
-#define STG_LOOP_POINT 19 // このステージ-1が終わったらタイトル画面に戻る
+#define STG_LOOP_POINT 20 // このステージ-1が終わったらタイトル画面に戻る
 #define STG_SELECT_IDX 2
 #define TUT1_IDX 3
 #define ST11_IDX 9
@@ -237,6 +238,12 @@ StageManager::StageManager(void)
 		);
 
 	maStages[18] = new StaffRoll();
+
+	maStages[19] = new CurtainRollScr(GS("CURTROLL_MAP"),
+		string("graphics\\back.png"),
+		string("graphics\\m_cp00.png"),
+		SoundController::ENDING
+		);
 
 	maStages[GAME_OVER_IDX] = new GameOverScr();
 

@@ -44,6 +44,8 @@ class Animation
 		void SetGraphicSource(string rGraphicSource);
 		//! ループの開始番号を設定する
 		void SetLoopStartIdx(int rLoopStartIdx);
+		//! 回転角度を設定する
+		void SetRotAngle(float rAngle);
 
 		//! 操作・巻き戻し
 		void Rewind();
@@ -54,6 +56,8 @@ class Animation
 		int GetLoopCount();
 		//! ｸﾞﾗﾌｨｯｸ源の取得
 		string GetGraphicSource();
+		//! 回転角度
+		float GetRotAngle();
 
 		//! ｱﾆﾒｰｼｮﾝﾌｧｲﾙから設定のﾊﾟｰｽ
 		static Animation* ParseFromFile(string rPath);
@@ -65,6 +69,8 @@ class Animation
 
 		vector<int> mAnimData;
 		vector<float> mAnimIntervals;
+
+		float mRotAngle;
 
 		ANIM_MODE mMode;
 		string mGraphicSource;

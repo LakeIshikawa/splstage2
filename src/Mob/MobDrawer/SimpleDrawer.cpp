@@ -31,7 +31,7 @@ void SimpleDrawer::Draw()
 		frno*mPositionInfo->GetFrameSizeX(), 
 		mPositionInfo->GetMuki()*mPositionInfo->GetFrameSizeY(),
 		(frno+1)*mPositionInfo->GetFrameSizeX(), 
-		(mPositionInfo->GetMuki()+1)*mPositionInfo->GetFrameSizeY(), 0.0f,
+		(mPositionInfo->GetMuki()+1)*mPositionInfo->GetFrameSizeY(), mAnimation->GetRotAngle(),
 		mAlphaCapable ? mAlphaCapable->GetAlpha() : 1.0f);
 }
 

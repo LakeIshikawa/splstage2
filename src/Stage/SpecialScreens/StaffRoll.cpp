@@ -44,7 +44,7 @@ void StaffRoll::Process(){
 
 	if( !GAMECONTROL->GetSoundController()->IsBGMPlaying() ){
 		if( GAMECONTROL->GetFader()->FadeOut() ){
-			GAMECONTROL->GetStageManager()->GoToStartScreen();
+			STAGE_CLEAR;
 		}
 	}
 	
