@@ -25,6 +25,7 @@ Stage::Stage(string rDataFname, string rTekiFname, string rZokuseiFname,
 	mpSeigenJikan->SetMaxJikan(rSeigenjikan);
 	mTitleGraphic = rTitleGraphic;
 
+	load_completed = false;
 }
 
 Stage::Stage()
@@ -41,6 +42,8 @@ Stage::Stage()
 	mpHaichi = NULL;
 	mpCheckpointController = NULL;
 	mpSeigenJikan = NULL;
+
+	load_completed = false;
 }
 
 Stage::~Stage(void)
@@ -80,11 +83,11 @@ SeigenJikan* Stage::GetSeigenJikan()
 void Stage::Load()
 {
 	// これは・・・すまない・・・　俺は・・　もう・・・　ッグ！！！！
-	GAMECONTROL->GetFader()->Draw();
+	/*GAMECONTROL->GetFader()->Draw();
 	GAMECONTROL->GetDXController()->PrintDebugSting(650, 570, "now loading...");
 	GAMECONTROL->GetDXController()->mpDevice->EndScene();
 	GAMECONTROL->GetDXController()->mpDevice->Present(NULL, NULL, NULL, NULL);
-	GAMECONTROL->GetDXController()->mpDevice->BeginScene();
+	GAMECONTROL->GetDXController()->mpDevice->BeginScene();*/
 
 
 	mpMap->Load( mDataFname, mMapChipGr );
@@ -103,8 +106,9 @@ void Stage::Load()
 	GAMECONTROL->GetUserLightControl()->GetControlLight()->SetPos( SP->SCRSZX/2, SP->SCRSZY/2 );
 	GAMECONTROL->GetJiki()->GetInterface()->Hide();
 
-	GAMECONTROL->GetSoundController()->PauseBGM();
-
+	GAMECONTROL->GetSoundController()->ResetBGMs();
+	GAMECONTROL->GetSoundController()->SetBGM(mBgm);
+				
 	mpSeigenJikan->SeigenJikanReset();
 
 }
@@ -177,8 +181,6 @@ void Stage::Init()
 			if( GAMECONTROL->GetMaku()->IsOpen() ){
 				inited = true;
 				GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOn();
-				GAMECONTROL->GetSoundController()->ResetBGMs();
-				GAMECONTROL->GetSoundController()->SetBGM(mBgm);
 				GAMECONTROL->GetJiki()->SetSuperControl();
 				GAMECONTROL->GetJiki()->GetInterface()->Show();
 				GAMECONTROL->GetStageManager()->GetCurrentStage()->GetSeigenJikan()->SeigenJikanOn();	

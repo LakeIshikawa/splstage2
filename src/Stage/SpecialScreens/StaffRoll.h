@@ -25,7 +25,5 @@ private:
 	int stage;
 	float scrp;
 
-
-	LPDIRECT3DTEXTURE9	mStaffRollTx;
-	
+	LPDIRECT3DTEXTURE9 mEdStr;
 };

@@ -30,6 +30,8 @@ public:
 	void	GoToStartScreen();
 	void	GoToStage(int rStageIdx);
 
+	void 	ChangeStageOnSepThread(int rStageIdx);
+
 	// アクセス
 	int		GetNumStages();
 	int		GetFirstStageIdx();
@@ -44,4 +46,15 @@ private:
 	Stage*	maStages[N_STAGES];
 	int		mCurrentIndex;
 
+	int 	mNowLoadingTenNum;
+	float 	mTimer;
 };
+
+struct THRARGS
+{
+	StageManager* sm;
+	int			  gotoStg;
+};
+
+// ｽﾃｰｼﾞを別のスレッドでﾛｰﾄﾞﾙｰﾁﾝ
+unsigned __stdcall changestage(void* rThrArgs);

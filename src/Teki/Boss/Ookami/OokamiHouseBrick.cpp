@@ -15,6 +15,8 @@ OokamiHouseBrick::OokamiHouseBrick()
 	AddRect(0, SP->GRID_BOGYO, 8,-168,128,0);
 
 	AddTarget(GAMECONTROL->GetJiki());
+
+	mZ = 101.0f;
 }
 
 /************************************************************//**

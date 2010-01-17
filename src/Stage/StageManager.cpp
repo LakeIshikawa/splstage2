@@ -9,6 +9,8 @@
 #include "SpecialScreens\\TeamLogo.h"
 #include "SpecialScreens\\CurtainRollScr.h"
 
+#include <process.h>
+
 #define GAME_OVER_IDX 20
 
 #define STG_LOOP_POINT 20 // このステージ-1が終わったらタイトル画面に戻る
@@ -258,7 +260,30 @@ StageManager::~StageManager(void)
 */
 void StageManager::Process()
 {
-	maStages[mCurrentIndex]->Process();
+	if( maStages[mCurrentIndex]->IsLoaded() )
+		maStages[mCurrentIndex]->Process();
+	else{
+		GAMECONTROL->GetFader()->SetFadedOut( false );
+		// ﾛｰﾄﾞ中
+		DX_DRAW("graphics\\fade.png", 0, 0, 0, 0, SP->SCRSZX, SP->SCRSZY);
+		
+		// now loading..
+		char nowloading[15] = "now loading";
+		int i;
+		for(i=11; i<11+mNowLoadingTenNum; i++)
+			nowloading[i] = '.';
+
+		for( ; i<13; i++)
+			nowloading[i] = ' ';
+
+		// ｱﾆﾒｰｼｮﾝ
+		WAIT_TIMER(mTimer, 0.5)
+			mNowLoadingTenNum = (mNowLoadingTenNum+1)%4;
+		WAIT_END
+
+		// 描画
+		GAMECONTROL->GetDXController()->PrintDebugSting(650, 570, nowloading);
+	}
 }
 
 /*
@@ -266,7 +291,9 @@ void StageManager::Process()
 */
 void StageManager::Init()
 {
+	unsigned id;
 	maStages[mCurrentIndex]->Load();
+	maStages[mCurrentIndex]->SetLoaded(true);
 }
 
 // ｹﾞｯﾀｰ
@@ -341,9 +368,24 @@ void StageManager::GoToStage(int rStageIdx)
 		GAMECONTROL->GetJiki()->ResetTension();
 	}
 
-	maStages[mCurrentIndex]->UnLoad();
-	mCurrentIndex = rStageIdx;
-	maStages[mCurrentIndex]->Load();
+	// 現在実行中のｽﾃｰｼﾞを無効にする
+	maStages[mCurrentIndex]->SetLoaded(false);
+	mNowLoadingTenNum = 0;
+	mTimer = 0.0f;
+
+	unsigned id;
+	THRARGS* t = new THRARGS;
+	t->sm = this;
+	t->gotoStg = rStageIdx;
+	_beginthreadex( NULL, 0, changestage, t, 0, &id);
+
+	//maStages[mCurrentIndex]->UnLoad();
+
+	//mCurrentIndex = rStageIdx;
+	
+	//_beginthreadex( NULL, 0, loadstage, maStages[mCurrentIndex], 0, &id);
+	
+	//maStages[mCurrentIndex]->Load();
 
 }
 
@@ -411,4 +453,34 @@ string StageManager::GetStageSelectTitleGraphic(int stageIdx)
 bool StageManager::IsCurrentStageTutorial()
 {
 	return mCurrentIndex >= GetFirstStageIdx() && mCurrentIndex < GetNotTutorialFirstStageIdx();
+}
+
+/**
+*	別のスレッドから呼ばれます。
+*	ｽﾃｰｼﾞ移動を行います。
+*/
+void StageManager::ChangeStageOnSepThread(int rStageIdx)
+{
+	maStages[mCurrentIndex]->UnLoad();
+
+	mCurrentIndex = rStageIdx;
+
+	maStages[mCurrentIndex]->Load();
+	maStages[mCurrentIndex]->SetLoaded(true);
+
+	GAMECONTROL->GetFader()->SetFadedOut( true );
+}
+
+/*
+	スレッド用関数
+*/
+unsigned __stdcall changestage(void* rThrArgs)
+{
+	StageManager* sm = ((THRARGS*)rThrArgs)->sm;
+	int gotoStage = ((THRARGS*)rThrArgs)->gotoStg;
+		
+	sm->ChangeStageOnSepThread( gotoStage );
+	
+	delete rThrArgs;
+	return 0;
 }

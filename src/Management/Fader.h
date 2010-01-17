@@ -13,6 +13,8 @@ public:
 	int FadeOut();
 	int FadeIn();
 
+	void SetFadedOut( bool rFadedOut );
+
 	void SetSpeed(float mSp);
 
 	void Draw();

@@ -4,7 +4,25 @@
 
 StaffRoll::StaffRoll()
 {
+	//// アルファマスク用
+	//GAMECONTROL->GetDXController()->CreateNewTexture("_StaffRollTx",
+	//	1024, 4096, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8R3G3B2, D3DPOOL_DEFAULT);
 
+	//D3DXCreateTextureFromFileEx(GAMECONTROL->GetDXController()->GetDevice(),    // the device pointer
+	//							"graphics\\screen\\ed_str.png",
+	//							D3DX_DEFAULT, 
+	//							D3DX_DEFAULT,
+	//							D3DX_DEFAULT,
+	//							NULL,				// regular usage
+	//							D3DFMT_A8R8G8B8,     // 32-bit pixels with alpha
+	//							D3DPOOL_SYSTEMMEM,    // typical memory handling
+	//							D3DX_DEFAULT,		// no filtering
+	//							D3DX_DEFAULT,		// no mip filtering
+	//							0,	
+	//							NULL,
+	//							NULL,
+	//							&mEdStr
+	//							);
 }
 
 StaffRoll::~StaffRoll()
@@ -39,7 +57,6 @@ void StaffRoll::Process(){
 		// 描画
 		DrawStaffWithAlphaMask();
 		break;
-	break;
 	}
 
 	if( !GAMECONTROL->GetSoundController()->IsBGMPlaying() ){
@@ -56,10 +73,6 @@ void StaffRoll::Load()
 	GAMECONTROL->GetSoundController()->SetBGM(SoundController::ENDING);
 
 	Init();
-
-	// アルファマスク用
-	D3DXCreateTexture(GAMECONTROL->GetDXController()->GetDevice(),
-		1024, 4096, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8B8G8R8, D3DPOOL_DEFAULT, &mStaffRollTx);
 	
 }
 
@@ -80,52 +93,42 @@ void StaffRoll::BuildStaffTexture()
 	LPDIRECT3DDEVICE9 dev = GAMECONTROL->GetDXController()->GetDevice();
 	LPD3DXSPRITE spr = GAMECONTROL->GetDXController()->GetMainSprite();
 
+	LPDIRECT3DTEXTURE9 mStaffRollTx = GAMECONTROL->GetDXController()->GetTextureOf("_StaffRollTx");
+
 	// ｱﾙﾌｧﾏｽｸをﾚﾝﾀﾞﾘﾝｸﾞﾀｰｹﾞｯﾄとして指定する
-	IDirect3DSurface9* oldsurf, *newsurf;
+	IDirect3DSurface9* oldsurf, *newsurf, *ed_str;
 	mStaffRollTx->GetSurfaceLevel(0, &newsurf);
 
 	dev->GetRenderTarget(0, &oldsurf);
 	dev->SetRenderTarget(0, newsurf);
 
-	// ﾃｸｽﾁｬをｱﾙﾌｧ0で埋める
-	dev->Clear(0,
-               NULL,
-               D3DCLEAR_TARGET,
-			   D3DCOLOR_ARGB(1,0,0,0),
-               1.0f,
-               0);
-
-	LPDIRECT3DTEXTURE9 img = GAMECONTROL->GetDXController()->GetTextureOf("graphics\\screen\\ed_str.png");
 	LPDIRECT3DTEXTURE9 mask = GAMECONTROL->GetDXController()->GetTextureOf("graphics\\screen\\ed_str_mask.png");
+	mEdStr->GetSurfaceLevel(0, &ed_str);
+
+	// まるｺﾋﾟｰ
+	dev->UpdateSurface( ed_str, NULL, newsurf, NULL );
+	
 	
 	dev->BeginScene();
-	spr->Begin(D3DXSPRITE_ALPHABLEND);
-
-	// 画像を描画
-	dev->SetRenderState(D3DRS_SEPARATEALPHABLENDENABLE, true);
-	dev->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ONE);
-	dev->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ZERO);
-	dev->SetRenderState(D3DRS_DESTBLENDALPHA, D3DBLEND_ZERO);
-	dev->SetRenderState(D3DRS_SRCBLENDALPHA, D3DBLEND_ONE);
-	dev->SetRenderState(D3DRS_BLENDOPALPHA, D3DBLENDOP_ADD);
-	spr->Draw(img, NULL, NULL, &D3DXVECTOR3(0, 0, 0), D3DXCOLOR(1,1,1,1));
-
-	spr->End();
-	dev->EndScene();
-
-		// ｼｰﾝ開始
-	dev->BeginScene();
+	
 	spr->Begin(D3DXSPRITE_ALPHABLEND);
 
 	// ｱﾙﾌｧﾏｽｸ
 	dev->SetRenderState(D3DRS_SEPARATEALPHABLENDENABLE, true);
-	dev->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ZERO);
+	dev->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ONE);
 	dev->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 	dev->SetRenderState(D3DRS_DESTBLENDALPHA, D3DBLEND_ONE);
 	dev->SetRenderState(D3DRS_SRCBLENDALPHA, D3DBLEND_ONE);
-	dev->SetRenderState(D3DRS_BLENDOPALPHA, D3DBLENDOP_MIN);
-	spr->Draw(mask, NULL, NULL, &D3DXVECTOR3(0, scrp - SP->SCRSZY, 0), D3DXCOLOR(1,1,1,1));
+	dev->SetRenderState(D3DRS_BLENDOPALPHA, D3DBLENDOP_MAX);
 
+	D3DXMATRIX transl;
+	D3DXMatrixTranslation(&transl, 0, scrp - SP->SCRSZY, 0);
+	spr->SetTransform( &transl );
+
+	spr->Draw(mask, NULL, NULL, &D3DXVECTOR3(0, 0, 0), D3DXCOLOR(1,1,1,1));
+
+	D3DXMatrixIdentity( &transl);
+	spr->SetTransform( &transl );
 	spr->End();
 	dev->EndScene();
 
@@ -147,7 +150,7 @@ void StaffRoll::BuildStaffTexture()
 */
 void StaffRoll::DrawStaffWithAlphaMask()
 {
-	BuildStaffTexture();
+	//BuildStaffTexture();
 
-	DX_DRAW(mStaffRollTx, 0, SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), scrp );
+	DX_DRAW("graphics\\screen\\ed_str.png", 0, SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), scrp );
 }

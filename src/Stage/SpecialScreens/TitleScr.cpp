@@ -99,11 +99,11 @@ void TitleScr::Process()
 void TitleScr::Load()
 {
 	// これは・・・すまない・・・　俺は・・　もう・・・　ッグ！！！！
-	GAMECONTROL->GetFader()->Draw();
+	/*GAMECONTROL->GetFader()->Draw();
 	GAMECONTROL->GetDXController()->PrintDebugSting(650, 570, "now loading...");
 	GAMECONTROL->GetDXController()->mpDevice->EndScene();
 	GAMECONTROL->GetDXController()->mpDevice->Present(NULL, NULL, NULL, NULL);
-	GAMECONTROL->GetDXController()->mpDevice->BeginScene();
+	GAMECONTROL->GetDXController()->mpDevice->BeginScene();*/
 
 	mpMap->Load( mDataFname, mMapChipGr );
 	mpHaichi->Load( mTekiFname, mpCheckpointController );
@@ -116,8 +116,7 @@ void TitleScr::Load()
 	GAMECONTROL->GetJiki()->SetMuki(1);
 
 	GAMECONTROL->GetUserLightControl()->GetControlLight()->SetPos( SP->SCRSZX/2, SP->SCRSZY/2 );
-	GAMECONTROL->GetSoundController()->PauseBGM();
-
+	
 	Init();
 
 }

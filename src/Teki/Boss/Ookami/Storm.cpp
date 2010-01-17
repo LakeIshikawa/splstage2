@@ -24,6 +24,8 @@ Storm::Storm(bool rMuki)
 		mY = GI("OOKAMI_BRPY2");
 	}
 
+	mZ = 102.0f;
+
 	mSizeX = GI("OOKAMI_BRSX");
 	mSizeY = GI("OOKAMI_BRSY");
 	mMuki = !rMuki;
