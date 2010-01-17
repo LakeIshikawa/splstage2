@@ -40,6 +40,13 @@ int Fader::FadeIn()
 	else return 0;
 }
 
+/*
+	ﾌｪｰﾄﾞの状態を一気に設定する
+*/
+void Fader::SetFadedOut( bool rFadedOut )
+{
+	fadeFactor = rFadedOut?1.0f:0.0f;
+}
 
 /*
 	フェード速度を設定する

@@ -34,6 +34,9 @@ public:
 	string					GetSelectTitleGraphic(){ return mSelectTitleGraphic;}
 	SoundController::BGMS	GetBGM() { return mBgm; }
 
+	void 					SetLoaded(bool rLoaded) { load_completed = rLoaded; }
+	bool					IsLoaded() 			   { return load_completed; }
+
 protected:
 	Map*	mpMap;
 	Haichi* mpHaichi;
@@ -53,6 +56,7 @@ protected:
 
 	bool inited;
 	int  title_stage;
+	bool load_completed;
 
 
 	void	Init();

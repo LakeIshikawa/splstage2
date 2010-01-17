@@ -128,7 +128,7 @@ LPDIRECT3DTEXTURE9	DXController::GetTextureOf( string rFname )
 								D3DX_DEFAULT,
 								D3DX_DEFAULT,
 								NULL,				// regular usage
-								D3DFMT_UNKNOWN,     // 32-bit pixels with alpha
+								D3DFMT_A8R8G8B8,     // 32-bit pixels with alpha
 								D3DPOOL_MANAGED,    // typical memory handling
 								D3DX_DEFAULT,		// no filtering
 								D3DX_DEFAULT,		// no mip filtering
@@ -573,7 +573,9 @@ void DXController::ResetAfterLost()
 	mpMainSprite->Release();
 	txtspt->Release();
 
-	for each(pair<string, LPDIRECT3DTEXTURE9> tx in mmTextureMap) tx.second->Release();
+	for each(pair<string, LPDIRECT3DTEXTURE9> tx in mmTextureMap) {
+		tx.second->Release();
+	}
 	mmTextureMap.clear();
 
 	// リセット
@@ -585,4 +587,8 @@ void DXController::ResetAfterLost()
 	D3DXCreateSprite(mpDevice, &txtspt);		  // テキスト描画用
 
 	GAMECONTROL->GetLightManager()->LoadResources();
+
+	// ｽﾀｯﾌﾛｰﾙ
+	CreateNewTexture("_StaffRollTx",
+		1024, 4096, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8B8G8R8, D3DPOOL_DEFAULT);
 }

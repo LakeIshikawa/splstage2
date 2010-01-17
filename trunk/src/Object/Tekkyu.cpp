@@ -104,6 +104,9 @@ void Tekkyu::Move()
 	// Á–Å
 	DieIfStopAndNSec();
 
+	// Ï¯Ìß‚©‚ç”²‚¯‚½‚ç€‚Ê
+	DieIfGamenGai();
+
 	// —ÍŠw
 	mSpX += mAccX;
 	mSpY += mAccY;
@@ -151,7 +154,7 @@ void Tekkyu::CollisionResponse(ICollidable *rCollObject, int rThisGroupId, int r
 	Tekkyu* tekkyu = dynamic_cast<Tekkyu*>(rCollObject);
 	
 	// ËÛ²İ
-	if( jiki && rOpGroupId == SP->GRID_BOUND && mStatus!=DIE ){
+	if( jiki && rOpGroupId == SP->GRID_BOGYO && mStatus!=DIE ){
 		jiki->InflictDamage();
 	}
 

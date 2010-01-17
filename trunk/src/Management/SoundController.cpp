@@ -183,6 +183,7 @@ void SoundController::SetBGM(BGMS rBgm)
 */
 void SoundController::ResetBGMs()
 {
+	if( mCurBgm ) mCurBgm->Stop();
 	for(int i=0; arBgms[i]; i++){
 		arBgms[i]->Reset();
 	}

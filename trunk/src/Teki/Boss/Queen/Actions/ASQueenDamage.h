@@ -10,6 +10,7 @@ using namespace std;
 #include "..\\FriendObjects\\Kagami.h"
 
 #include "..\\..\\BossShareActions\\ASFadeOutAndStageClear.h"
+#include "..\\..\\BossShareActions\\ASWaitForMaku.h"
 
 //! —‰¤‚ÌÀÞÒ°¼Þ
 /****************************************************************//**
@@ -54,6 +55,13 @@ public:
 
 			mParent->RemoveAllActions(this);
 			mParent->BreakInActionNoResume( new ASFadeOutAndStageClear() );
+			
+			// –‹‚ð•Â‚¶‚é
+			GAMECONTROL->GetMaku()->Close();
+			mParent->QueueAction( new ASWaitForMaku(true) );
+
+			// Ìª°ÄÞ±³Ä
+			mParent->QueueAction( new ASFadeOutAndStageClear() );
 			
 		}
 

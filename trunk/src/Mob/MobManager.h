@@ -52,7 +52,7 @@ public:
 			T* cond = dynamic_cast<T*>(*mob);
 
 			// 画面内且つｸﾗｽ名一致
-			if( ( cond ) == 0 && 
+			if( cond && 
 				!GAMECONTROL->GetStageManager()->GetCurrentStage()->GetMap()->IsGamenGai( 
 				(*mob)->GetX(), (*mob)->GetY(), (*mob)->GetFrameSizeX(), (*mob)->GetFrameSizeY()))
 			{
