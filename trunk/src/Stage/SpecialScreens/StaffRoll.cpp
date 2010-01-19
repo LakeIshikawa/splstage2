@@ -4,12 +4,13 @@
 
 StaffRoll::StaffRoll()
 {
-	
-	
+	LoadResources();
 }
 
 StaffRoll::~StaffRoll()
-{}
+{
+	ReleaseResources();
+}
 
 /*
 	画像の表示
@@ -200,9 +201,17 @@ void StaffRoll::ReleaseResources()
 
 
 /**
-* 
+* ローストデバイス
 */
 void StaffRoll::OnLostDevice()
 {
 	ReleaseResources();
+}
+
+/**
+* ローストデバイス
+*/
+void StaffRoll::OnRestoredDevice()
+{
+	LoadResources();
 }

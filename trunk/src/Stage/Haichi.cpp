@@ -312,3 +312,24 @@ void Haichi::ProcessAshiba(int data, int x, int y){
 		mHaichiListTemp.push_back( newObj );
 	}
 }
+
+
+/**
+*	デバイスが失われたときにお応答
+*/
+void Haichi::OnLostDevice()
+{
+	for each(Ashiba* a in mAshibaList){
+		a->OnLostDevice();
+	}
+}
+
+/**
+*	デバイスが失われたときにお応答
+*/
+void Haichi::OnRestoredDevice()
+{
+	for each(Ashiba* a in mAshibaList){
+		a->OnRestoredDevice();
+	}
+}

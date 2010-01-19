@@ -18,7 +18,11 @@ AnimationSet::AnimationSet()
 *	標準デストラクタ
 ****************************************************************/
 AnimationSet::~AnimationSet()
-{}
+{
+	for each(pair<int, Animation*> p in mAnimations){
+		delete p.second;
+	}
+}
 
 /************************************************************//**
 *	\param rElapsedTime 前回からの経過時間
@@ -39,6 +43,7 @@ void AnimationSet::ElapseTime(float rElapsedTime)
 ****************************************************************/
 void AnimationSet::AddAnimation(int rIdx, Animation* rNewAnimation) 
 {
+	verify(mAnimations[rIdx] == NULL);
 	mAnimations[rIdx] = rNewAnimation;
 }
 

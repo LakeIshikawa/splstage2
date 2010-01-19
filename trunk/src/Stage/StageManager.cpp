@@ -474,3 +474,19 @@ unsigned __stdcall changestage(void* rThrArgs)
 	delete rThrArgs;
 	return 0;
 }
+
+/**
+*	デバイスが失われたときにお応答
+*/
+void StageManager::OnLostDevice()
+{
+	GetCurrentStage()->OnLostDevice();
+}
+
+/**
+*	デバイスが失われたときにお応答
+*/
+void StageManager::OnRestoredDevice()
+{
+	GetCurrentStage()->OnRestoredDevice();
+}

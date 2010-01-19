@@ -65,6 +65,10 @@ public:
 	//! 降りる
 	virtual void GetOff(IRideCapable* rRider);
 
+	// ローストデバイス
+	virtual void OnLostDevice(){}
+	virtual void OnRestoredDevice(){}
+
 /*@}*/
 
 

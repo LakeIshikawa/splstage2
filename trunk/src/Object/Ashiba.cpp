@@ -241,4 +241,3 @@ Rect* Ashiba::GetCollRect()
 {
 	return (Rect*)pCollision->GetFrame(0)->GetIndexedShape(0);
 }
-

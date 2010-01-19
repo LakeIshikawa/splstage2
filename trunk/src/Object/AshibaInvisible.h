@@ -25,6 +25,10 @@ public:
 	//! 描画
 	void Draw();
 
-protected:
-	LPDIRECT3DTEXTURE9 mDrawingTexture;
+	// ローストデバイス
+	void OnLostDevice();
+	void OnRestoredDevice();
+
+	// リソースの確保(D3D系)
+	void LoadResources();
 };

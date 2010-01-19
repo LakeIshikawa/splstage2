@@ -573,10 +573,13 @@ void DXController::ResetAfterLost()
 	mpMainSprite->Release();
 	txtspt->Release();
 
+	// テクスチャ
 	for each(pair<string, LPDIRECT3DTEXTURE9> tx in mmTextureMap) {
 		tx.second->Release();
 	}
 	mmTextureMap.clear();
+
+	GAMECONTROL->GetStageManager()->OnLostDevice();
 
 	// リセット
 	GetDevice()->Reset(&d3dpp);
@@ -587,8 +590,5 @@ void DXController::ResetAfterLost()
 	D3DXCreateSprite(mpDevice, &txtspt);		  // テキスト描画用
 
 	GAMECONTROL->GetLightManager()->LoadResources();
-
-	// ｽﾀｯﾌﾛｰﾙ
-	CreateNewTexture("_StaffRollTx",
-		1024, 4096, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8B8G8R8, D3DPOOL_DEFAULT);
+	GAMECONTROL->GetStageManager()->OnRestoredDevice();
 }
