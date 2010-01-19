@@ -5,8 +5,8 @@
 {FrameTime:0.041}
 
 //ﾗｲﾄ
-{LIGHT_BASE :0x77}		/* ﾗｲﾄの明度 0xff=濃い */
-{ KURAYAMI  :0x45}			/* 環境の暗闇度 0x00=暗い */
+{LIGHT_BASE :0x70}		/* ﾗｲﾄの明度 0xff=濃い */
+{ KURAYAMI  :0x75}			/* 環境の暗闇度 0x00=暗い */
 { USER_LIGHT_HANKEI :100}
 
 //自機
