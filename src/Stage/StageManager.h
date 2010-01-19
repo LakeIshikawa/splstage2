@@ -42,6 +42,10 @@ public:
 
 	bool	IsCurrentStageTutorial();
 
+	// ローストデバイス
+	void	OnLostDevice();
+	void	OnRestoredDevice();
+
 private:
 	Stage*	maStages[N_STAGES];
 	int		mCurrentIndex;

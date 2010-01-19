@@ -72,6 +72,11 @@ void CurtainRollScr::UnLoad()
 {
 	mpMap->UnLoad();
 	mpHaichi->UnLoad();
+
+	for( int i=0; i<7; i++)
+		delete actors[i];
+
+	delete heroine;
 }
 
 /* –ðŽÒ‚Ì”z’u */

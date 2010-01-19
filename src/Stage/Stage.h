@@ -37,6 +37,10 @@ public:
 	void 					SetLoaded(bool rLoaded) { load_completed = rLoaded; }
 	bool					IsLoaded() 			   { return load_completed; }
 
+	// ローストデバイス
+	virtual void	OnLostDevice();
+	virtual void 	OnRestoredDevice();
+
 protected:
 	Map*	mpMap;
 	Haichi* mpHaichi;

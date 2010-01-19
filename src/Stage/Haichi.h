@@ -48,6 +48,11 @@ public:
 	//! 生データを参照
 	int GetData(int rX, int rY);
 
+	// ローストデバイス
+	void	OnLostDevice();
+	void	OnRestoredDevice();
+
+
 private:
 
 	// 足場用の特別な処理

@@ -82,14 +82,6 @@ SeigenJikan* Stage::GetSeigenJikan()
 // ﾏｯﾌﾟをﾛｰﾄﾞする
 void Stage::Load()
 {
-	// これは・・・すまない・・・　俺は・・　もう・・・　ッグ！！！！
-	/*GAMECONTROL->GetFader()->Draw();
-	GAMECONTROL->GetDXController()->PrintDebugSting(650, 570, "now loading...");
-	GAMECONTROL->GetDXController()->mpDevice->EndScene();
-	GAMECONTROL->GetDXController()->mpDevice->Present(NULL, NULL, NULL, NULL);
-	GAMECONTROL->GetDXController()->mpDevice->BeginScene();*/
-
-
 	mpMap->Load( mDataFname, mMapChipGr );
 	mpMap->SetScrollP(0);
 	mpHaichi->Load( mTekiFname, mpCheckpointController );
@@ -197,4 +189,20 @@ void Stage::Init()
 			title_stage = 2;
 		}
 	}
+}
+
+/**
+*	デバイスが失われたときにお応答
+*/
+void Stage::OnLostDevice()
+{
+	GetHaichi()->OnLostDevice();
+}
+
+/**
+*	デバイスが失われたときにお応答
+*/
+void Stage::OnRestoredDevice()
+{
+	GetHaichi()->OnRestoredDevice();
 }
