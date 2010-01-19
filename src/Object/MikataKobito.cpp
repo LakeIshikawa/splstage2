@@ -69,7 +69,7 @@ MikataKobito::~MikataKobito(void)
 	// セットに入ってるｱﾆﾒｰｼｮﾝを開放
 	delete mAnimSet->GetAnimation(JUMP);
 	delete mAnimSet->GetAnimation(WALK);
-	delete mAnimSet->GetAnimation(JUMP);
+	delete mAnimSet->GetAnimation(THROW);
 
 	delete mAnimSet;
 	delete mMobDrawer;
