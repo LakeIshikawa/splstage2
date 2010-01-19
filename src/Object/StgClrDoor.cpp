@@ -12,7 +12,7 @@ StgClrDoor::StgClrDoor(int rXPx, int rYPx, float rZ)
 	mSizeY = GI("GOALSY");
 
 	mX = rXPx;
-	mY = rYPx - mSizeX + SP->CHSZY;
+	mY = rYPx - mSizeY + SP->CHSZY;
 	mZ = rZ;
 
 	stageclear = false;
