@@ -175,6 +175,16 @@
 
 { CURTROLL_MAP :"data\\opening_data.txt" } /* ｶｰﾃﾝﾛｰﾙのﾏｯﾌﾟ */
 
+// タイトル画面
+{PUSHSTARTX        : 223}		/* PushStart座標 */
+{PUSHSTARTY        : 320}		/* PushStart座標 */
+{PUSHSTARTSX       : 350}		/* PushStartサイズ */
+{PUSHSTARTSY       : 100}		/* PushStartサイズ */
+{TITLEX            : 155}		/* タイトル座標 */
+{TITLEY            : 140}		/* タイトル座標 */
+{TITLESX           : 490}		/* タイトルサイズ */
+{TITLESY           : 120}		/* タイトルサイズ */
+
 //制限時間
 {STAGE1_TIME:360}			/* ｽﾃｰｼﾞ1 制限時間 */
 {STAGE1_BOSS_TIME:360}			/* ｽﾃｰｼﾞ1_BOSS 制限時間 */
@@ -527,7 +537,7 @@
 
 // ステージクリアの文字
 { STGCLRMOJI_SX    :600}		/* 画像の横幅		*/
-{ STGCLRMOJI_SY    :120}		/* 画像の縦幅		*/
+{ STGCLRMOJI_SY    :150}		/* 画像の縦幅		*/
 { STGCLMOJI_DTIME  :4.0}                /* 表示時間 		*/
 { STGCLMOJI_FSP    :0.02}		/* フェード速度 	*/
 { STGCLMOJI_BFTIME :2.0}                /* 文字が表示される前のポーズ時間 */
@@ -545,8 +555,8 @@
 //////////////////////////////オブジェクトの設定//////////////////////////////////
 
 //ステージクリアーのドアー
-{ STGCLRDOORSX     :162}		/* 実画像の幅	*/
-{ STGCLRDOORSY     :98}			/* 実画像の高さ */
+{ GOALSX           :120}		/* GOAL実画像の幅   */
+{ GOALSY           :150}		/* GOAL実画像の高さ */
 
 //足場
 { ASHIBASX         :144 }		/* 実画像の幅	*/

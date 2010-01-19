@@ -8,27 +8,37 @@
 */
 StgClrDoor::StgClrDoor(int rXPx, int rYPx, float rZ)
 {
-	STGCLRDOORSX = GI("STGCLRDOORSX");
-	STGCLRDOORSY = GI("STGCLRDOORSY");
+	mSizeX = GI("GOALSX");
+	mSizeY = GI("GOALSY");
 
 	mX = rXPx;
-	mY = rYPx - STGCLRDOORSY + SP->CHSZY;
+	mY = rYPx - mSizeX + SP->CHSZY;
 	mZ = rZ;
 
 	stageclear = false;
 
+	// “–‚½‚è”»’è
 	AddFrame(0);
 	AddRect(0, SP->GRID_BOGYO, 60, 0, 110, 50);
+
+	// ±ÆÒ°¼®Ý (ŠÔŠu0.1f)
+	mAnimation = new Animation();
+	mAnimation->SetGraphicSource("graphics\\object\\goal.png");
+	mAnimation->SetAnimData(0, 1, 2, -1);
+	mAnimation->SetAnimIntervals(0.1f, 0.2f, 0.3f, -1.0f);
+	mAnimation->SetAnimMode(Animation::ANMD_LOOP);
 
 	AddTarget( GAMECONTROL->GetJiki() );
 }
 
 StgClrDoor::~StgClrDoor()
-{}
+{
+	delete mAnimation;
+}
 
 int StgClrDoor::GetSizeX()
 {
-	return STGCLRDOORSX;
+	return mSizeX;
 }
 
 /*
@@ -50,7 +60,12 @@ void StgClrDoor::Move()
 		}
 	}
 
-	DX_SCROLL_DRAW("graphics\\object\\doorgai.png", mX, mY, 0, 0, STGCLRDOORSX, STGCLRDOORSY);
+	// ƒAƒjƒ[ƒVƒ‡ƒ“
+	mAnimation->ElapseTime(SP->FrameTime);
+	
+	// •`‰æ
+	DX_SCROLL_SCREEN_DRAW(mAnimation->GetGraphicSource(), mX, mY, mSizeX*mAnimation->GetCurFrameIdx(), 0, 
+		mSizeX*(mAnimation->GetCurFrameIdx()+1), mSizeY, 0.5f);
 }
 
 /*

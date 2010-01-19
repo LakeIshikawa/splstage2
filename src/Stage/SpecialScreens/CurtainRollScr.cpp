@@ -47,13 +47,6 @@ void CurtainRollScr::Process()
 
 void CurtainRollScr::Load()
 {
-	// これは・・・すまない・・・　俺は・・　もう・・・　ッグ！！！！
-	/*GAMECONTROL->GetFader()->Draw();
-	GAMECONTROL->GetDXController()->PrintDebugSting(650, 570, "now loading...");
-	GAMECONTROL->GetDXController()->mpDevice->EndScene();
-	GAMECONTROL->GetDXController()->mpDevice->Present(NULL, NULL, NULL, NULL);
-	GAMECONTROL->GetDXController()->mpDevice->BeginScene();*/
-
 	mpMap->Load( mDataFname, mMapChipGr );
 	mpMap->SetScrollP(0);
 	mpHaichi->Load( mTekiFname, mpCheckpointController );
@@ -207,8 +200,8 @@ void CurtainRollScr::DisposeMovieActors()
 	actors[4] = new MovieActor(GI("OOKAMI_SX"), GI("OOKAMI_SY"));
 	actors[4]->GetAnimationSet()->AddAnimation( TEKI_STAND, wolfStand);
 	actors[4]->GetAnimationSet()->AddAnimation( TEKI_DIE, wolfDie );
-	actors[4]->SetPos( 400+500, 418-16 );
-	actors[4]->SetMuki(1);
+	actors[4]->SetPos( 385+500, 418-16 );
+	actors[4]->SetMuki(0);
 	actors[4]->SetZ(2);
 	actors[4]->AddFrame(0);
 	actors[4]->AddTarget(heroine);

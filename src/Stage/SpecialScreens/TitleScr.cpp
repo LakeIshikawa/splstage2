@@ -52,8 +52,8 @@ void TitleScr::Process()
 	//幕がおりたらｽﾃｰｼﾞへ
 	if( GAMECONTROL->GetMaku()->IsClosed() && mFading ) mGoTugi = true;
 
-	if( CONTROLLIGHT->GetX() > 223 && CONTROLLIGHT->GetX() < 223+350 &&
-		 CONTROLLIGHT->GetY() > 300 && CONTROLLIGHT->GetY() < 300+100 ){
+	if( CONTROLLIGHT->GetX() > GI("PUSHSTARTX") && CONTROLLIGHT->GetX() < GI("PUSHSTARTX")+GI("PUSHSTARTSX") &&
+		 CONTROLLIGHT->GetY() > GI("PUSHSTARTY") && CONTROLLIGHT->GetY() < GI("PUSHSTARTY")+GI("PUSHSTARTSY") ){
 		if( AniNo != 2 ) AniNo = 1;
 		if( GAMECONTROL->GetDXController()->IsMouseClicked() &&
 			GAMECONTROL->GetMaku()->IsOpen() ){
@@ -85,12 +85,13 @@ void TitleScr::Process()
 	GAMECONTROL->GetMobManager()->Process();
 
 	DX_DRAW("graphics\\screen\\game start0.png",//ﾌﾟｯｼｭｽﾀｰﾄ
-		223, 300, 350*AniNo, 0, 350+350*AniNo, 100);
+		GI("PUSHSTARTX"), GI("PUSHSTARTY"), GI("PUSHSTARTSX")*AniNo, 0, 
+		GI("PUSHSTARTSX")+GI("PUSHSTARTSX")*AniNo, GI("PUSHSTARTSY"));
 
 	GAMECONTROL->GetLightManager()->Draw();
 
 	DX_DRAW("graphics\\screen\\game title.png", //ｽﾌﾟﾘｯﾃｯﾄﾞｽﾃｰｼﾞ
-		155, 100, 0, 0, 490, 120);
+		GI("TITLEX"), GI("TITLEY"), 0, 0, GI("TITLESX"), GI("TITLESY"));
 
 	GAMECONTROL->GetMaku()->Draw();
 
@@ -98,13 +99,6 @@ void TitleScr::Process()
 
 void TitleScr::Load()
 {
-	// これは・・・すまない・・・　俺は・・　もう・・・　ッグ！！！！
-	/*GAMECONTROL->GetFader()->Draw();
-	GAMECONTROL->GetDXController()->PrintDebugSting(650, 570, "now loading...");
-	GAMECONTROL->GetDXController()->mpDevice->EndScene();
-	GAMECONTROL->GetDXController()->mpDevice->Present(NULL, NULL, NULL, NULL);
-	GAMECONTROL->GetDXController()->mpDevice->BeginScene();*/
-
 	mpMap->Load( mDataFname, mMapChipGr );
 	mpHaichi->Load( mTekiFname, mpCheckpointController );
 	GAMECONTROL->GetJiki()->SetPos(GF("HERINITX")+500, GF("HERINITY"));

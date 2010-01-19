@@ -373,20 +373,10 @@ void StageManager::GoToStage(int rStageIdx)
 	mNowLoadingTenNum = 0;
 	mTimer = 0.0f;
 
-	unsigned id;
 	THRARGS* t = new THRARGS;
 	t->sm = this;
 	t->gotoStg = rStageIdx;
-	_beginthreadex( NULL, 0, changestage, t, 0, &id);
-
-	//maStages[mCurrentIndex]->UnLoad();
-
-	//mCurrentIndex = rStageIdx;
-	
-	//_beginthreadex( NULL, 0, loadstage, maStages[mCurrentIndex], 0, &id);
-	
-	//maStages[mCurrentIndex]->Load();
-
+	_beginthreadex( NULL, 0, changestage, t, 0, NULL);
 }
 
 /**

@@ -633,6 +633,10 @@
 								>
 							</File>
 							<File
+								RelativePath=".\src\Teki\Boss\Queen\Actions\ASQueenDamage.h"
+								>
+							</File>
+							<File
 								RelativePath=".\src\Teki\Boss\Queen\Actions\ASQueenRodAttack.h"
 								>
 							</File>
@@ -911,6 +915,14 @@
 					Name="SpecialScreens"
 					>
 					<File
+						RelativePath=".\src\Stage\SpecialScreens\CurtainRollScr.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\src\Stage\SpecialScreens\CurtainRollScr.h"
+						>
+					</File>
+					<File
 						RelativePath=".\src\Stage\SpecialScreens\GameOverScr.cpp"
 						>
 					</File>
@@ -1025,6 +1037,14 @@
 				</File>
 				<File
 					RelativePath=".\src\Mob\Movable.h"
+					>
+				</File>
+				<File
+					RelativePath=".\src\Mob\MovieActor.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\Mob\MovieActor.h"
 					>
 				</File>
 				<Filter
