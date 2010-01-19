@@ -19,7 +19,7 @@ StgClrDoor::StgClrDoor(int rXPx, int rYPx, float rZ)
 
 	// “–‚½‚è”»’è
 	AddFrame(0);
-	AddRect(0, SP->GRID_BOGYO, 60, 0, 110, 50);
+	AddCircle(0, SP->GRID_BOGYO, mSizeX/2, mSizeY/2, 1);
 
 	// ±ÆÒ°¼®Ý (ŠÔŠu0.1f)
 	mAnimation = new Animation();
