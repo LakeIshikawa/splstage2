@@ -4,39 +4,7 @@
 
 StaffRoll::StaffRoll()
 {
-	// アルファマスク用
-	GAMECONTROL->GetDXController()->CreateNewTexture("_StaffRollTx",
-		1024, 4096, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8R3G3B2, D3DPOOL_DEFAULT);
-
-	D3DXCreateTextureFromFileEx(GAMECONTROL->GetDXController()->GetDevice(),    // the device pointer
-								"graphics\\screen\\ed_str.png",
-								D3DX_DEFAULT, 
-								D3DX_DEFAULT,
-								D3DX_DEFAULT,
-								NULL,				// regular usage
-								D3DFMT_A8R8G8B8,     // 32-bit pixels with alpha
-								D3DPOOL_SYSTEMMEM,    // typical memory handling
-								D3DX_DEFAULT,		// no filtering
-								D3DX_DEFAULT,		// no mip filtering
-								0,	
-								NULL,
-								NULL,
-								&mEdStr
-								);
-
-	LPDIRECT3DSURFACE9 newsurf;
-	mEdStr->GetSurfaceLevel(0, &newsurf);
-
-	D3DSURFACE_DESC desc;
-	newsurf->GetDesc( &desc );
-
-	D3DXCreateRenderToSurface( GAMECONTROL->GetDXController()->GetDevice(), 
-		                       desc.Width, 
-		                       desc.Height, 
-		                       desc.Format, 
-		                       TRUE, 
-		                       D3DFMT_D16, 
-		                       &mRenderer);
+	
 	
 }
 
@@ -171,4 +139,70 @@ void StaffRoll::DrawStaffWithAlphaMask()
 	BuildStaffTexture();
 
 	DX_DRAW("_StaffRollTx", 0, SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), scrp );
+}
+
+/**
+* リソースを確保する
+*/
+void StaffRoll::LoadResources()
+{
+	// レンダリングターゲットのテクスチャ
+	GAMECONTROL->GetDXController()->CreateNewTexture("_StaffRollTx",
+		1024, 4096, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8R3G3B2, D3DPOOL_DEFAULT);
+
+	// スタッフロールのテクスチャ
+	D3DXCreateTextureFromFileEx(GAMECONTROL->GetDXController()->GetDevice(),    // the device pointer
+								"graphics\\screen\\ed_str.png",
+								D3DX_DEFAULT, 
+								D3DX_DEFAULT,
+								D3DX_DEFAULT,
+								NULL,				// regular usage
+								D3DFMT_A8R8G8B8,     // 32-bit pixels with alpha
+								D3DPOOL_SYSTEMMEM,    // typical memory handling
+								D3DX_DEFAULT,		// no filtering
+								D3DX_DEFAULT,		// no mip filtering
+								0,	
+								NULL,
+								NULL,
+								&mEdStr
+								);
+
+	// サイズと形式の取得
+	LPDIRECT3DSURFACE9 newsurf;
+	mEdStr->GetSurfaceLevel(0, &newsurf);
+	D3DSURFACE_DESC desc;
+	newsurf->GetDesc( &desc );
+	newsurf->Release();
+
+	// サーフェースへレンダラーを作成
+	D3DXCreateRenderToSurface( GAMECONTROL->GetDXController()->GetDevice(), 
+		                       desc.Width, 
+		                       desc.Height, 
+		                       desc.Format, 
+		                       TRUE, 
+		                       D3DFMT_D16, 
+		                       &mRenderer);
+}
+
+
+/**
+* リソースを開放する
+*/
+void StaffRoll::ReleaseResources()
+{
+	// スタッフロールのテクスチャ
+	mEdStr->Release();
+	mEdStr = NULL;
+
+	// サイズと形式の取得
+	mRenderer->Release();
+}
+
+
+/**
+* 
+*/
+void StaffRoll::OnLostDevice()
+{
+	ReleaseResources();
 }
