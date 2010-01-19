@@ -28,7 +28,10 @@ HitEffect::HitEffect(int rXPx, int rYPx)
 	標準デストラクタ
 */
 HitEffect::~HitEffect()
-{}
+{
+	delete mAnim;
+	delete mSDrawer;
+}
 
 /************************************************************//**
 *	1ﾌﾚｰﾑ処理

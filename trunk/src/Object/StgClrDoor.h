@@ -1,6 +1,8 @@
 #pragma once
 
 #include "..\\Mob\\Collidable.h"
+#include "..\\Mob\\MobDrawer\\SimpleDrawer.h"
+#include "..\\Animation\\Animation.h"
 
 /*
 	ìG
@@ -21,8 +23,6 @@ public:
 
 protected:
 	bool stageclear;
+	Animation* mAnimation;
 	
-	// ê›íËíËêî
-	int STGCLRDOORSX;
-	int STGCLRDOORSY;
 };

@@ -55,9 +55,15 @@ void StaffRoll::Process(){
 	switch( stage ){
 	case 0:
 		// Ìª°ÄÞ²Ý
-		if( GAMECONTROL->GetFader()->FadeIn() ) stage = 1;
+		if( GAMECONTROL->GetFader()->FadeIn() ) {
+			stage = 1;
+			GAMECONTROL->GetSoundController()->SetBGM(SoundController::ENDING);
+		}
+		
+		// CONGRATULATIONS
 		GAMECONTROL->GetTxtGraphicController()->ShowWithAlphaFade(TxtGraphicController::CENTER, 
 			GI("CONGRATSX"), GI("CONGRATSY"), "graphics\\screen\\ed_congratulations.png", GF("CONGRATSTIME"), 0.05f );
+
 		break;
 
 	case 1:
@@ -74,7 +80,7 @@ void StaffRoll::Process(){
 		break;
 	}
 
-	if( !GAMECONTROL->GetSoundController()->IsBGMPlaying() ){
+	if( !GAMECONTROL->GetSoundController()->IsBGMPlaying() && stage == 2){
 		if( GAMECONTROL->GetFader()->FadeOut() ){
 			STAGE_CLEAR;
 		}
@@ -85,10 +91,8 @@ void StaffRoll::Process(){
 
 void StaffRoll::Load()
 {
-	GAMECONTROL->GetSoundController()->SetBGM(SoundController::ENDING);
-
+	GAMECONTROL->GetSoundController()->ResetBGMs();
 	Init();
-	
 }
 
 void StaffRoll::Init(){
