@@ -581,7 +581,7 @@
 { TEKKYUSTDSX      :120}		/* 実画像の幅	*/
 { TEKKYUSTDSY      :48}			/* 実画像の高さ */
 { TEKKYUSTD_PRODTIME1 :2.0}		/* 一回目の発射までの時間 */
-{ TEKKYUSTD_PRODTIME2 :5.0}		/* 二回目からの発射までの時間 */
+{ TEKKYUSTD_PRODTIME2 :8.0}		/* 二回目からの発射までの時間 */
 { TEKKYUSTD_MAXTEKKYU :2}		/* 画面内にこれ以上の鉄球がある場合、発射しない */
 { TEKKYUSX         :104}		/* 実画像の幅	*/
 { TEKKYUSY         :104}		/* 実画像の高さ */
@@ -594,7 +594,7 @@
 // 噴出す火
 { FIRESTDSX      :128}			/* 実画像の幅	*/
 { FIRESTDSY      :64}			/* 実画像の高さ */
-{ FIRESTD_PRODTIME :3.0}		/* 発射までの時間 */
+{ FIRESTD_PRODTIME :5.0}		/* 発射までの時間 */
 { HIBASHIRA_LNPART :15 }		/* 一行のパーティｸﾙ数 */
 { HIBASHIRA_FIREINT:0.03 }		/* 一行の発射から次の行の発射までの時間 */
 { HIBASHIRA_BASESPX:4.0 }     	 	/* 上下の基本速度 */
