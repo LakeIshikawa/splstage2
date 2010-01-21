@@ -72,7 +72,7 @@ void Rod::Move()
 						mAngle),
 					true );
 				// SE
-				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss1_atack.wav");
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss3_hart.wav");
 			}
 
 			// I—¹

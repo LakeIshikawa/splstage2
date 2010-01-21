@@ -30,7 +30,9 @@ private:
 
 	float mKgTimer;	// タイマー
 
-	
+	bool mSeFl;	//SEﾌﾗｸﾞ
+
+
 	enum STATUS {
 		ARUKI,		// 歩き
 		WAIT1,		// 攻撃直前

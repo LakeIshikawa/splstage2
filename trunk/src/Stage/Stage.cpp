@@ -1,4 +1,4 @@
-﻿#include ".\stage.h"
+#include ".\stage.h"
 #include "..\\Management\\GameControl.h"
 #include "..\\Light\\Light.h"
 #include "Checkpoint\\CheckpointController.h"
@@ -55,31 +55,31 @@ Stage::~Stage(void)
 
 }
 
-// ﾏｯﾌﾟを取得
+// ?�ｯ?�ﾟを取�?
 Map* Stage::GetMap()
 {
 	return mpMap;
 }
 
-// 配置ﾃﾞｰﾀを取得
+// 配置??��ｰ??��取�?
 Haichi* Stage::GetHaichi()
 {
 	return mpHaichi;
 }
 
-// 配置ﾃﾞｰﾀを取得
+// 配置??��ｰ??��取�?
 CheckpointController* Stage::GetCheckpointController()
 {
 	return mpCheckpointController;
 }
 
-// 制限時間を取得
+// 制限時間を取�?
 SeigenJikan* Stage::GetSeigenJikan()
 {
 	return mpSeigenJikan;
 }
 
-// ﾏｯﾌﾟをﾛｰﾄﾞする
+// ?�ｯ?�ﾟを?�ｰ??��す�?
 void Stage::Load()
 {
 	mpMap->Load( mDataFname, mMapChipGr );
@@ -114,7 +114,7 @@ void Stage::UnLoad()
 }
 
 /*
-	1- ﾏｯﾌﾟの処理を行う
+	1- ?�ｯ?�ﾟ�?処�?��行う
 	2- 配置の出現確認を行う
 */
 void Stage::Process()
@@ -128,7 +128,7 @@ void Stage::Process()
 	mpMap->Process();
 	mpHaichi->Process();
 	
-	// チュートリアル以外は制限時間が経過する
+	// チュートリアル以外�?制限時間が経過する
 	if( !GAMECONTROL->GetStageManager()->IsCurrentStageTutorial() )
 		mpSeigenJikan->Process();
 
@@ -142,12 +142,12 @@ void Stage::Process()
 }
 
 /*
-	開始演出
+	開始演�?
 	終わったら1を返す
 */
 void Stage::Init()
 {
-	// ﾌｪｰﾄﾞｲﾝ
+	// ?�ｪ?�??��ｲ??
 	if( GAMECONTROL->GetFader()->FadeIn() ){
 		
 		// タイトル表示
@@ -165,13 +165,15 @@ void Stage::Init()
 			}
 		}
 
-		// 幕
+		// �?
 		if( GAMECONTROL->GetTxtGraphicController()->IsFinished() ){
 
 			if( GAMECONTROL->GetMaku()->IsClosed() ) GAMECONTROL->GetMaku()->Open();
-			// 幕をあげる
+			// 幕をあげ�?
 			if( GAMECONTROL->GetMaku()->IsOpen() ){
 				inited = true;
+				//BGM
+				GAMECONTROL->GetSoundController()->SetBGM(SoundController::STGSTART);
 				GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOn();
 				GAMECONTROL->GetJiki()->SetSuperControl();
 				GAMECONTROL->GetJiki()->GetInterface()->Show();
@@ -180,11 +182,11 @@ void Stage::Init()
 		}
 
 
-		// ﾏｳｽｸﾘｯｸ演出スキップ
+		// ?�ｳ?�?�?�ｯ?�演�?スキ�??
 		if( GAMECONTROL->GetDXController()->IsMouseClicked() ){
-			// 幕を強制的に持ち上げる
+			// 幕を強制�?��持ち上げ�?
 			GAMECONTROL->GetMaku()->SetOpened();
-			// 文字を消す
+			// �?��を消す
 			GAMECONTROL->GetTxtGraphicController()->Reset();
 			title_stage = 2;
 		}
@@ -192,7 +194,7 @@ void Stage::Init()
 }
 
 /**
-*	デバイスが失われたときにお応答
+*	�?��イスが失われたときにお応�?
 */
 void Stage::OnLostDevice()
 {
@@ -201,7 +203,7 @@ void Stage::OnLostDevice()
 }
 
 /**
-*	デバイスが失われたときにお応答
+*	�?��イスが失われたときにお応�?
 */
 void Stage::OnRestoredDevice()
 {

@@ -130,6 +130,8 @@ void Chandelier::Fall()
 
 	// ’n–Ê‚É‚Ô‚Â‚©‚é
 	if( mY + mSizeY >= FLOORY ){
+		// SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss3_syannderia.wav");
 		mAccY = 0;
 		mSpY = 0;
 		mY = FLOORY - mSizeY;

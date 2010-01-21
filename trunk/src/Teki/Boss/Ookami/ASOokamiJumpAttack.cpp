@@ -41,6 +41,15 @@ void ASOokamiJumpAttack::BuildAnimation(ActionState* rPrevState)
 }
 
 /************************************************************//**
+*	OnEnter
+****************************************************************/
+void ASOokamiJumpAttack::OnEnter()
+{
+	// SE
+	GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_boss2_bress_out.wav");
+}
+
+/************************************************************//**
 *	¼Þ¬ÝÌß‚µ‚È‚ª‚çUŒ‚‚µ‚Ä‚­‚é
 ****************************************************************/
 bool ASOokamiJumpAttack::Update()
@@ -59,3 +68,11 @@ bool ASOokamiJumpAttack::Update()
 }
 
 
+/************************************************************//**
+*	OnExit
+****************************************************************/
+void ASOokamiJumpAttack::OnExit()
+{
+	// SE
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_out.wav");
+}

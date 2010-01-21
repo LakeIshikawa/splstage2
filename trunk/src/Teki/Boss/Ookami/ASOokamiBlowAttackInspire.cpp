@@ -51,6 +51,10 @@ void ASOokamiBlowAttackInspire::OnEnter()
 			houses[i]->SetPosX(stposX[i]);
 			GAMECONTROL->GetMobManager()->Request(houses[i], true);
 		}
+
+		// SE
+		//GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_move.wav");
+		GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_boss2_bress_tame.wav");
 	}
 }
 
@@ -69,6 +73,9 @@ void ASOokamiBlowAttackInspire::OnExit()
 {
 	// ŽŸ‚Ì½Ã¯Ìß
 	mParent->AddNextAction(new ASOokamiBlowAttackAspire());
+	// SE
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_tame.wav");
+
 }
 
 /**

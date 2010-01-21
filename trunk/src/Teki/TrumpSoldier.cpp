@@ -160,6 +160,8 @@ void TrumpSoldier::Move()
 					mAnimSet->GetCurAnimation()->Rewind();
 					mAnimSet->SetCurAnimation(AN_SASU);
 					SetCurFrame( FR_ATTACK );
+					//SE
+					GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_ken_atack.wav");
 				}
 				else if( mAnimSet->GetCurAnimationIdx() == AN_SASU && mAnimSet->GetCurAnimation()->GetLoopCount() >= 1 ){
 					// ˆø‚­

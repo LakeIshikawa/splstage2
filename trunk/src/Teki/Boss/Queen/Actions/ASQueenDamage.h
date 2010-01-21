@@ -74,6 +74,11 @@ public:
 			// ‹¾‚ª‰ó‚ê‚é
 			if( mHp <7 ) mKagami->SetHibiStage(1);
 			if( mHp <4 ) mKagami->SetHibiStage(2);
+
+			// SE
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss3_kagami1.wav");
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kougekimeityuu.wav");
+
 		}
 	}
 

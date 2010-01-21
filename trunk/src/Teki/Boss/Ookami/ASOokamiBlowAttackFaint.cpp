@@ -56,6 +56,16 @@ void ASOokamiBlowAttackFaint::CollisionResponse(ICollidable* rCollObject,
 	}
 }
 
+
+/************************************************************//**
+*	OnEnter
+****************************************************************/
+void ASOokamiBlowAttackFaint::OnEnter() 
+{
+	// SE
+	GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_boss2_bress_out.wav");
+}
+
 /************************************************************//**
 *	‰æ–Ê‚É“ü‚Á‚ÄI‚í‚è
 ****************************************************************/
@@ -74,4 +84,7 @@ void ASOokamiBlowAttackFaint::OnExit()
 	rog = NULL;
 	straw = NULL;
 	brick = NULL;
+
+	// SE
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_out.wav");
 }

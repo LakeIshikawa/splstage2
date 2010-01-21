@@ -22,7 +22,7 @@ public:
 
 
 	//! @see ActionState
-	void OnEnter(){}
+	void OnEnter();
 	//! @see ASOokamiStraightAttack
 	bool Update();
 	//! @see ActionState

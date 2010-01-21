@@ -5,6 +5,8 @@
 #include "..\\Collision\\Rect.h"
 #include "..\\Mob\\IRideCapable.h"
 #include "..\\Effect\\ChargeEffect.h"
+#include "..\\Management\\GameControl.h"
+
 
 class Ashiba;
 
@@ -52,9 +54,9 @@ public:
 	void DisableCollision();
 	void EnableCollision();
 
-	void RestoreEmpacy(int n) { mEmp += n; if( mEmp > EMP_MAX ) mEmp = EMP_MAX; }
-	void RestoreTension(int n) { mTen += n; if( mTen > TEN_MAX ) mTen = TEN_MAX; }
-	void RestoreLife(int n) { mLife += n; if( mLife > LIFE_MAX) mLife = LIFE_MAX; }
+	void RestoreEmpacy(int n);
+	void RestoreTension(int n);
+	void RestoreLife(int n);
 
 	int GetLife() { return mLife; }
 	float GetEmpa() { return mEmp; }
@@ -219,6 +221,7 @@ private:
 	bool	mDmSE;
 	float	mDmSETimer;
 	bool	mTenSE;
+	bool	mHisatuSE;
 	
 	//ｹﾞｰｼﾞ類
 	int		mLife;
@@ -243,6 +246,7 @@ private:
 	int mChainIdx;
 	static float sChainMultSp[MAX_CHAIN+1];
 	static float sChainMultShoSp[MAX_CHAIN+1];
+
 
 	//関数群
 	void	UnTeishi();

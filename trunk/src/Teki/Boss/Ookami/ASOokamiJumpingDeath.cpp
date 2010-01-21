@@ -35,4 +35,14 @@ void ASOokamiJumpingDeath::OnEnter()
 
 	// Šî–{ˆ—
 	ASJumpingDeath::OnEnter();
+
+	// SE
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_atack.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_out.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_tame.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_move.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_house_break.wav");
+
+	GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_teki_down.wav");
+
 }

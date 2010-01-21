@@ -32,6 +32,10 @@ Thorn::Thorn(int rX, int rY, float rSp)
 
 	// ‰Šú‰»
 	mHeight = 0;
+	
+	// SE
+	GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss3_toge.wav");
+
 
 }
 
@@ -80,3 +84,4 @@ void Thorn::CollisionResponse(ICollidable* rCollObject,
 		jiki->InflictDamage();
 	}
 }
+

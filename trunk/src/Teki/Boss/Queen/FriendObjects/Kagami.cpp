@@ -82,6 +82,9 @@ void Kagami::StartShuffle()
 void Kagami::StopShuffle()
 {
 	mStatus = STOP;
+	// SE
+	GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss3_kettei.wav");
+
 }
 
 /************************************************************//**

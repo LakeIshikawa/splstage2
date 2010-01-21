@@ -38,6 +38,8 @@ public:
 		BOSS2,
 		STG3,
 		BOSS3,
+		STGSTART,
+		LIFE0,
 
 	};
 

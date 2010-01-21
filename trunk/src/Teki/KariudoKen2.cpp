@@ -74,6 +74,8 @@ KariudoKen2::KariudoKen2(int rXPx, int rYPx)
 
 	mKgTimer = 0.0f;
 
+	mSeFl = false;
+
 	// “–‚½‚è”»’è	
 	AddFrame(FR_KAMAE);
 	AddFrame(FR_ZANZOU);
@@ -137,10 +139,15 @@ void KariudoKen2::_Move()
 			break;
 
 		case KOGEKI:
+			if( mAniNoX == 2 &&  !mSeFl ){//SE
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_ken_atack.wav");
+				mSeFl = true;
+			}
 			mSpX = 0;
 			mMuki = CenterX() < jx;
 			if( mDousaEnd ){
 				mStatus = WAIT2;
+				mSeFl = false;
 			}
 			break;
 	
