@@ -332,7 +332,7 @@
 { KJUMPSTART_TIME   :0.2}		/* ｼﾞｬﾝﾌﾟの直前の間 */
 { KTAIKI_TIME       :0.5}		/* ｼﾞｬﾝﾌﾟとｼﾞｬﾝﾌﾟのｲﾝﾀｰﾊﾞﾙ */
 { KJMPSPX           :2.5}                /* ｼﾞｬﾝﾌﾟの初速(X) */
-{ KJMPTAKASA        :400}		/* ｼﾞｬﾝﾌﾟの高さ(ﾋﾟｸｾﾙ) */
+{ KJMPTAKASA        :50}		/* ｼﾞｬﾝﾌﾟの高さ(ﾋﾟｸｾﾙ) */
 
 //ウサギ
 { USAGISX           :72}		/* 実画像の幅	*/
@@ -438,12 +438,12 @@
 { OOKAMI_STARTY    :400 }               /* 初期 Y */
 { OOKAMI_SX        :128}		/* 実画像の幅	 */
 { OOKAMI_SY        :136}		/* 実画像の高さ	 */
-{ OOKAMI_STRATKSPX :9.0}		/* 直進攻撃の速度*/
+{ OOKAMI_STRATKSPX :14.0}		/* 直進攻撃の速度*/
 { OOKAMI_MTKTIME   :3.0}		/* 無敵時間 */
-{ OOKAMI_JMPSHOSOKUY: 10.0}		/* ｼﾞｬﾝﾌﾟの初速	 */
+{ OOKAMI_JMPSHOSOKUY: 7.0}		/* ｼﾞｬﾝﾌﾟの初速	 */
 { OOKAMI_ENTERRX   : 622 }		/* 右からどこまで入って来る */
 { OOKAMI_ENTERLX   : 50 }		/* 左からどこまで入って来る */
-{ OOKAMI_ENTERSPX  : 2 }		/* 入って来る速度*/
+{ OOKAMI_ENTERSPX  : 3}		/* 入って来る速度*/
 { OOKAMI_HSSX      :136 }               /* 家の横幅 */
 { OOKAMI_HSSY      :168 }               /* 家の縦幅 */
 { OOKAMI_HSSP      :2.5 }               /* 家の出現速度 */
