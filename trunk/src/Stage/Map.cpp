@@ -65,7 +65,8 @@ int Map::Load(string rFName, string rMapChipGr)
 		if( FAILED(D3DXCreateTexture(GAMECONTROL->GetDXController()->GetDevice(), 1024, 
 			1024, 1, 0, D3DFMT_A8B8G8R8, D3DPOOL_MANAGED, &mGamenSprites[gamen])))
 		{
-
+			GAMECONTROL->ThrowError("ﾃｸｽﾁｬｰ作成に失敗しました。終了します。(Map::mGamenSprites[])");
+			exit(1);
 		}
 
 		D3DLOCKED_RECT rc_gamen;
@@ -99,8 +100,6 @@ int Map::Load(string rFName, string rMapChipGr)
 		mGamenSprites[gamen]->UnlockRect(0);
 		tx_mapchip->UnlockRect(0);
 	}
-
-	tx_mapchip->Release();
 	return 0;
 }
 
