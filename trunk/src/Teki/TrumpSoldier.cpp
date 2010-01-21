@@ -221,7 +221,7 @@ void TrumpSoldier::CollisionResponse(ICollidable* rCollObject,
 		}
 	// ËÛ²Ý
 	if( jiki) {
-		if( (rOpGroupId == SP->GRID_BOGYO || rOpGroupId == SP->GRID_KOUGEKI)){
+		if( (rOpGroupId == SP->GRID_BOGYO) && mStatus != ST_DIE){
 			jiki->InflictDamage();
 		}
 	}

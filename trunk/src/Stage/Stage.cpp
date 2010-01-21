@@ -196,7 +196,8 @@ void Stage::Init()
 */
 void Stage::OnLostDevice()
 {
-	GetHaichi()->OnLostDevice();
+	if( GetHaichi() )
+		GetHaichi()->OnLostDevice();
 }
 
 /**
@@ -204,5 +205,6 @@ void Stage::OnLostDevice()
 */
 void Stage::OnRestoredDevice()
 {
-	GetHaichi()->OnRestoredDevice();
+	if( GetHaichi() )
+		GetHaichi()->OnRestoredDevice();
 }
