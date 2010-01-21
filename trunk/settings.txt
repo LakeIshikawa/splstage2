@@ -21,14 +21,14 @@
 { JUMP_SHOSP  :-12.0}			/* [ｼﾞｬﾝﾌﾟ]初速度(跳ぶ高さ) */
 { GRAVITY     :0.3}			/* 重力 */
 { DRILL_HEIGTH:80}			/* [ﾄﾞﾘﾙｷｯｸ]が使える高さ */
-{ DRILL_SP    :8.0}			/* [ﾄﾞﾘﾙｷｯｸ]の速度 */
+{ DRILL_SP    :8.5}			/* [ﾄﾞﾘﾙｷｯｸ]の速度 */
 { FUYU_SP     :1.0}			/* [浮遊]の速度 */
 { DAMAGE_SP   :-3.0}			/* [ﾀﾞﾒｰｼﾞ]初速度(跳ぶ高さ) */
 { MUTEKI_TIME : 3.0}			/* [ﾀﾞﾒｰｼﾞ]無敵時間 */
 { TENMETU_TIME:0.2}			/* [ﾀﾞﾒｰｼﾞ]無敵中の点滅 */
 { HISATU_TIME :15.0}			/* [必殺技]終了時間 */
-{ HISATU_LTSP :0.3}			/* [必殺技]ﾗｲﾄ速度(元の速度/HISATU_LTSP) */
-{ HISATU_HRSP :10}			/* [必殺技]ﾋﾛｲﾝ速度(元の速度/HISATU_HRSP) */
+{ HISATU_LTSP :0.2}			/* [必殺技]ﾗｲﾄ速度(元の速度/HISATU_LTSP) */
+{ HISATU_HRSP :8}			/* [必殺技]ﾋﾛｲﾝ速度(元の速度/HISATU_HRSP) */
 { HISATSU_MAXSP : 10 }			/* 必殺技中での最大速度 */
 { HISATU_FADE :0.03}			/* [必殺技]ﾌｪｰﾄﾞ速度 */
 { HERINITX    :350}			/* ヒロインの出現地 */
@@ -62,10 +62,10 @@
 { TEN_UTIME   :20.0}			/* [ﾃﾝｼｮﾝ]ﾗｲﾄでのﾃﾝｼｮﾝ増加時間 */
 { TEN_DTIME   :20.0}			/* [ﾃﾝｼｮﾝ]ﾗｲﾄでのﾃﾝｼ-ｮﾝ減少時間 */
 { TEN_UP1     :5}			/* [ﾃﾝｼｮﾝ]TEN_TIME毎に上がる数値 */
-{ TEN_UP2     :10}			/* [ﾃﾝｼｮﾝ]敵を倒して上がる数値 */
+{ TEN_UP2     :5}			/* [ﾃﾝｼｮﾝ]敵を倒して上がる数値 */
 { TEN_UP3     :20}			/* [ﾃﾝｼｮﾝ]ﾒﾘｯﾄｱｲﾃﾑで上がる数値 */
 { TEN_DOWN1   :10}			/* [ﾃﾝｼｮﾝ]TEN_TIME毎に下がる数値 */
-{ TEN_DOWN2   :5}			/* [ﾃﾝｼｮﾝ]敵からの攻撃で下がる数値 */
+{ TEN_DOWN2   :-5}			/* [ﾃﾝｼｮﾝ]敵からの攻撃で下がる数値 */
 //ｹﾞｰｼﾞ表示
 { DODAI_SX    :300}			/* [土台]の幅のｸﾞﾗﾌｨｯｸｻｲｽﾞ */
 { DODAI_SY    :100}			/* [土台]の高さｸﾞﾗﾌｨｯｸｻｲｽﾞ */
@@ -186,12 +186,12 @@
 {TITLESY           : 120}		/* タイトルサイズ */
 
 //制限時間
-{STAGE1_TIME:360}			/* ｽﾃｰｼﾞ1 制限時間 */
-{STAGE1_BOSS_TIME:360}			/* ｽﾃｰｼﾞ1_BOSS 制限時間 */
-{STAGE2_TIME:360}			/* ｽﾃｰｼﾞ2 制限時間 */
-{STAGE2_BOSS_TIME:360}			/* ｽﾃｰｼﾞ2_BOSS 制限時間 */
-{STAGE4_TIME:360}			/* ｽﾃｰｼﾞ4 制限時間 */
-{STAGE4_BOSS_TIME:360}			/* ｽﾃｰｼﾞ4_BOSS 制限時間 */
+{STAGE1_TIME:480}			/* ｽﾃｰｼﾞ1 制限時間 */
+{STAGE1_BOSS_TIME:480}			/* ｽﾃｰｼﾞ1_BOSS 制限時間 */
+{STAGE2_TIME:480}			/* ｽﾃｰｼﾞ2 制限時間 */
+{STAGE2_BOSS_TIME:480}			/* ｽﾃｰｼﾞ2_BOSS 制限時間 */
+{STAGE4_TIME:480}			/* ｽﾃｰｼﾞ4 制限時間 */
+{STAGE4_BOSS_TIME:480}			/* ｽﾃｰｼﾞ4_BOSS 制限時間 */
 
 //配置
 { SHUTSUGEN_POINTX :800}		/* 敵が出現するX座標です */
@@ -438,9 +438,9 @@
 { OOKAMI_STARTY    :400 }               /* 初期 Y */
 { OOKAMI_SX        :128}		/* 実画像の幅	 */
 { OOKAMI_SY        :136}		/* 実画像の高さ	 */
-{ OOKAMI_STRATKSPX :14.0}		/* 直進攻撃の速度*/
-{ OOKAMI_MTKTIME   :3.0}		/* 無敵時間 */
-{ OOKAMI_JMPSHOSOKUY: 7.0}		/* ｼﾞｬﾝﾌﾟの初速	 */
+{ OOKAMI_STRATKSPX :11.0}		/* 直進攻撃の速度*/
+{ OOKAMI_MTKTIME   :2.5}		/* 無敵時間 */
+{ OOKAMI_JMPSHOSOKUY: 8}		/* ｼﾞｬﾝﾌﾟの初速	 */
 { OOKAMI_ENTERRX   : 622 }		/* 右からどこまで入って来る */
 { OOKAMI_ENTERLX   : 50 }		/* 左からどこまで入って来る */
 { OOKAMI_ENTERSPX  : 3}		/* 入って来る速度*/
@@ -459,13 +459,13 @@
 { OOKAMI_BRPY2     :360 }               /* 息の出現位置2 */
 { OOKAMI_HSPTSX    :48 }		/* 破片の横幅 */
 { OOKAMI_HSPTSY    :48 }		/* 破片の縦幅 */
-{ OOKAMI_HSPTROTSP :0.1 }		/* 破片の回転速度 */
-{ OOKAMI_BKHTSPX   :2.0 }		/* ﾋｯﾄﾊﾞｯｸのX速度 */
-{ OOKAMI_BKHTSPY   :6.9 }		/* ﾋｯﾄﾊﾞｯｸのY初速 */
-{ STORM_SP         :3.0 } 		/* 強風の力 */
+{ OOKAMI_HSPTROTSP :0.2 }		/* 破片の回転速度 */
+{ OOKAMI_BKHTSPX   :1.5 }		/* ﾋｯﾄﾊﾞｯｸのX速度 */
+{ OOKAMI_BKHTSPY   :5.0 }		/* ﾋｯﾄﾊﾞｯｸのY初速 */
+{ STORM_SP         :3.5 } 		/* 強風の力 */
 
 // 女王
-{ QUEEN_HP        :8 }			/* 初期HP */
+{ QUEEN_HP        :15 }			/* 初期HP */
 { QUEEN_STARTX    :340 }               	/* 初期 X */
 { QUEEN_STARTY    :200 }        	/* 初期 Y */
 { QUEEN_SX        :120}			/* 実画像の幅	 */
@@ -509,7 +509,7 @@
 { TRUMPSY         :40 }                 /* トランプの縦幅 */
 { TRUMPSHOSP      :-9.0 }               /* 初速 */
 { TRUMPTOPY       :-188 }               /* ここまで上がっていく*/
-{ TRUMPFALLSP     : 6.0 }		/* 落下速度 */
+{ TRUMPFALLSP     : 7.0 }		/* 落下速度 */
 { TRUMPROW1       : 125 }		/* 一列目 */
 { TRUMPROW2       : 325 }		/* 二列目 */
 { TRUMPROW3       : 475 }		/* 三列目 */
@@ -524,8 +524,8 @@
 { HEARTSP         : 2.5 }               /* 速度 */
 { HEART_KAITENSP  : 0.08 }		/* ハートの回転速度 */
 { APPLE_BEFOREAPP: 5.0 }               /* ﾘﾝｺﾞが消えるまでの時間 */
-{ APPLE_BEFOREDISAPP1: 5.0 }            /* ﾘﾝｺﾞが復活するまでの時間 */
-{ APPLE_BEFOREDISAPP2: 10.0 }            /* ﾘﾝｺﾞが復活するまでの時間(長時間) */
+{ APPLE_BEFOREDISAPP1: 50.0 }            /* ﾘﾝｺﾞが復活するまでの時間 */
+{ APPLE_BEFOREDISAPP2: 100.0 }            /* ﾘﾝｺﾞが復活するまでの時間(長時間) */
 { APPLE_GENLTX    : 102 }  		/* 左ﾘﾝｺﾞの出現X */
 { APPLE_GENRTX    : 648 }  		/* 右ﾘﾝｺﾞの出現X */
 { APPLE_GENY      : 200 }		/* ﾘﾝｺﾞの出現Y */
