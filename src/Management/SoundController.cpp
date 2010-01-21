@@ -57,7 +57,6 @@ LPTSTR SoundController::sData[] = {
 	TEXT("audio\\se\\se_boss3_toge.wav"),
 	TEXT("audio\\se\\se_boss3_trannp.wav"),// 45
 	TEXT("audio\\se\\se_cansel.wav"),
-	TEXT("audio\\se\\se_count_down.wav"),
 	TEXT("audio\\se\\se_fire.wav"),
 	TEXT("audio\\se\\se_item_get.wav"),
 	TEXT("audio\\se\\se_kaeru_junp.wav"), //50
@@ -133,12 +132,9 @@ void SoundController::Init(HWND rHwnd)
 	arBgms[BOSS3] = new Bgm(mMapStrToSnd[sData[27]], 
 							mMapStrToSnd[sData[28]]);
 
-	arBgms[BOSS3] = new Bgm(mMapStrToSnd[sData[27]], 
-							mMapStrToSnd[sData[28]]);
+	arBgms[STGSTART] = new Bgm(mMapStrToSnd[sData[29]], NULL);
 
-	arBgms[BOSS3] = new Bgm(mMapStrToSnd[sData[27]], 
-							mMapStrToSnd[sData[28]]);
-
+	arBgms[LIFE0] = new Bgm(mMapStrToSnd[sData[30]], NULL);
 
 	mCurBgm = NULL;
 }

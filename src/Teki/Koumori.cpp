@@ -46,6 +46,8 @@ Koumori::Koumori(int rXPx, int rYPy)
 	AddFrame(0);
 	AddCircle(0, SP->GRID_BOGYO, 28, 28, 14);
 
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
+
 }
 
 Koumori::~Koumori(void)
@@ -76,6 +78,7 @@ void Koumori::_Move()
 
 			if( jiki_x > maai_left && jiki_x < maai_right ){
 				mStatus = MOVE;
+				GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_bat_fly.wav");
 				mSpY = DetermineShosoku( KOMORAISE );
 				mSpX = -KOMOSPX;
 			}
@@ -87,6 +90,7 @@ void Koumori::_Move()
 			break;
 
 		case NIGE:
+			GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
 			break;
 	}
 

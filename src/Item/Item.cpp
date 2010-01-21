@@ -95,11 +95,14 @@ void Item::CollisionResponse(ICollidable *rCollObject, int rThisGroupId, int rOp
 
 	if(jiki && rOpGroupId == SP->GRID_BOGYO ){
 
+		//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_item_get.wav");
 		// Œø‰Ê
 		DoEffect();
 		// Á–Å
 		GAMECONTROL->GetMobManager()->Remove(this);
 		// ‰‰o
 		GAMECONTROL->GetMobManager()->Request( new PickUpEffect( GetEffectGraphic() ), true );
+		
 	}
 }

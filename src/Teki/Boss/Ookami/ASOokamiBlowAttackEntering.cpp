@@ -20,6 +20,13 @@ void ASOokamiBlowAttackEntering::BuildPosInfo(ActionState* rPrevState)
 	mSpX = (mMuki?1:-1) * GI("OOKAMI_ENTERSPX");
 }
 
+/************************************************************//**
+*	OnEnter
+****************************************************************/
+void ASOokamiBlowAttackEntering::OnEnter() {
+	// SE
+	GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_boss2_move.wav");
+}
 
 /************************************************************//**
 *	‰æ–Ê‚É“ü‚Á‚ÄI‚í‚è
@@ -37,6 +44,5 @@ bool ASOokamiBlowAttackEntering::Update() {
 ****************************************************************/
 void ASOokamiBlowAttackEntering::OnExit() 
 {
-
 	mParent->AddNextAction(new ASOokamiBlowAttackInspire());
 }

@@ -143,6 +143,9 @@ protected:
 	// ‘«ê‚Éæ‚Á‚Ä‚¢‚é‚©
 	Ashiba* mAshiba;
 
+	// ‰¹º—p:UGLY:
+	bool mIsRolling;
+
 	// ½Ã°À½
 	enum STATUS{
 		GENERATE,

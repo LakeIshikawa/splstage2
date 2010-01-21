@@ -59,6 +59,9 @@ Tekkyu::Tekkyu(int rXPx, int rYPx, float rZ, TekkyuStand* rParent)
 
 	// 消滅ﾀｲﾏｰ
 	mDieTimer = 0.0f;
+
+	// 音声用のフラグ :UGLY:
+	mIsRolling = false;
 }
 
 /**
@@ -85,6 +88,8 @@ void Tekkyu::Move()
 		if( mY >= mParent->GetY() ){
 			mStatus = FALL;
 			SetCurFrame(0); // あたり判定を有効に
+			// SE
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_ttekkyuu_hassya.wav");
 		}
 	}
 
@@ -176,6 +181,7 @@ void Tekkyu::RollIfHitGround()
 		mAngle = 0;
 	
 		mSpX = GF("TEKKYU_RLSP");
+
 	}
 }
 
@@ -222,6 +228,18 @@ bool Tekkyu::IsHittingGround()
 void Tekkyu::Rebound()
 {
 	if( IsHittingGround() ){
+		// SE
+		if( fabs(mSpY) >= 20 )
+		{
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_ttekkyuu_setti.wav");
+		}
+		else{
+			if( !mIsRolling ){
+				// SE
+				GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_ttekkyuu_move.wav");
+				mIsRolling = true;
+			}
+		}
 		mSpY = -mSpY/2;
 		if( mSpY < 0 && mAshiba ) {
 			mAshiba->GetOff(this);
@@ -247,7 +265,10 @@ void Tekkyu::StopIfHitWall()
 ****************************************************************/
 void Tekkyu::DieIfStopAndNSec()
 {
-	if( mStatus == STOP){
+	if( mStatus == STOP ){
+		// SE
+		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_ttekkyuu_move.wav");
+
 		WAIT_TIMER( mDieTimer, TEKKYU_SHOMETSUTIME )
 			mStatus = DIE;
 		WAIT_END
@@ -268,4 +289,5 @@ void Tekkyu::Disappear()
 		GAMECONTROL->GetStageManager()->GetCurrentStage()->
 			GetHaichi()->RemoveAshibaTargets( this );
 	}
+
 }

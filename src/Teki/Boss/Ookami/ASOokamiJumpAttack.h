@@ -24,6 +24,10 @@ class ASOokamiJumpAttack: public ASOokamiStraightAttack
 		void BuildPosInfo(ActionState* rPrevState);
 
 		//! @see AsOokamiStraightAttack
+		void OnEnter();
+		//! @see AsOokamiStraightAttack
 		bool Update();
+		//! @see AsOokamiStraightAttack
+		void OnExit();
 
 };

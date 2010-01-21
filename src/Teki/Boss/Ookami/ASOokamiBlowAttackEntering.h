@@ -19,10 +19,13 @@ public:
 	//! @see ASOokamiStraightAttack
 	void BuildPosInfo(ActionState* rPrevState);
 
-	//! @see ASOokamiStraightAttack
+	//! @see AsOokamiStraightAttack
+	void OnEnter();
+	//! @see AsOokamiStraightAttack
 	bool Update();
-	//! @see ActionState
+	//! @see AsOokamiStraightAttack
 	void OnExit();
+
 
 };
 

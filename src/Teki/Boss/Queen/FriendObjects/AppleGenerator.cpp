@@ -122,6 +122,8 @@ void AppleGenerator::CollisionResponse(ICollidable* rCollObject,
 	if( (jiki && rOpGroupId == SP->GRID_BOGYO  || rOpGroupId == SP->GRID_KOUGEKI)  &&
 		mStatus != INACTIVE )
 	{
+		//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_item_get.wav");
 		// ±²ÃÑ‚ªÁ‚¦‚é
 		mStatus = INACTIVE;
 		mTimer = 0.0f;

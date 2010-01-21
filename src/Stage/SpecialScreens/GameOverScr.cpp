@@ -4,8 +4,6 @@
 
 GameOverScr::GameOverScr()
 {
-	mTimer = 0.0f;
-	mFading = false;
 }
 
 GameOverScr::~GameOverScr()
@@ -36,6 +34,8 @@ void GameOverScr::Process()
 
 void GameOverScr::Load()
 {
+	mTimer = 0.0f;
+	mFading = false;
 	//SE
 	GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\game_over.wav");
 

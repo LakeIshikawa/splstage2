@@ -21,6 +21,8 @@ void TeamLogo::Process()
 		if( mAlpha >= 1.0f ){
 			mAlpha = 1.0f;
 			mStatus = WAIT;
+			//SE
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_team_rogo.wav");
 		}
 		break;
 

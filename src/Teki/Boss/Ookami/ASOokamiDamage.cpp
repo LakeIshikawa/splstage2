@@ -14,6 +14,12 @@ using namespace std;
 void ASOokamiDamage::BuildAnimation(ActionState* rPrevState)
 {
 	mAnimation = Animation::ParseFromFile( "data\\animdata\\ookami\\Damage.txt" );
+
+	// SE
+	//GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_move.wav");
+
+	GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kougekimeityuu.wav");
+
 }
 
 /************************************************************//**
@@ -32,6 +38,7 @@ bool ASOokamiDamage::Update()
 	//Ë¯ÄÊÞ¯¸
 	// I—¹ðŒ
 	return (mAnimation->GetLoopCount() == 2);
+
 }
 
 void ASOokamiDamage::OnExit() 

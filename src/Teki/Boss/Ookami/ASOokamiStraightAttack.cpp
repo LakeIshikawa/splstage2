@@ -40,8 +40,14 @@ void ASOokamiStraightAttack::BuildPosInfo(ActionState* rPrevState)
 	mSpX = (mMuki?1:-1) * OOKAMI_STRATKSPX;
 }
 
+/************************************************************//**
+*	OnEnter
+****************************************************************/
 void ASOokamiStraightAttack::OnEnter()
-{}
+{
+	// SE
+	GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_boss2_move.wav");
+}
 
 /************************************************************//**
 *	’¼iˆÚ“®‚ÆI—¹ðŒ
@@ -55,6 +61,12 @@ bool ASOokamiStraightAttack::Update()
 	return ((mMuki && mX > SP->SCRSZX) || (!mMuki && mX < -mFrameSizeX));
 }
 
+/************************************************************//**
+*	OnExit
+****************************************************************/
 void ASOokamiStraightAttack::OnExit() 
-{}
+{
+	// SE
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_move.wav");
+}
 

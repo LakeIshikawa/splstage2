@@ -213,7 +213,7 @@ void Teki::CollisionResponse(ICollidable *rCollObject, int rThisGroupId, int rOp
 				jiki->IncreaseTensEmpa();
 				//SE
 				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kougekimeityuu.wav");
-
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_teki_down.wav");
 			}
 		}
 		else if( rOpGroupId == SP->GRID_BOGYO && (rThisGroupId == SP->GRID_BOGYO || rThisGroupId == SP->GRID_KOUGEKI) ||

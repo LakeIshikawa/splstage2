@@ -124,7 +124,7 @@ void Trump::CollisionResponse(ICollidable* rCollObject,
 void Trump::TransformToSoldier(Chandelier* rChandelier)
 {
 	// SE
-	GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss1_atack.wav");
+	GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss3_hart.wav");
 
 	// Á–Å
 	GAMECONTROL->GetMobManager()->Remove(this);

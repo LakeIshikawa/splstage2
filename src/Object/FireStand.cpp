@@ -69,12 +69,16 @@ void FireStand::Move()
 				mEmitter->Start();
 				mFireTop = 0;
 				mFireBottom = 0;
+				// SE
+				GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_fire.wav");
 				break;
 			}
 
 			case FIRE: { 
 				mStatus = WAIT; 
 				mEmitter->Stop(); 
+				// SE
+				GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_fire.wav");
 				break; 
 			}
 		}

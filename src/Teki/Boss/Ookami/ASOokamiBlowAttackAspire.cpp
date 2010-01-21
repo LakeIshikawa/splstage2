@@ -38,6 +38,9 @@ void ASOokamiBlowAttackAspire::OnEnter()
 	if( !storm ){
 		storm = new Storm(mMuki);
 		GAMECONTROL->GetMobManager()->Request(storm, true);
+		// SE
+		GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_boss2_bress_atack.wav");
+		GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_boss2_house_break.wav");
 	}
 }
 
@@ -64,4 +67,10 @@ void ASOokamiBlowAttackAspire::OnExit()
 
 	// ÚÝ¶Þ‚Ì‰Æ‚ð–ß‚³‚¹‚é
 	brick->Destroy();
+
+	// SE
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_atack.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_house_break.wav");
+	
+
 }

@@ -99,7 +99,8 @@ void KariudoYumi::_Move()
 	switch( mStatus ){
 		case WAIT1:
 			WAIT_TIMER(mShootTimer, KARIYUMI_WTM);
-			mStatus = SHOOT1;
+				mStatus = SHOOT1;
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_tame.wav");//SE
 			WAIT_END
 			break;
 		
@@ -108,12 +109,14 @@ void KariudoYumi::_Move()
 				Arrow* shageki = new Arrow(CenterX(), CenterY(), jx+YUMITGT1, jy);
 				GAMECONTROL->GetMobManager()->Request(shageki, true);
 				mStatus = WAIT2;
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_hassya.wav");//SE
 			}
 			break;
 	
 		case WAIT2:
 			WAIT_TIMER(mShootTimer, KARIYUMI_WTM2);
-			mStatus = SHOOT2;
+				mStatus = SHOOT2;
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_tame.wav");//SE
 			WAIT_END
 			break;
 
@@ -122,20 +125,23 @@ void KariudoYumi::_Move()
 				Arrow* shageki = new Arrow(CenterX(), CenterY(), jx, jy);
 				GAMECONTROL->GetMobManager()->Request(shageki, true);
 				mStatus = WAIT3;
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_hassya.wav");//SE
 			}
 			break;
 
 		case WAIT3:
 			WAIT_TIMER(mShootTimer, KARIYUMI_WTM2);
-			mStatus = SHOOT3;
+				mStatus = SHOOT3;
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_tame.wav");//SE
 			WAIT_END
 			break;
 
 		case SHOOT3:
 			if( mDousaEnd ){
-			Arrow* shageki = new Arrow(CenterX(), CenterY(), jx+YUMITGT2, jy);
-			GAMECONTROL->GetMobManager()->Request(shageki, true);
-			mStatus = WAIT1;
+				Arrow* shageki = new Arrow(CenterX(), CenterY(), jx+YUMITGT2, jy);
+				GAMECONTROL->GetMobManager()->Request(shageki, true);
+				mStatus = WAIT1;
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_hassya.wav");//SE
 			}
 			break;
 
@@ -206,11 +212,4 @@ void KariudoYumi::Draw()
 	mNo_x*mSizeX, mMuki*mSizeY, (mNo_x+1)*mSizeX, (mMuki+1)*mSizeY);
 
 	DieIfGamenGai();
-
-	////ÃÞÊÞ¯¸Þ - “–‚½‚è”»’è‚Ì•\Ž¦
-	//if(mDrawer){
-	//	mDrawer->SetCollision(pCollision->GetCurFrame());
-	//	mDrawer->Draw();
-	//}
-
 }

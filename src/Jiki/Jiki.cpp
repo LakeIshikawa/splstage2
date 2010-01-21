@@ -1,4 +1,4 @@
-﻿#include ".\jiki.h"
+#include ".\jiki.h"
 #include "..\\Management\\GameControl.h"
 #include "..\\Light\\Light.h"
 #include "..\\Event\\GameOverEvt.h"
@@ -10,7 +10,7 @@
 #include "..\\Event\\RestoreTekiAfterCheckpoint.h"
 #include "..\\Effect\\HitEffect.h"
 
-//ｱﾆﾒｰｼｮﾝﾃﾞｰﾀ
+//?�??��ｰ?�?�?��?��ｰ??
 int Jiki::sAniData[][ANIFR] = { 
 	{ 0, 1, 2, 3, 4, 5, 6, 7,99},	//	WALK
 	{ 0, 1, 2, 1, 3, 4, 5, 4,99},	//	TEISHI
@@ -37,7 +37,7 @@ int Jiki::sAniData[][ANIFR] = {
 
 };
 
-//ﾌﾚｰﾑごとのｱﾆﾒｰｼｮﾝ補間時間
+//?�ﾚｰ?�ごとの?�??��ｰ?�?�?�補間時間
 double Jiki::sAniTime[][ANIFR] = { 
 	{ 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2},	//	WALK
 	{ 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2},	//	TEISHI
@@ -64,7 +64,7 @@ double Jiki::sAniTime[][ANIFR] = {
 
 };
 
-//ｸﾞﾗﾌｨｯｸ
+//?�?�ﾗﾌｨ?�?�
 char Jiki::sGraphic[][GRAME] = { 
 	"graphics\\heroine\\heroine_work.png",		//	WALK
 	"graphics\\heroine\\heroine_stend.png",		//	TEISHI
@@ -91,23 +91,23 @@ char Jiki::sGraphic[][GRAME] = {
 
 };
 
-//当たり判定ﾃﾞｰﾀ
+//当たり判定�?��ｰ??
 int	Jiki::sHitX[][4][TENSU] = {
 	{
-		{ 40, 57, 89,-1}, 		//下
-		{ 62, -1},				//上
-		{ 90, 90, 90, 90, 90,-1}, 		//前
-		{ 31, 19, -1}, 			//後
+		{ 40, 57, 89,-1}, 		//�?
+		{ 62, -1},				//�?
+		{ 90, 90, 90, 90, 90,-1}, 		//�?
+		{ 31, 19, -1}, 			//�?
 	}
 
 
 };
 int	Jiki::sHitY[][4][TENSU] = {
 	{
-		{118,118,118,-1 }, 		//下
-		{ 0, -1},				//上
-		{117, 95, 65, 40, 25, -1}, 		//前
-		{115, 11, -1}, 			//後
+		{118,118,118,-1 }, 		//�?
+		{ 0, -1},				//�?
+		{117, 95, 65, 40, 25, -1}, 		//�?
+		{115, 11, -1}, 			//�?
 	}
 
 };
@@ -172,10 +172,10 @@ Jiki::Jiki(int rXPx, int rYPy)
 	mSizeX = HERSIZE;
 	mSizeY = HERSIZE;
 
-	//ﾀﾞﾒｰｼﾞ
+	//??��ﾒｰ?�??
 	ResetTempParams();
 
-	//ｹﾞｰｼﾞ類
+	//?�?�ｰ?�?��?
 	ResetLife();
 	ResetTension();
 	ResetEmpacy();
@@ -183,13 +183,15 @@ Jiki::Jiki(int rXPx, int rYPy)
 	//SE
 	mDmSE	 = false;
 	mDmSETimer = 0;
-	mTenSE	 =false;
+	mTenSE	 = false;
+	mHisatuSE = false;
+
 
 	collisionEnabled = true;
 
 	mChainIdx = 0;
 
-	// 当たり判定
+	// 当たり判�?
 	AddFrame(FR_ARUKI);
 	AddFrame(FR_TACHI);
 	AddFrame(FR_JUMP);
@@ -253,20 +255,20 @@ void Jiki::ResetTension(){
 
 void Jiki::ResetTempParams()
 {
-	//ｱﾆﾒｰｼｮﾝ
+	//?�??��ｰ?�?�??
 	mAniTimer	= 0;
 	mAniNoX		= 0;
 	mAniNoY		= 0;
 
-	//ｽﾃｰﾀｽ
+	//?�??��??��
 	//SetSuperWait(3.0f);
 	mStatus		= WALK;
 	mMuki		= 1;	
 
-	//ｹﾞｰﾑｵｰﾊﾞｰ
+	//?�?�ｰ?�ｵ?�?�ﾞｰ
 	mGmOvFl	 = 0;
 
-	// ダメージ
+	// �?��ージ
 	mDgMutekiFl	 = 0;
 	mDgMapFl	 = false;
 	mDamageTimer = 0;
@@ -274,7 +276,7 @@ void Jiki::ResetTempParams()
 	mAlphaVal = 1.0f;
 	mAlphaTimer = 0.0f;
 
-	//ﾗｲﾄ
+	//?�ｲ??
 	mAkaTimer	= 0;
 	mAkaTimer2	= 0;
 	mStanTimer	= 0;
@@ -290,7 +292,7 @@ void Jiki::ResetTempParams()
 	mHsX	= 0;
 	mHsY	= 0;
 
-	//ﾌｪｰﾄﾞ
+	//?�ｪ?�??�?
 	mFadeFl = 0;
 	mFadeFl2 = false;
 
@@ -302,7 +304,7 @@ void Jiki::ResetTempParams()
 	//強風
 	mKazeAccX = 0;
 
-	// ﾁｬｰｼﾞｴﾌｪｸﾄ
+	// ??��?�?�?�ｴ?�ｪ?�??
 	mChargeFx = NULL;
 }
 
@@ -311,14 +313,14 @@ Jiki::~Jiki(void)
 	delete mInterface;
 }
 
-// ｺﾘｼﾞｮﾝ用、自機のｻｲｽﾞを返す
+// ?�?�ｼ?�ｮ?�用、�?機�??�?�?�?�を返す
 int Jiki::GetSizeX()
 {
 	return HERSIZE;
 }
 
 /*
-	基本ｸﾗｽのﾀｽｸをはっきり行います
+	基本?�?�ｽの??��?�を�?っきり行いま�?
 */
 void Jiki::RunTask()
 {
@@ -327,7 +329,7 @@ void Jiki::RunTask()
 }
 
 /*
-	ﾋﾛｲﾝにﾀﾞﾒｰｼﾞを与える
+	?�ﾛｲ?�に??��ﾒｰ?�?�を与え�?
 */
 void Jiki::InflictDamage()
 {	
@@ -343,7 +345,7 @@ void Jiki::InflictDamage()
 			mDgMapFl= true;
 			mAniNoX = 0;
 			mSpY	= DAMAGE_SP;
-			// 足場から降りる
+			// 足場から降り�?
 			if( mCurAshiba ) {
 				mCurAshiba->GetOff(this);
 				mCurAshiba = NULL;
@@ -351,12 +353,12 @@ void Jiki::InflictDamage()
 			mDmSETimer = 0;
 			SetTransparent(true);
 
-			//ｴﾝﾊﾟｼｰ
+			//?�?�ﾊﾟｼ?�
 			mEmp -= EMP_DOWN;
 			if( mEmp <= 0 ){
 				Die();
 			}
-			//ﾃﾝｼｮﾝ
+			//??��ｼ?�??
 			mTen -= TEN_DOWN2;
 			if( mTen < 0 ) mTen = 0;
 
@@ -365,28 +367,23 @@ void Jiki::InflictDamage()
 	}
 }
 /*
-	ﾋﾛｲﾝのﾃﾝｼｮﾝorﾃﾝﾊﾟｼｰを上げる
+	?�ﾛｲ?��???��ｼ?�?�or??��ﾊﾟｼ?�を上げ�?
 */
 void Jiki::IncreaseTensEmpa()
 {	
 
-		//ﾃﾝｼｮﾝ
+		//??��ｼ?�??
 		if( mStatus == KOGEKI || mStatus == KOGEKI_START || mStatus == KOGEKI_END
 			|| mStatus == DRILL || mStatus == DRILL_START ){
-			mTen += TEN_UP2;
-			if( mTen > TEN_MAX ) mTen = TEN_MAX;
+			RestoreTension(TEN_UP2);
 		}
-		//ｴﾝﾊﾟｼｰ
+		//?�?�ﾊﾟｼ?�
 		if( mStatus == HISATU ){
 			mEmpTeki++;
 			if( mEmpTeki == EMP_UP ){
 				mEmpTeki = 0;
-				mEmp += 1;
-				//SE
-				if( mEmp < EMP_MAX )
-					GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_enpacy_up.wav");
+				RestoreEmpacy(1);
 			}
-			if( mEmp > EMP_MAX ) mEmp = EMP_MAX;
 		}
 
 }
@@ -408,7 +405,7 @@ void Jiki::EnableCollision()
 }
 
 /*
-	ヒロインを演出モードにする (停止)
+	ヒロインを演�?モードにする (停止)
 */
 void Jiki::SetSuperWait(float rTime)
 {
@@ -420,7 +417,7 @@ void Jiki::SetSuperWait(float rTime)
 }
 
 /*
-	ヒロインを操作モードにする (普通)
+	ヒロインを操作モードにする (普�?
 */
 void Jiki::SetSuperControl()
 {
@@ -447,26 +444,16 @@ void Jiki::SetSuperPause()
 void Jiki::Move()
 {
 
-	//-------------------------------------------------------------------------------------------------
-	////ﾃﾞﾊﾞｯｸﾞ
-	//	if( GAMECONTROL->GetDXController()->KeyPush( DIK_T ) )	mTen = TEN_MAX;	//Tはﾃﾝｼｮﾝ
-	//	if( GAMECONTROL->GetDXController()->KeyPush( DIK_E ) )	mEmp--;			//Eはｴﾝﾊﾟｼｰ
-	//	if( GAMECONTROL->GetDXController()->KeyPush( DIK_L ) )	mLife--;		//Lはﾗｲﾌ
-	//if( GAMECONTROL->GetDXController()->KeyPush( DIK_G ) )	GAMECONTROL->GetEventManager()->Request(new GameOverEvt());
-
-	//-------------------------------------------------------------------------------------------------
-
-
-	//ﾏｯﾌﾟとの当たり判定
+	//?�ｯ?�ﾟとの当たり判�?
 	MapAtHt();
 	
-	//ｱﾆﾒｰｼｮﾝ
+	//?�??��ｰ?�?�??
 	int	no;
 	bool dosa_end = false;
 
 	mAniNoY = mStatus;
 
-	// チェインに反映させる(歩きと攻撃のみ)
+	// チェインに反映させ�?歩きと攻�??み)
 	float mfactor = 1.0f;
 	if( mStatus == KOGEKI || mStatus == KOGEKI_END || mStatus == KOGEKI_START ||
 		mStatus == WALK || mStatus == HANTEN )
@@ -488,7 +475,7 @@ void Jiki::Move()
 	no = sAniData[mAniNoY][mAniNoX];
 	mAniTeishi	= false;
 
-	//ｴﾌｪｸﾄのｱﾆﾒｰｼｮﾝ
+	//?�?�ｪ?�????�??��ｰ?�?�??
 	if( mStatus == KOGEKI_STAN && mAniNoX > 2 ){
 		WAIT_TIMER(mStanTimer, STAN_ANI)
 			mStanTimer = 0;
@@ -497,7 +484,7 @@ void Jiki::Move()
 		WAIT_END
 	}
 
-	// スーパーステータス
+	// スーパ�?ス�??タス
 	switch( mSuperStatus ){
 		case WAIT:
 			{
@@ -505,7 +492,7 @@ void Jiki::Move()
 				mSpX = 0;
 				mAccX = 0;
 
-				// タイマー
+				// タイマ�?
 				mSuperWaitTimer -= SP->FrameTime;
 				if( mSuperWaitTimer < 0 ){
 					mSuperWaitTimer = 0;
@@ -522,20 +509,20 @@ void Jiki::Move()
 			}
 		case CONTROL:
 			{
-				//ｽﾃｰﾀｽ
+				//?�??��??��
 				switch( mStatus ){
 
-					//歩き
+					//歩�?
 					case WALK :
 						mSpX = SPWALK*sChainMultSp[mChainIdx] * GetMukiMult();
 						break;
 
 
-						//攻撃(ﾗｲﾄ赤)
+						//攻�??�ｲ??��)
 					case KOGEKI_START :
 						mSpX = SPWALK*sChainMultSp[mChainIdx] * GetMukiMult();
 						mAccX = 0;
-						//開始ｱﾆﾒｰｼｮﾝが終わったら攻撃へ
+						//開始ｱ??��ｰ?�?�?�が終わったら攻�?��
 						if( dosa_end ){
 							mStatus = KOGEKI;
 							//SE
@@ -552,16 +539,16 @@ void Jiki::Move()
 						mAkaTimer2 += SP->FrameTime;
 						mSpX = 0;
 						mAccX = 0;
-						//ｱﾆﾒｰｼｮﾝ++を停止
+						//?�??��ｰ?�?�??+を停止
 						if( mAniNoX == 4 ) mAniTeishi = true;
-						//歩きに戻す
+						//歩きに戻�?
 						if( mAkaTimer2 >= STAN_TIME ){
 							mStatus = WALK;
 						}
 						break;
 
 
-						//停止・反転(ﾗｲﾄ青)
+						//停止・反転(?�ｲ??��)
 					case TEISHI :
 						mSpX = 0;
 						mAccX = 0;
@@ -570,7 +557,7 @@ void Jiki::Move()
 					case HANTEN :
 						mSpX = 0;
 						mAccX = 0;
-						//反転ｱﾆﾒｰｼｮﾝが終わったら向きを変えて歩きへ
+						//反転?�??��ｰ?�?�?�が終わったら向きを変えて歩きへ
 						if( dosa_end ){
 							mMuki = !mMuki;
 							mStatus = WALK;
@@ -578,15 +565,15 @@ void Jiki::Move()
 						break;
 
 
-						//ｼﾞｬﾝﾌﾟ(ﾗｲﾄ緑)
+						//?�?�ｬ?�ﾌ�??�ｲ??�?
 					case JUMP_START :
-						// 足場に乗っている場合は、まず降りる
+						// 足場に乗って�?��場合�?、まず降りる
 						if(mCurAshiba) mCurAshiba->GetOff(this);
 						mCurAshiba = NULL;
 
 						mSpX = 0;
 						mAccX = 0;
-						//開始ｱﾆﾒｰｼｮﾝが終わったらｼﾞｬﾝﾌﾟへ
+						//開始ｱ??��ｰ?�?�?�が終わったら?�?�ｬ?�ﾌﾟへ
 						if( dosa_end ){
 							mSpY = JUMP_SHOSP*sChainMultShoSp[mChainIdx];
 							mStatus = JUMP_UP;
@@ -594,10 +581,10 @@ void Jiki::Move()
 						break;
 
 					case JUMP_UP :
-						//前が当たってない時のX
+						//前が当たってな�?��のX
 						if( mHitFl[2] == SP->CHIP_NOHIT )
 							mSpX = SPWALK * sChainMultSp[mChainIdx] * GetMukiMult();
-						//ｱﾆﾒｰｼｮﾝ++を停止
+						//?�??��ｰ?�?�??+を停止
 						if( mAniNoX == 2 ) mAniTeishi = true;
 						//頂点に達したら落下へ
 						if( mSpY >= 0 ){
@@ -607,22 +594,22 @@ void Jiki::Move()
 						break;
 
 					case JUMP_DOWN :
-						//前が当たってない時のX
+						//前が当たってな�?��のX
 						if( mHitFl[2] == SP->CHIP_NOHIT ){
 							mSpX = SPWALK * GetMukiMult();
 						}
-						//ｱﾆﾒｰｼｮﾝ++を停止
+						//?�??��ｰ?�?�??+を停止
 						if( mAniNoX == 2 ) mAniTeishi = true;
 						break;
 
 
-						//ﾄﾞﾘﾙｷｯｸ
+						//??��ﾘﾙｷ?�?�
 					case DRILL_START :
 						if( mDrillFl == 2 ){
 							mSpX = DRILL_SP * GetMukiMult();
 							mSpY = DRILL_SP;
 						}
-						//開始ｱﾆﾒｰｼｮﾝが終わったらﾄﾞﾘﾙｷｯｸへ
+						//開始ｱ??��ｰ?�?�?�が終わったら??��ﾘﾙｷ?�?�へ
 						if( dosa_end ){
 							mStatus = DRILL;
 						}
@@ -636,7 +623,7 @@ void Jiki::Move()
 						break;
 
 
-						//浮遊
+						//浮�?
 					case FUYU :
 						mSpX = 0;
 						mAccX = 0;
@@ -645,17 +632,17 @@ void Jiki::Move()
 						break;
 
 
-						//ﾀﾞﾒｰｼﾞ
+						//??��ﾒｰ?�??
 					case DAMAGE :
 						mDgMapFl = true;
-						//後が当たってない時のX
+						//後が当たってな�?��のX
 						if( mHitFl[3] != SP->CHIP_HIT && mHitFl[3] != SP->CHIP_GMNGAIRT && 
 							mHitFl[3] != SP->CHIP_GMNGAILT && mHitFl[3] != SP->CHIP_KGHIT )
 							mSpX = SPWALK * -GetMukiMult();
 						if( mAniNoX == 1 ){
 							mAniTeishi = true;
 							// SE
-							if( !mDmSE ){//ｴﾝﾊﾟｼｰが減る
+							if( !mDmSE ){//?�?�ﾊﾟｼ?�が減る
 								WAIT_TIMER( mDmSETimer, 0.2 )
 								GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_hiroin_damage.wav");
 								mDmSE = true;
@@ -670,7 +657,7 @@ void Jiki::Move()
 						mAccX = 0;
 						mDmSE = false;
 						mDmSETimer = 0;
-						//終了ｱﾆﾒｰｼｮﾝが終わったら歩きへ
+						//終�?��??��ｰ?�?�?�が終わったら歩きへ
 						if( mGmOvFl == 0 ){
 							if( dosa_end ){
 								mStatus = WALK;
@@ -686,7 +673,7 @@ void Jiki::Move()
 						break;
 
 
-						//終了動作
+						//終�?���?
 					case KOGEKI_END :
 					/*	mSpX = SPWALK*sChainMultSp[mChainIdx] * GetMukiMult();
 						mAccX = 0;
@@ -697,7 +684,7 @@ void Jiki::Move()
 
 					case JUMP_END :
 					case DRILL_END :
-						//歩きに戻す
+						//歩きに戻�?
 						mSpX = 0;
 						mAccX = 0;
 						if( dosa_end ){
@@ -706,22 +693,22 @@ void Jiki::Move()
 						break;
 
 
-						//必殺技
+						//�?���?
 					case HISATU :
 						{
 						mHisatuTime += SP->FrameTime;
 
-						//ﾗｲﾄの速度減少
+						//?�ｲ???速度減�?
 						CONTROLLIGHT->SetSpX( GAMECONTROL->GetDXController()->GetMouseState().lX / HISATU_LTSP );
 						CONTROLLIGHT->SetSpY( GAMECONTROL->GetDXController()->GetMouseState().lY / HISATU_LTSP );
 
-						//ｽｸﾛｰﾙをﾗｲﾄと統一
+						//?�?�?�ｰ?�を?�ｲ??��統�?
 						int scpx = GAMECONTROL->GetStageManager()->GetCurScrollPointer();
 
 						mHsX = CONTROLLIGHT->GetX() - HERSIZE/2;
 						mHsY = CONTROLLIGHT->GetY() - HERSIZE/2;
 
-						//ﾋﾛｲﾝの移動
+						//?�ﾛｲ?��?移�?
 						float sax = mHsX - (mX- scpx);
 						float say = mHsY - mY;
 
@@ -739,21 +726,21 @@ void Jiki::Move()
 						if( mSpY > GF("HISATSU_MAXSP") ) mSpY = GF("HISATSU_MAXSP");
 						if( mSpY < -GF("HISATSU_MAXSP") ) mSpY = -GF("HISATSU_MAXSP");
 
-						//ﾋﾛｲﾝの向き
+						//?�ﾛｲ?��?向き
 						if( mSpX < 0 ){
-							mMuki = 0;//←
+							mMuki = 0;//�?
 						}
 						if( mSpX >= 0 ){
-							mMuki = 1;//→
+							mMuki = 1;//�?
 						}
 
-						//当たり判定…
+						//当たり判定�?
 						GAMECONTROL->GetStageManager()->GetCurMap()->SuperAtariHantei(
 						mX, mY, mMuki, mSpX, mSpY, mAccX, mAccY, sHitX[0], sHitY[0], HERSIZE, HERSIZE, mHitFl, mKabeIchi);
 						if( mHitFl[2] == SP->CHIP_HIT || mHitFl[2] == SP->CHIP_GMNGAIRT || 
 							mHitFl[2] == SP->CHIP_GMNGAILT || mHitFl[2] == SP->CHIP_KGHIT){
 								if( mSpX * -GetMukiMult() < 0 ) {
-									mSpX = 0;//前
+									mSpX = 0;//�?
 									mAccX = 0;
 									if( mMuki ){
 										mX = mKabeIchi[2] - sHitX[0][2][0];
@@ -764,23 +751,27 @@ void Jiki::Move()
 								}
 						}
 						if( mHitFl[0] == SP->CHIP_AMHIT || mHitFl[0] == SP->CHIP_KGHIT ){
-							if( mSpY > 0 ) mSpY = 0;//下
+							if( mSpY > 0 ) mSpY = 0;//�?
 						}
 						if( mHitFl[1] == SP->CHIP_HIT || mHitFl[1] == SP->CHIP_KGHIT ){
 							if( mSpY < 0 ) {
-								mSpY = 0;//上
+								mSpY = 0;//�?
 								mAccY = 0;
 								mY = mKabeIchi[1] - sHitY[0][1][0];
 							}
 						}
 
 
-						//時間がきたら終了
+						//時間がきたら終�?
 						if( mHisatuTime > HISATU_TIME ){
 							GAMECONTROL->GetFader()->SetSpeed( 0.03 );
 							GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
 							GAMECONTROL->GetSoundController()->SetBGM(GAMECONTROL->GetStageManager()->GetCurrentStage()->GetBGM());
-							//必殺技終了ﾌｪｰﾄﾞ
+							if( !mHisatuSE ){//SE
+								GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_hiroin_hissatu_end.wav");
+								mHisatuSE = true;
+							}
+							//�?���?���?��ｪ?�??�?
 							if( !mFadeFl2  && GAMECONTROL->GetFader()->FadeOut() ){
 								mHisatuTime = 0;
 								mStatus = JUMP_DOWN;
@@ -789,13 +780,14 @@ void Jiki::Move()
 								mSpX = SPWALK * -GetMukiMult();
 								mTen	 =	0;
 								mEmpTeki = 0;
-								//ﾗｲﾄの速度戻す
+								//?�ｲ???速度戻�?
 								CONTROLLIGHT->SetSpX( GAMECONTROL->GetDXController()->GetMouseState().lX );
 								CONTROLLIGHT->SetSpY( GAMECONTROL->GetDXController()->GetMouseState().lY );
 								//l->TurnOff();
 								mDgMapFl   = false;
 								mDgMutekiFl = 0;
 								mFadeFl2 = true;
+								mHisatuSE = false;
 							}
 						}
 
@@ -823,33 +815,33 @@ void Jiki::Move()
 
 							Stage* curStage = GAMECONTROL->GetStageManager()->GetCurrentStage();
 
-							// ﾋﾛｲﾝの位置をチェックポイントに調整
+							// ?�ﾛｲ?��?位置をチェ�?��ポイントに調整
 							int restorePointX = curStage->GetCheckpointController()->GetStartPointX(mX + HERSIZE/2);
 							int restorePointY = curStage->GetCheckpointController()->GetStartPointY(mX + HERSIZE/2);
 							GAMECONTROL->GetStageManager()->GetCurMap()->SetScrollP( restorePointX - GI("SCRSZX")/2);
 							mY = restorePointY - HERSIZE;
 							mX = restorePointX - HERSIZE/2;
 
-							// 透明にする
+							// 透�?にする
 							SetTransparent(true);
 
-							// 当たり判定を有効に戻す
+							// 当たり判定を有効に戻�?
 							EnableCollision();
 
-							// ﾗｲﾄ操作を戻す
+							// ?�ｲ??��作を戻�?
 							SetLightResponse(true);
 
-							// テンションとエンパシーをリセット
+							// �?��ションとエンパシーをリセ�?��
 							ResetEmpacy();
 							ResetTension();
 
-							// 現在出てるものを全部消す
+							// 現在出てるものを�?部消す
 							GAMECONTROL->GetEventManager()->Request(new ResetMobEvt());
 
-							// 敵を復活地に従って復活させる
+							// 敵を復活地に従って復活させ�?
 							GAMECONTROL->GetEventManager()->Request(new RestoreTekiAfterCheckpoint( mX + HERSIZE/2 ));
 
-							//制限時間ﾘｾｯﾄ
+							//制限時間ﾘｾ?�??
 							GAMECONTROL->GetStageManager()->GetCurrentStage()->GetSeigenJikan()->SeigenJikanReset();
 						}
 						break;
@@ -870,16 +862,16 @@ void Jiki::Move()
 		}
 	}
 
-	//ﾌｪｰﾄﾞ
+	//?�ｪ?�??�?
 	Fade();
 
-	//SEﾙｰﾌﾟ終了
+	//SE?�ｰ?�ﾟ終�?
 	if( mStatus != KOGEKI )
 		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_hiroin_tijoukougeki.wav");
 	if( mStatus != DRILL && mStatus != DRILL_START )
 		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_hiroin_kuutyuukougeki.wav");
 
-	//ﾀﾞﾒｰｼﾞ
+	//??��ﾒｰ?�??
 	if( mDgMutekiFl == 2 ){
 		mDamageTimer += SP->FrameTime;
 		//mTenmetuTimer += SP->FrameTime;
@@ -893,9 +885,9 @@ void Jiki::Move()
 	}
 
 
-	//移動
+	//移�?
 	if( (mStatus != HISATU && mStatus != TEISHI) || mSuperStatus != CONTROL)
-		mSpY += mAccY;//常に重力が代入されている
+		mSpY += mAccY;//常に重力が代入されて�?��
 	
 	if( !(mHitFl[2]==SP->CHIP_GMNGAILT || mHitFl[2]==SP->CHIP_GMNGAIRT|| mHitFl[2]==SP->CHIP_HIT ||
 		mHitFl[3]==SP->CHIP_GMNGAILT || mHitFl[3]==SP->CHIP_GMNGAIRT || mHitFl[3]==SP->CHIP_HIT )) 
@@ -915,12 +907,12 @@ void Jiki::Move()
 		//	mX += mCurAshiba->GetSpX();
 		//}
 
-	//ｱﾆﾒｰｼｮﾝno更新
+	//?�??��ｰ?�?�?�no更新
 	mAniNoY = mStatus;
 	no = sAniData[mAniNoY][mAniNoX];
 
 
-	//描画(点滅)
+	//描画(点�?
 	int scr = (int)(GAMECONTROL->GetStageManager()->GetCurScrollPointer());
 	/*if( mTenmetuTimer > TENMETU_TIME ){
 		if( mTenmetuTimer > TENMETU_TIME*2 ) mTenmetuTimer = 0;
@@ -936,7 +928,7 @@ void Jiki::Move()
 	collisionFrames();
 	Gameover();
 
-	//SE(ﾃﾝｼｮﾝ)
+	//SE(??��ｼ?�??
 	if( mTen >= TEN_MAX ){
 		if( !mTenSE ){
 			mTenSE = true;
@@ -953,7 +945,7 @@ void Jiki::Move()
 
 
 /*
-	ﾗｲﾄとの当たり判定
+	?�ｲ??��の当たり判�?
 */
 int Jiki::GetAtHtPointX()
 {
@@ -971,17 +963,17 @@ bool Jiki::GetMuki()
 }
 
 /*
-	ﾗｲﾄの処理
+	?�ｲ???処�?
 */
-void Jiki::ResponseAka()//---------------------ﾗｲﾄ赤
+void Jiki::ResponseAka()//---------------------?�ｲ??��
 {
 
-	UnTeishi();//歩き再開
+	UnTeishi();//歩き�?�?
 	AoCheck();//反転
 
-	Hisatu();//必殺技
+	Hisatu();//�?���?
 
-	//攻撃
+	//攻�?
 	if( mStatus == WALK ){
 		mStatus = KOGEKI_START;
 		mSpX	= 0;
@@ -991,7 +983,7 @@ void Jiki::ResponseAka()//---------------------ﾗｲﾄ赤
 
 	mAkaTimer += SP->FrameTime;
 
-	//強制終了
+	//強制終�?
 	if( mAkaTimer > END_TIME && mStatus == KOGEKI ){
 		mAkaTimer = 0;
 		mAkaTimer2 = 0;
@@ -1001,8 +993,8 @@ void Jiki::ResponseAka()//---------------------ﾗｲﾄ赤
 	}
 
 
-	//ﾄﾞﾘﾙｷｯｸ
-	if( mDrillFl == 1 ){//１回のｼﾞｬﾝﾌﾟに一度しか使えません
+	//??��ﾘﾙｷ?�?�
+	if( mDrillFl == 1 ){//?�回の?�?�ｬ?�ﾌﾟに�?��しか使えません
 		if( mY+HERSIZE <= mHozonY-DRILL_HEIGTH && mMidFl ){
 			if( mStatus == JUMP_UP || mStatus == JUMP_DOWN ){
 				mDrillFl = 2;
@@ -1016,9 +1008,9 @@ void Jiki::ResponseAka()//---------------------ﾗｲﾄ赤
 			}
 		}
 	}
-	MidCheck();//ｼﾞｬﾝﾌﾟ
+	MidCheck();//?�?�ｬ?�ﾌ�?
 
-	//ﾃﾝｼｮﾝ
+	//??��ｼ?�??
 	if( !mTenFl ){
 		mTenFl = !mTenFl;
 		mTenTime = 0;
@@ -1027,13 +1019,13 @@ void Jiki::ResponseAka()//---------------------ﾗｲﾄ赤
 
 }
 
-void Jiki::ResponseAo()//----------------------ﾗｲﾄ青
+void Jiki::ResponseAo()//----------------------?�ｲ??��
 {
 
-	AkaCheck();//攻撃
-	MidCheck();//ｼﾞｬﾝﾌﾟ
+	AkaCheck();//攻�?
+	MidCheck();//?�?�ｬ?�ﾌ�?
 
-	Hisatu();//必殺技
+	Hisatu();//�?���?
 
 	//停止
 	if( mStatus == WALK ){
@@ -1044,18 +1036,18 @@ void Jiki::ResponseAo()//----------------------ﾗｲﾄ青
 
 	mAoTimer += SP->FrameTime;
 
-	//浮遊
+	//浮�?
 	if( mStatus == JUMP_DOWN ){
 		mStatus = FUYU;
 		mAniNoX = 0;
 		mMidFl	= false;
 	}
 
-	//ﾄﾞﾘﾙｷｯｸは１回のｼﾞｬﾝﾌﾟに一度しか使えません
+	//??��ﾘﾙｷ?�?�は?�回の?�?�ｬ?�ﾌﾟに�?��しか使えません
 	if( mDrillFl == 1 )
 		mDrillFl  = 0;
 
-	//ﾃﾝｼｮﾝ
+	//??��ｼ?�??
 	if( !mTenFl ){
 		mTenFl = !mTenFl;
 		mTenTime = 0;
@@ -1064,23 +1056,23 @@ void Jiki::ResponseAo()//----------------------ﾗｲﾄ青
 
 }
 
-void Jiki::ResponseMidori()//------------------ﾗｲﾄ緑
+void Jiki::ResponseMidori()//------------------?�ｲ??�?
 {
 
-	UnTeishi();//歩き再開
-	AkaCheck();//攻撃
+	UnTeishi();//歩き�?�?
+	AkaCheck();//攻�?
 	AoCheck();//反転
 
-	Hisatu();//必殺技
+	Hisatu();//�?���?
 
-	//ｼﾞｬﾝﾌﾟ
+	//?�?�ｬ?�ﾌ�?
 	if( mStatus == WALK ){
 		mStatus = JUMP_START;
 		mAniNoX = 0;
 		mMidTimer = 0;
 		//SE
 		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_hiroin_junp.wav");
-		//１回のｼﾞｬﾝﾌﾟに一度しか使えません
+		//?�回の?�?�ｬ?�ﾌﾟに�?��しか使えません
 		if( mDrillFl == 0 )
 			mDrillFl  = 1;
 	}
@@ -1089,7 +1081,7 @@ void Jiki::ResponseMidori()//------------------ﾗｲﾄ緑
 	mMidFl	= true;
 
 	
-	//ﾃﾝｼｮﾝ
+	//??��ｼ?�??
 	if( !mTenFl ){
 		mTenFl = !mTenFl;
 		mTenTime = 0;
@@ -1098,17 +1090,17 @@ void Jiki::ResponseMidori()//------------------ﾗｲﾄ緑
 
 }
 
-void Jiki::ResponseMushoku()//-----------------ﾗｲﾄ無色
+void Jiki::ResponseMushoku()//-----------------?�ｲ??��色
 {
 
-	UnTeishi();//歩き再開
-	AkaCheck();//攻撃
+	UnTeishi();//歩き�?�?
+	AkaCheck();//攻�?
 	AoCheck();//反転
-	MidCheck();//ｼﾞｬﾝﾌﾟ
+	MidCheck();//?�?�ｬ?�ﾌ�?
 
-	Hisatu();//必殺技
+	Hisatu();//�?���?
 
-	//ﾃﾝｼｮﾝ
+	//??��ｼ?�??
 	if( !mTenFl ){
 		mTenFl = !mTenFl;
 		mTenTime = 0;
@@ -1117,15 +1109,15 @@ void Jiki::ResponseMushoku()//-----------------ﾗｲﾄ無色
 
 }
 
-void Jiki::NoLight()//-------------------------ﾗｲﾄなし
+void Jiki::NoLight()//-------------------------?�ｲ??���?
 {
 
-	UnTeishi();//歩き再開
-	AkaCheck();//攻撃
+	UnTeishi();//歩き�?�?
+	AkaCheck();//攻�?
 	AoCheck();//反転
-	MidCheck();//ｼﾞｬﾝﾌﾟ
+	MidCheck();//?�?�ｬ?�ﾌ�?
 
-	//ﾃﾝｼｮﾝ
+	//??��ｼ?�??
 	if( mTenFl ){
 		mTenFl = !mTenFl;
 		mTenTime = 0;
@@ -1135,14 +1127,14 @@ void Jiki::NoLight()//-------------------------ﾗｲﾄなし
 
 
 /*
-	ﾗｲﾄの処理(その他)
+	?�ｲ???処�?そ�?�?
 */
 
-//必殺技
+//�?���?
 void	Jiki::Hisatu()
 {
 
-	//ﾃﾝｼｮﾝMAX＆ｽﾍﾟｰｽ押しで必殺技
+	//??��ｼ?�?�MAX??��?�ﾟｰ?�押しで�?���?
 	if( mStatus == WALK ){
 		if( GAMECONTROL->GetDXController()->KeyPush( DIK_SPACE ) &&
 				mTen >= TEN_MAX ){
@@ -1160,27 +1152,27 @@ void	Jiki::Hisatu()
 
 }
 
-//攻撃状態から終了動作へ(ﾗｲﾄ赤)
+//攻�?��態から終�?��作へ(?�ｲ??��)
 void Jiki::AkaCheck(){
 	
-	//攻撃
+	//攻�?
 	if( mStatus == KOGEKI ){
 		mAkaTimer = 0;
 		mAniNoX   = 0;
 		mStatus   = KOGEKI_END;
 	}
 
-	//ﾄﾞﾘﾙｷｯｸ
+	//??��ﾘﾙｷ?�?�
 	if( mStatus == DRILL ){
 		mAniNoX   = 0;
 		mStatus   = JUMP_DOWN;
 	}
 }
 
-//反転ﾁｪｯｸ(ﾗｲﾄ青)
+//反転??��?�?�(?�ｲ??��)
 void Jiki::AoCheck()
 {
-	//HANTEN_TIME以内で反転
+	//HANTEN_TIME以�?��反転
 	if( mAoTimer <= HANTEN_TIME && mAoTimer > 0.0f && mStatus == WALK ){
 		Hanten();
 	}
@@ -1188,7 +1180,7 @@ void Jiki::AoCheck()
 		mAoTimer = 0;
 	}
 
-	//浮遊
+	//浮�?
 	if( mStatus == FUYU ){
 		mAniNoX   = 0;
 		mStatus   = JUMP_DOWN;
@@ -1196,7 +1188,7 @@ void Jiki::AoCheck()
 
 }
 
-//停止状態から歩き状態に戻す(ﾗｲﾄ青)
+//停止状態から歩き状態に戻�??�ｲ??��)
 void	Jiki::UnTeishi()
 {
 	if( mStatus == TEISHI && mFadeFl != 1 ){
@@ -1206,7 +1198,7 @@ void	Jiki::UnTeishi()
 
 }
 
-//ｼﾞｬﾝﾌﾟから着地動作へ(ﾗｲﾄ緑)
+//?�?�ｬ?�ﾌﾟから着地動作へ(?�ｲ??�?
 void	Jiki::MidCheck()
 {
 	if( mStatus == JUMP_UP ){
@@ -1217,7 +1209,7 @@ void	Jiki::MidCheck()
 
 
 /*
-	ﾋﾛｲﾝの向き( + or - )
+	?�ﾛｲ?��?向き( + or - )
 */
 int		Jiki::GetMukiMult()
 {
@@ -1228,15 +1220,15 @@ int		Jiki::GetMukiMult()
 }
 
 /*
-	ﾏｯﾌﾟとの当たり判定
+	?�ｯ?�ﾟとの当たり判�?
 */
 void	Jiki::MapAtHt()
 {
 	GAMECONTROL->GetStageManager()->GetCurMap()->SuperAtariHantei(
 		mX, mY, mMuki, mSpX, mSpY, mAccX, mAccY, sHitX[0], sHitY[0], HERSIZE, HERSIZE, mHitFl, mKabeIchi);
 
-	//当たり判定、対応--------------------------------
-	if( (mHitFl[0] == SP->CHIP_AMHIT && mSpY >= 0) || mHitFl[0] == SP->CHIP_KGHIT || mCurAshiba ){//下
+	//当たり判定�?対�?-------------------------------
+	if( (mHitFl[0] == SP->CHIP_AMHIT && mSpY >= 0) || mHitFl[0] == SP->CHIP_KGHIT || mCurAshiba ){//�?
 		if(!mCurAshiba && mHitFl[0] != SP->CHIP_KGHIT) mY = (float)mKabeIchi[0] - sHitY[0][0][0];
 		mSpY = 0;
 		mAccY = 0;
@@ -1244,24 +1236,24 @@ void	Jiki::MapAtHt()
 		mMidFl	= false;
 		mHozonY = mY+HERSIZE;
 		switch( mStatus ){
-			case JUMP_DOWN ://ｼﾞｬﾝﾌﾟ
+			case JUMP_DOWN ://?�?�ｬ?�ﾌ�?
 				mStatus = JUMP_END;
 				mAniNoX = 0;
 				break;
 
-			case DRILL ://ﾄﾞﾘﾙ
+			case DRILL ://??��ﾘ�?
 			case DRILL_START:
 				mStatus = DRILL_END;
 				mAniNoX = 0;
 				break;
 
-			case FUYU://浮遊
+			case FUYU://浮�?
 				mStatus = TEISHI;
 				mAniNoX = 0;
 				mAoTimer = 0;
 				break;
 
-			case DAMAGE://ﾀﾞﾒｰｼﾞ
+			case DAMAGE://??��ﾒｰ?�??
 				if( mDgMapFl ){
 					mStatus = DAMAGE_END;
 					mAniNoX = 0;
@@ -1271,16 +1263,16 @@ void	Jiki::MapAtHt()
 		}
 
 	} else {
-		//必殺技中以外は常に重力
+		//�?���?��以外�?常に重力
 		if( mStatus != HISATU )	mAccY = SP->GRAVITY;
-		//下の当たり判定なし→落下
+		//下�?当たり判定なし�?落�?
 		if( mStatus == WALK ){
 			mStatus = JUMP_DOWN;
 			mAniNoX = 0;
 		}
 	}	
 
-	if( mHitFl[1] == SP->CHIP_HIT || mHitFl[1] == SP->CHIP_KGHIT ){  //上
+	if( mHitFl[1] == SP->CHIP_HIT || mHitFl[1] == SP->CHIP_KGHIT ){  //�?
 		switch( mStatus ){
 			case JUMP_UP :
 			case DRILL:
@@ -1298,17 +1290,17 @@ void	Jiki::MapAtHt()
 	}
 
 	if( mHitFl[2] == SP->CHIP_HIT || mHitFl[2] == SP->CHIP_GMNGAIRT 
-		|| mHitFl[2] == SP->CHIP_GMNGAILT || mHitFl[2] == SP->CHIP_KGHIT){//前
+		|| mHitFl[2] == SP->CHIP_GMNGAILT || mHitFl[2] == SP->CHIP_KGHIT){//�?
 		switch( mStatus ){
 			case JUMP_UP :
-			case JUMP_DOWN ://ｼﾞｬﾝﾌﾟ中
+			case JUMP_DOWN ://?�?�ｬ?�ﾌﾟ中
 			case FUYU :
 					mSpX = 0;
 					mAccX = 0;
 				break;
 
 			case DRILL_START :
-			case DRILL ://ﾄﾞﾘﾙ中
+			case DRILL ://??��ﾘﾙ中
 				mDrillFl = 0;
 				mSpX = 0;
 				mAccX = 0;
@@ -1319,7 +1311,7 @@ void	Jiki::MapAtHt()
 				break;
 
 
-			//case DAMAGE ://ﾀﾞﾒｰｼﾞ
+			//case DAMAGE ://??��ﾒｰ?�??
 			//	if( mDgMapFl ){
 			//		Hanten();
 			//	}
@@ -1335,9 +1327,9 @@ void	Jiki::MapAtHt()
 	}	
 
 	if( mHitFl[3] == SP->CHIP_HIT || mHitFl[3] == SP->CHIP_GMNGAIRT || 
-		mHitFl[3] == SP->CHIP_GMNGAILT|| mHitFl[3] == SP->CHIP_KGHIT) {//後
+		mHitFl[3] == SP->CHIP_GMNGAILT|| mHitFl[3] == SP->CHIP_KGHIT) {//�?
 		switch( mStatus ){
-			case DAMAGE://ﾀﾞﾒｰｼﾞ
+			case DAMAGE://??��ﾒｰ?�??
 			if( mDgMapFl ){
 				mSpX = 0;
 				mAccX = 0;
@@ -1348,7 +1340,7 @@ void	Jiki::MapAtHt()
 	}
 
 
-	//攻撃判定のﾏｯﾌﾟ(ﾀﾞﾒｰｼﾞ)
+	//攻�?��定�??�ｯ?��???��ﾒｰ?�??
 	for( int i=0; i < 4; i++ ){
 		if( mHitFl[i] == SP->CHIP_KGHIT && mStatus != HISATU ){
 			InflictDamage();
@@ -1358,7 +1350,7 @@ void	Jiki::MapAtHt()
 
 }
 
-//反転動作に入る
+//反転動作に入�?
 void	Jiki::Hanten()
 {
 	if( mStatus != HANTEN && mStatus != HISATU && mStatus != DAMAGE && mStatus != DAMAGE_END && 
@@ -1369,7 +1361,7 @@ void	Jiki::Hanten()
 	}
 }
 
-// 歩き中の場合反転します。　空中の場合、Xを軸にして跳ね返ります。
+// 歩き中の場合反転します�?�?��中の場合�?Xを軸にして跳ね返ります�?
 void	Jiki::HantenOrRebound()
 {
 	switch( mStatus ){
@@ -1395,19 +1387,19 @@ void	Jiki::HantenOrRebound()
 
 
 /*
-	敵との当たり判定用ﾌﾚｰﾑ
+	敵との当たり判定用?�ﾚｰ??
 */
 void	Jiki::collisionFrames(){
 
 	if( !collisionEnabled ) return;
 
-	//ﾃﾞﾊﾞｯｸﾞ
+	//??��ﾊﾞｯ?�??
 	if(mDrawer){
 		mDrawer->SetCollision(pCollision->GetCurFrame());
 		mDrawer->Draw();
 	}
 
-	//当たり判定のﾌﾚｰﾑ
+	//当たり判定�??�ﾚｰ??
 	switch(mStatus){
 
 		case WALK:
@@ -1458,45 +1450,41 @@ void Jiki::CollisionResponse(ICollidable* rCollObject, int rThisGroupId, int rOp
 
 }
 /*
-	ﾗｲﾄでのﾃﾝｼｮﾝ増減
+	?�ｲ??��の??��ｼ?�?�増�?
 */
 void	Jiki::Tension()
 {
 
 	mTenTime += SP->FrameTime;
 
-	//必殺技中ｼﾞｮｼﾞｮにﾃﾝｼｮﾝが下がっていく
+	//�?���?��?�?�ｮ?�?�ｮに??��ｼ?�?�が下がって�?��
 	if( mStatus == HISATU ){
 		mTenTime = 0;
 		mTen -= ( TEN_MAX/HISATU_TIME ) *SP->FrameTime/2;
 	}else{
-	//ﾃﾝｼｮﾝ増
+	//??��ｼ?�?��?
 		if(	mTenFl ) {
 			if( mTenTime > TEN_UTIME ){
 				mTenTime = 0;
-				mTen += TEN_UP1;
+				RestoreTension(TEN_UP1);
 			}
 		}else{
-		//ﾃﾝｼｮﾝ減
+		//??��ｼ?�?��?
 			if( mTenTime > TEN_DTIME ){
 				mTenTime = 0;
 				mTen -= TEN_DOWN1;
 			}
 		}
 	}
-
-	if( mTen < 0 ) mTen = 0;
-	if( mTen > TEN_MAX ) mTen = TEN_MAX;
-
 }
 
 /*
-	ﾌｪｰﾄﾞ処理
+	?�ｪ?�??���?�?
 */
 void	Jiki::Fade()
 {
 
-	//必殺技開始ﾌｪｰﾄﾞ
+	//�?���?��始ﾌｪ?�??�?
 	if( mFadeFl == 1 ){
 		mChargeFx = new ChargeEffect(mX+HERSIZE/2, mY+HERSIZE/2);
 		SetSuperPause();
@@ -1515,7 +1503,7 @@ void	Jiki::Fade()
 		GAMECONTROL->GetSoundController()->SetBGM(SoundController::HISATU);
 	}
 
-	//必殺技終了ﾌｪｰﾄﾞ
+	//�?���?���?��ｪ?�??�?
 	if( mFadeFl2  && GAMECONTROL->GetFader()->FadeIn() ){
 		mFadeFl2 = false;
 		GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOn();
@@ -1529,7 +1517,7 @@ void	Jiki::Fade()
 
 }
 /*
-	ｹﾞｰﾑｵｰﾊﾞｰ
+	?�?�ｰ?�ｵ?�?�ﾞｰ
 */
 void	Jiki::Gameover()
 {
@@ -1540,8 +1528,6 @@ void	Jiki::Gameover()
 			GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
 			//BGM
 			GAMECONTROL->GetSoundController()->PauseBGM();
-			//SE
-//			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\st1_boss_a.wav");
 		}
 		GAMECONTROL->GetMaku()->Close();
 	}
@@ -1552,7 +1538,7 @@ void	Jiki::Gameover()
 
 }
 /*
-	ﾋﾛｲﾝを歩き状態に戻す
+	?�ﾛｲ?�を歩き状態に戻�?
 */
 void	Jiki::HrWalk()
 {
@@ -1564,7 +1550,7 @@ void	Jiki::HrWalk()
 }
 
 /*
-	残機一個減る、0の場合はゲームオーバー
+	残機�??減る�?の場合�?ゲー�?��ーバ�?
 */
 void	Jiki::Die()
 {
@@ -1582,7 +1568,7 @@ void	Jiki::Die()
 }
 
 /*
-	半透明にします
+	半�?明にしま�?
 */
 void Jiki::SetTransparent(bool mOnOff)
 {
@@ -1590,7 +1576,7 @@ void Jiki::SetTransparent(bool mOnOff)
 }
 
 /**
-	\return 死ぬところか
+	\return 死ぬところ�?
 */
 bool Jiki::IsDying()
 {
@@ -1605,19 +1591,19 @@ bool Jiki::IsControl()
 }
 
 /*
-	チェインを1個増やす
+	チェイン�?個増や�?
 */
 void Jiki::IncrementChain()
 {
 	if( mChainIdx < MAX_CHAIN )
 		mChainIdx++;
 
-	// 打撃ｴﾌｪｸﾄも出します
+	// 打撃?�?�ｪ?�??��出しま�?
 	MakeHitEffect();
 }
 
 /*
-	チェインを0に戻す
+	チェイン�?に戻�?
 */
 void Jiki::ResetChain()
 {
@@ -1633,11 +1619,11 @@ int Jiki::GetChainLv()
 }
 
 /*
-	時期の足元に打撃ｴﾌｪｸﾄを出す
+	時期の足�?��打撃?�?�ｪ?�??��出�?
 */
 void Jiki::MakeHitEffect(){
 	
-	// 出現座標の計算
+	// 出現座標�?計�?
 	int efx, efy;
 
 	switch( mStatus ){
@@ -1658,15 +1644,63 @@ void Jiki::MakeHitEffect(){
 		return;
 	}
 
-	// ﾘｸｴｽﾄ
+	// ?�ｸ?�?�??
 	GAMECONTROL->GetMobManager()->Request( new HitEffect( efx, efy ), true );
 
 }
 
 /*
-* \return ﾋﾛｲﾝが何か特別なことをやっている状態であり、普段の処理に例外しているか
+* \return ?�ﾛｲ?�が何か特別なことをやって�?��状態であり、普段の処�?��例外して�?���?
 */
 bool Jiki::IsBusy()
 {
 	return mHisatuTime > HISATU_TIME;
+}
+
+/*
+	?�ｲ?�UP
+*/
+void Jiki::RestoreEmpacy(int n)
+{ 
+	if( mEmp < EMP_MAX ) {
+		mEmp += n;
+		//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_enpacy_up.wav");
+	}
+
+	if( mEmp > EMP_MAX ) mEmp = EMP_MAX; 
+
+}
+
+/*
+	??��ｼ?�?�UP
+*/
+void Jiki::RestoreTension(int n) 
+{ 
+	bool fl = false;
+
+	if( mTen < TEN_MAX ) {
+		mTen += n;
+		fl = true;
+		//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_tensyon_up.wav");
+	}
+
+	if( mTen >= TEN_MAX && fl )//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_tensyon_maxn.wav");
+
+	if( mTen > TEN_MAX ) mTen = TEN_MAX;
+}
+
+/*
+	残機UP
+*/
+void Jiki::RestoreLife(int n) 
+{ 
+	if( mLife < LIFE_MAX ) {
+		mLife += n;
+		//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_zanki_up.wav");
+	}
+	if( mLife > LIFE_MAX ) mLife = LIFE_MAX; 
 }
