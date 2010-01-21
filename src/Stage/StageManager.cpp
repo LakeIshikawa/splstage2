@@ -321,11 +321,6 @@ void StageManager::StageGoForward()
 	else{
 		GoToStage( (mCurrentIndex + 1) % STG_LOOP_POINT );
 	}
-
-	// ﾃﾞｰﾀを保存する
-	if( mCurrentIndex >= GetNotTutorialFirstStageIdx() && mCurrentIndex <= GetLastStageIdx() ){
-		SAVE_DATA( mCurrentIndex - GetFirstStageIdx() );
-	}
 }
 
 /*
@@ -456,6 +451,12 @@ void StageManager::ChangeStageOnSepThread(int rStageIdx)
 	mCurrentIndex = rStageIdx;
 
 	maStages[mCurrentIndex]->Load();
+
+	// ﾃﾞｰﾀを保存する
+	if( mCurrentIndex >= GetNotTutorialFirstStageIdx() && mCurrentIndex <= GetLastStageIdx() ){
+		SAVE_DATA( mCurrentIndex - GetFirstStageIdx() );
+	}
+
 	maStages[mCurrentIndex]->SetLoaded(true);
 
 	GAMECONTROL->GetFader()->SetFadedOut( true );

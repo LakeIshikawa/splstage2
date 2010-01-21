@@ -39,30 +39,6 @@ Map::~Map(void)
 int Map::Load(string rFName, string rMapChipGr)
 {
 
-	// ﾏｯﾌﾟﾁｯﾌﾟﾃｸｽﾁｬを作成
-	if(D3DXCreateTextureFromFileEx(GAMECONTROL->GetDXController()->GetDevice(),
-		rMapChipGr.c_str(),    // the new file name
-		D3DX_DEFAULT,    // default width
-		D3DX_DEFAULT,    // default height
-		D3DX_DEFAULT,    // no mip mapping
-		NULL,    // regular usage
-		D3DFMT_UNKNOWN,    // 32-bit pixels with alpha
-		D3DPOOL_MANAGED,    // typical memory handling
-		D3DX_DEFAULT,    // no filtering
-		D3DX_DEFAULT,    // no mip filtering
-		0,    // the hot-pink color key
-		NULL,    // no image info struct
-		NULL,    // not using 256 colors
-		&mMapChipTexture)!=D3D_OK){
-			CHAR msg[40];
-			ZeroMemory(msg, 40);
-			strcat( msg, "ファイル未発見: " );
-			strcat(msg, rMapChipGr.c_str() );
-			MessageBox( NULL, msg, "エラー", MB_OK );
-			ExitProcess(1);
-	}
-
-
 	//////////////////////////// ﾏｯﾌﾟﾃﾞｰﾀの読み込み ///////////////////////////
 	/*///             ﾌｧｲﾙのﾃﾞｰﾀにｻｲｽﾞをあわせてﾏｯﾌﾟﾃﾞｰﾀ作成              ///*/
 	///////////////////////////////////////////////////////////////////////////
@@ -81,13 +57,16 @@ int Map::Load(string rFName, string rMapChipGr)
 	mGamenSprites = new LPDIRECT3DTEXTURE9[ mNGamen ];
 
 	// ﾏｯﾌﾟﾁｯﾌﾟ画像をゲット
-	LPDIRECT3DTEXTURE9 tx_mapchip = mMapChipTexture;
+	LPDIRECT3DTEXTURE9 tx_mapchip = GAMECONTROL->GetDXController()->GetTextureOf(rMapChipGr);
 
 	for(int gamen=0; gamen<mNGamen; gamen++){
 
 		// ﾃｸｽﾁｬ作成
-		D3DXCreateTexture(GAMECONTROL->GetDXController()->GetDevice(), 1024, 
-			1024, 1, 0, D3DFMT_A8B8G8R8, D3DPOOL_MANAGED, &mGamenSprites[gamen]);
+		if( FAILED(D3DXCreateTexture(GAMECONTROL->GetDXController()->GetDevice(), 1024, 
+			1024, 1, 0, D3DFMT_A8B8G8R8, D3DPOOL_MANAGED, &mGamenSprites[gamen])))
+		{
+
+		}
 
 		D3DLOCKED_RECT rc_gamen;
 		mGamenSprites[gamen]->LockRect(0, &rc_gamen, NULL, 0);
