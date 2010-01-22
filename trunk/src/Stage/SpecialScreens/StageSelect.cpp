@@ -4,7 +4,7 @@
 #include "..\\..\\Event\\StageClearEvt.h"
 #include "..\\..\\Stage\\FixScrollMap.h"
 
-#define LIGHT_AT 30
+#define LIGHT_AT 60
 
 StageSelect::StageSelect(string rDataFname, string rScrollBckgImg, string rMapChipGr, SoundController::BGMS rBgm)
 {

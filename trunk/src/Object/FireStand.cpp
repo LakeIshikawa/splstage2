@@ -95,9 +95,6 @@ void FireStand::Move()
 
 	// ‘•’u‚Ì•`‰æ
 	Draw();
-
-	mDrawer->SetCollision( pCollision->GetCurFrame() );
-	mDrawer->Draw();
 }
 
 /************************************************************//**

@@ -128,7 +128,7 @@ LPDIRECT3DTEXTURE9	DXController::GetTextureOf( string rFname )
 								D3DX_DEFAULT,
 								D3DX_DEFAULT,
 								NULL,				// regular usage
-								D3DFMT_A8R8G8B8,     // 32-bit pixels with alpha
+								D3DFMT_UNKNOWN,     // 32-bit pixels with alpha
 								D3DPOOL_MANAGED,    // typical memory handling
 								D3DX_DEFAULT,		// no filtering
 								D3DX_DEFAULT,		// no mip filtering

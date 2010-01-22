@@ -268,11 +268,4 @@ void KariudoKen::Draw()
 	mNo_x*mSizeX, mMuki*mSizeY, (mNo_x+1)*mSizeX, (mMuki+1)*mSizeY);
 
 	DieIfGamenGai();
-
-	/*//ÃÞÊÞ¯¸Þ - “–‚½‚è”»’è‚Ì•\Ž¦
-	if(mDrawer){
-		mDrawer->SetCollision(pCollision->GetCurFrame());
-		mDrawer->Draw();
-	}*/
-
 }

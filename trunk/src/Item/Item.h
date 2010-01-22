@@ -57,7 +57,7 @@ public:
 	ItRingo( int rX, int rY ) : Item( rX, rY ){}
 	~ItRingo(){}
 
-	void DoEffect() { GAMECONTROL->GetJiki()->RestoreEmpacy(GI("ITEM_EMPUP")); }
+	void DoEffect() { GAMECONTROL->GetJiki()->RestoreEmpacy(GI("ITEM_EMPUP"), true); }
 	string GetGraphic() { return "graphics\\item\\Apple_a.png"; }
 	string GetEffectGraphic() { return "graphics\\item\\enpathy_up.png"; }
 };
@@ -73,7 +73,7 @@ public:
 	ItAoRingo( int rX, int rY ) : Item( rX, rY ){}
 	~ItAoRingo(){}
 
-	void DoEffect() { GAMECONTROL->GetJiki()->RestoreTension(GI("ITEM_TENUP")); }
+	void DoEffect() { GAMECONTROL->GetJiki()->RestoreTension(GI("ITEM_TENUP"), true); }
 	string GetGraphic() { return "graphics\\item\\Apple_b.png"; }
 	string GetEffectGraphic() { return "graphics\\item\\tension_up.png"; }
 };
@@ -89,7 +89,7 @@ public:
 	ItKinRingo( int rX, int rY ) : Item( rX, rY ), mAlpha(0.0f), mAlphaSp(0.03f){}
 	~ItKinRingo(){}
 
-	void DoEffect() { GAMECONTROL->GetJiki()->RestoreLife(1); }
+	void DoEffect() { GAMECONTROL->GetJiki()->RestoreLife(1, true); }
 	string GetGraphic() { return "graphics\\item\\Apple_c.png"; }
 	string GetEffectGraphic() { return "graphics\\item\\1up.png"; }
 	void CustomEffect() 

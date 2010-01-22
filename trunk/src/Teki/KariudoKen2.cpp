@@ -271,10 +271,4 @@ void KariudoKen2::Draw()
 
 	DieIfGamenGai();
 
-	/*//ÃÞÊÞ¯¸Þ - “–‚½‚è”»’è‚Ì•\Ž¦
-	if(mDrawer){
-		mDrawer->SetCollision(pCollision->GetCurFrame());
-		mDrawer->Draw();
-	}*/
-
 }

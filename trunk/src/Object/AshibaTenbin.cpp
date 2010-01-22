@@ -187,10 +187,4 @@ void AshibaTenbin::Move()
 	// •`‰æ
 	DX_SCROLL_DRAW(mGraphicData[mGrapIdx] ,mX, mY, 0, 0, 
 		TENASHIBASX, TENASHIBASY);
-
-	// “–‚½‚è”»’è˜g
-	if(mDrawer){
-		mDrawer->SetCollision(pCollision->GetCurFrame());
-		mDrawer->Draw();
-	}
 }
