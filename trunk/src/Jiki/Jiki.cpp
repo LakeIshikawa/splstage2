@@ -1393,12 +1393,6 @@ void	Jiki::collisionFrames(){
 
 	if( !collisionEnabled ) return;
 
-	//??��ﾊﾞｯ?�??
-	if(mDrawer){
-		mDrawer->SetCollision(pCollision->GetCurFrame());
-		mDrawer->Draw();
-	}
-
 	//当たり判定�??�ﾚｰ??
 	switch(mStatus){
 
