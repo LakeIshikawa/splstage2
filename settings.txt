@@ -523,9 +523,9 @@
 { HEARTSY         : 40 }		/* 縦幅 */
 { HEARTSP         : 2.5 }               /* 速度 */
 { HEART_KAITENSP  : 0.08 }		/* ハートの回転速度 */
-{ APPLE_BEFOREAPP: 5.0 }               /* ﾘﾝｺﾞが消えるまでの時間 */
-{ APPLE_BEFOREDISAPP1: 50.0 }            /* ﾘﾝｺﾞが復活するまでの時間 */
-{ APPLE_BEFOREDISAPP2: 100.0 }            /* ﾘﾝｺﾞが復活するまでの時間(長時間) */
+{ APPLE_BEFOREAPP: 60.0 }               /* ﾘﾝｺﾞが復活するまでの時間 */
+{ APPLE_BEFOREDISAPP1: 5.0 }            /* ﾘﾝｺﾞが消えるまでの時間 */
+{ APPLE_BEFOREDISAPP2: 5.0 }            /* ﾘﾝｺﾞが消えるまでの時間(長時間) */
 { APPLE_GENLTX    : 102 }  		/* 左ﾘﾝｺﾞの出現X */
 { APPLE_GENRTX    : 648 }  		/* 右ﾘﾝｺﾞの出現X */
 { APPLE_GENY      : 200 }		/* ﾘﾝｺﾞの出現Y */
