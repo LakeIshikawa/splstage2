@@ -136,6 +136,9 @@ void StageSelect::ProcessUserControl()
 		(GAMECONTROL->GetDXController()->IsMouseClicked() ))
 		|| GAMECONTROL->GetDXController()->KeyPush(DIK_LEFT))
 	{
+		//SE
+		if( selectedIdx > 0 )
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_cansel.wav");
 		GoToLeft();
 		return;
 	}
@@ -146,6 +149,13 @@ void StageSelect::ProcessUserControl()
 		(GAMECONTROL->GetDXController()->IsMouseClicked() ))
 		|| GAMECONTROL->GetDXController()->KeyPush(DIK_RIGHT))
 	{
+		//SE
+		if(  selectedIdx < GAMECONTROL->GetStageManager()->GetLastStageIdx() - 
+			GAMECONTROL->GetStageManager()->GetFirstStageIdx()  )
+		{
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_cansel.wav");
+		}
+
 		GoToRight();
 		return;
 	}
@@ -164,6 +174,8 @@ void StageSelect::ProcessUserControl()
 		GAMECONTROL->GetMaku()->Close();
 		GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
 		stage = 4;
+		//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kettei.wav");
 	}
 }
 
