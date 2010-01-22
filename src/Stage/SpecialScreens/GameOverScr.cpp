@@ -11,6 +11,13 @@ GameOverScr::~GameOverScr()
 
 void GameOverScr::Process()
 {
+
+	if( !mIsSEPlayed ){
+		mIsSEPlayed = true;
+		//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\game_over.wav");
+	}
+
 	if( !mFading ){
 		if( GAMECONTROL->GetFader()->FadeIn() ){
 			WAIT_TIMER(mTimer, 7.0f)
@@ -36,9 +43,7 @@ void GameOverScr::Load()
 {
 	mTimer = 0.0f;
 	mFading = false;
-	//SE
-	GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\game_over.wav");
-
+	mIsSEPlayed = false;
 }
 
 void GameOverScr::UnLoad()

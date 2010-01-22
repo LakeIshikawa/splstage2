@@ -17,5 +17,6 @@ public:
 private:
 	float mTimer;
 	bool mFading;
+	bool mIsSEPlayed;
 
 };
