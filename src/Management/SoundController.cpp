@@ -6,17 +6,6 @@ LPTSTR SoundController::sData[] = {
 	//TGSî≈ (º›∏ﬁŸ)
 	TEXT("audio\\se\\fanfare.wav"),
 	TEXT("audio\\se\\hissatu.wav"),
-	////TGSî≈ (SE)
-	//TEXT("audio\\se\\se_enpacy_up.wav"),
-	//TEXT("audio\\se\\se_hiroin_damage.wav"),
-	//TEXT("audio\\se\\se_hiroin_hissatu.wav"),
-	//TEXT("audio\\se\\se_hiroin_junp.wav"),
-	//TEXT("audio\\se\\se_hiroin_kuutyuukougeki.wav"),
-	//TEXT("audio\\se\\se_hiroin_tijoukougeki.wav"),
-	//TEXT("audio\\se\\se_kettei.wav"),
-	//TEXT("audio\\se\\se_kougekimeityuu.wav"),
-	//TEXT("audio\\se\\se_raitokirikae.wav"),
-	//TEXT("audio\\se\\se_tensyon_maxn.wav"),
 	//TGSî≈ (BGM)
 	TEXT("audio\\se\\st1_a_a.wav"), //2
 	TEXT("audio\\se\\st1_a_b.wav"),
@@ -40,37 +29,6 @@ LPTSTR SoundController::sData[] = {
 	//19Å` (º›∏ﬁŸ)
 	TEXT("audio\\se\\st_start.wav"),
 	TEXT("audio\\se\\life0_jingle.wav"), //20
-	////21Å` (SE)
-	//TEXT("audio\\se\\se_hiroin_hissatu_end.wav"),
-	//TEXT("audio\\se\\se_bat_fly.wav"),
-	//TEXT("audio\\se\\se_boss1_atack.wav"),
-	//TEXT("audio\\se\\se_boss2_bress_atack.wav"),
-	//TEXT("audio\\se\\se_boss2_bress_out.wav"), //35
-	//TEXT("audio\\se\\se_boss2_bress_tame.wav"),
-	//TEXT("audio\\se\\se_boss2_move.wav"),
-	//TEXT("audio\\se\\se_boss2_house_break.wav"),
-	//TEXT("audio\\se\\se_boss3_hart.wav"),
-	//TEXT("audio\\se\\se_boss3_kagami1.wav"), //40
-	//TEXT("audio\\se\\se_boss3_kagami2.wav"),
-	//TEXT("audio\\se\\se_boss3_kettei.wav"),
-	//TEXT("audio\\se\\se_boss3_syannderia.wav"),
-	//TEXT("audio\\se\\se_boss3_toge.wav"),
-	//TEXT("audio\\se\\se_boss3_trannp.wav"),// 45
-	//TEXT("audio\\se\\se_cansel.wav"),
-	//TEXT("audio\\se\\se_fire.wav"),
-	//TEXT("audio\\se\\se_item_get.wav"),
-	//TEXT("audio\\se\\se_kaeru_junp.wav"), //50
-	//TEXT("audio\\se\\se_ken_atack.wav"),
-	//TEXT("audio\\se\\se_kumo_ito.wav"),
-	//TEXT("audio\\se\\se_teki_down.wav"),
-	//TEXT("audio\\se\\se_tensyon_up.wav"),
-	//TEXT("audio\\se\\se_ttekkyuu_hassya.wav"), //55
-	//TEXT("audio\\se\\se_ttekkyuu_move.wav"),
-	//TEXT("audio\\se\\se_ttekkyuu_setti.wav"),
-	//TEXT("audio\\se\\se_yumi_hassya.wav"),
-	//TEXT("audio\\se\\se_yumi_tame.wav"),
-	//TEXT("audio\\se\\se_zanki_up.wav"), //60
-	//TEXT("audio\\se\\se_team_rogo.wav"),
 
 	NULL
 };

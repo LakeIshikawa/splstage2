@@ -130,7 +130,8 @@ void Usagi::_Move()
 				mSpX = (mMuki?1:-1)*UJMPSPX;
 				mSpY = -sqrt(2 * SP->GRAVITY * UJMPTAKASA);
 				//SE
-				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kaeru_junp.wav");
+				if( !IsGamenGai() )
+					GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kaeru_junp.wav");
 			}	
 			WAIT_END
 			break;

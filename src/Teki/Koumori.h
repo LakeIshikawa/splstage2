@@ -37,9 +37,6 @@ private:
 	void Nigeru();
 
 	// İ’è’è”
-	int KOMOSX;
-	int KOMOSY;
-
 	int MAAI_HABA;
 	float KOMORAISE;
 	float KOMOSPX;

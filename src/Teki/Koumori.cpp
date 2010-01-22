@@ -26,46 +26,31 @@ char Koumori::sGraphicData[][MAX_NLEN] =
 
 Koumori::Koumori(int rXPx, int rYPy)
 {
-	KOMOSX = GI("KOMOSX");
-	KOMOSY = GI("KOMOSY");
-
 	MAAI_HABA = GI("MAAI_HABA");
 	KOMORAISE = GF("KOMORAISE");
 	KOMOSPX = GF("KOMOSPX");
 	KOMOCHOTEN = GI("KOMOCHOTEN");
 
-	mX = rXPx;
-	mY = rYPy - KOMOSY + SP->CHSZY;
+	mSizeX = GI("KOMOSX");;
+	mSizeY = GI("KOMOSY");;
 
-	mSizeX = KOMOSX;
-	mSizeY = KOMOSY;
+	mX = rXPx;
+	mY = rYPy - mSizeY + SP->CHSZY;
 
 	mStatus = WAIT;
 
 	// “–‚½‚è”»’è
 	AddFrame(0);
 	AddCircle(0, SP->GRID_BOGYO, 28, 28, 14);
-
-	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
-
 }
 
 Koumori::~Koumori(void)
 {
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
 }
 
 void Koumori::_Move()
 {
-
-	// Ý’è’è”
-	KOMOSX = GI("KOMOSX");
-	KOMOSY = GI("KOMOSY");
-
-	MAAI_HABA = GI("MAAI_HABA");
-	KOMORAISE = GF("KOMORAISE");
-	KOMOSPX = GF("KOMOSPX");
-	KOMOCHOTEN = GI("KOMOCHOTEN");
-
 	SetAnim(mStatus);
 
 	switch( mStatus ){
@@ -78,7 +63,9 @@ void Koumori::_Move()
 
 			if( jiki_x > maai_left && jiki_x < maai_right ){
 				mStatus = MOVE;
-				GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_bat_fly.wav");
+				//SE
+				if( !IsGamenGai() )
+					GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_bat_fly.wav");
 				mSpY = DetermineShosoku( KOMORAISE );
 				mSpX = -KOMOSPX;
 			}
@@ -90,9 +77,13 @@ void Koumori::_Move()
 			break;
 
 		case NIGE:
-			GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
 			break;
 	}
+
+	//SE STOP
+	if( IsGamenGai() )
+		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
+
 
 	Teki::Draw();
 
@@ -143,6 +134,10 @@ void Koumori::Nigeru()
 	if( mStatus == WAIT){
 		mStatus = NIGE;
 
+		//SE
+		if( !IsGamenGai() )
+			GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_bat_fly.wav");
+		
 		// ‰æ–Ê‚Ì’[A‚Ç‚Á‚¿‚ª‹ß‚¢‚ð”»’è‚·‚é
 		int scp = GAMECONTROL->GetStageManager()->GetCurScrollPointer();
 		float angle;

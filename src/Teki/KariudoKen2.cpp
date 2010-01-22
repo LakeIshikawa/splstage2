@@ -140,7 +140,9 @@ void KariudoKen2::_Move()
 
 		case KOGEKI:
 			if( mAniNoX == 2 &&  !mSeFl ){//SE
-				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_ken_atack.wav");
+				//SE
+				if( !IsGamenGai() )
+					GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_ken_atack.wav");
 				mSeFl = true;
 			}
 			mSpX = 0;

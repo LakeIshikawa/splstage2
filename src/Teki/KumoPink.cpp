@@ -212,7 +212,8 @@ void KumoPink::CollisionResponse(ICollidable* rCollObject, int rThisGroupId, int
 				SetCurFrame(FR_JIYUU);
 				mMuki = 1;
 				//SE
-				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kumo_ito.wav");
+				if( !IsGamenGai() )
+					GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kumo_ito.wav");
 			}
 		else Teki::CollisionResponse(rCollObject, rThisGroupId, rOpGroupId);
 	}

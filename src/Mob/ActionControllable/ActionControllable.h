@@ -85,8 +85,13 @@ class ActionControllable: public CollidableSingleFrame
 		//! ｽﾚｯﾄﾞを解除する
 		void RemoveThread(IActionThread* rThread);
 
+		//! 消滅状態にする
+		void SetDead(){ mIsDead = true; }
+
 
 	protected: 
 		list<ActionState*> mStates;		//!< ｽﾃｰﾄのｷｭｰ
 		list<IActionThread*> mThreads;	//!< ｽﾚｯﾄﾞ
+
+		bool mIsDead;					//!< 消滅したか
 };
