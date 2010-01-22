@@ -53,7 +53,7 @@ StageManager::StageManager(void)
 		SoundController::STG1,
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg1.png"),
-		string("graphics\\stageselect\\stg11.png"),
+		string("graphics\\stageselect\\tut1.png"),
 		string("graphics\\stageselect\\titletut1.png")
 		);
 
@@ -66,7 +66,7 @@ StageManager::StageManager(void)
 		SoundController::STG1,
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg2.png"),
-		string("graphics\\stageselect\\stg11.png"),
+		string("graphics\\stageselect\\tut2.png"),
 		string("graphics\\stageselect\\titletut2.png")
 		);
 
@@ -79,7 +79,7 @@ StageManager::StageManager(void)
 		SoundController::STG1,
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg3.png"),
-		string("graphics\\stageselect\\stg11.png"),
+		string("graphics\\stageselect\\tut3.png"),
 		string("graphics\\stageselect\\titletut3.png")
 		);
 
@@ -92,7 +92,7 @@ StageManager::StageManager(void)
 		SoundController::STG1,
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg4.png"),
-		string("graphics\\stageselect\\stg11.png"),
+		string("graphics\\stageselect\\tut4.png"),
 		string("graphics\\stageselect\\titletut4.png")
 		);
 
@@ -105,7 +105,7 @@ StageManager::StageManager(void)
 		SoundController::STG1,
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg5.png"),
-		string("graphics\\stageselect\\stg11.png"),
+		string("graphics\\stageselect\\tut5.png"),
 		string("graphics\\stageselect\\titletut5.png")
 		);
 
@@ -118,7 +118,7 @@ StageManager::StageManager(void)
 		SoundController::STG1,
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg6.png"),
-		string("graphics\\stageselect\\stg11.png"),
+		string("graphics\\stageselect\\tut6.png"),
 		string("graphics\\stageselect\\titletut6.png")
 		);
 

@@ -130,7 +130,7 @@ void AppleGenerator::CollisionResponse(ICollidable* rCollObject,
 		mFlashNum = 0;
 		mFlashFl = false;
 		// ‰ñ•œ
-		jiki->RestoreEmpacy(1);
+		jiki->RestoreEmpacy(1, true);
 		// ‰‰o
 		GAMECONTROL->GetMobManager()->Request( 
 			new PickUpEffect( "graphics\\item\\enpathy_up.png" ), true );

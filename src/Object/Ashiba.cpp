@@ -52,12 +52,6 @@ void Ashiba::Move()
 {
 	UpdateRiders();
 	Draw();
-
-	//ÃÞÊÞ¯¸Þ
-	if(mDrawer){
-		mDrawer->SetCollision(pCollision->GetCurFrame());
-		mDrawer->Draw();
-	}
 }
 
 /************************************************************//**

@@ -127,7 +127,8 @@ void Kaeru::_Move()
 				mSpX = (mMuki?1:-1)*JMPSPX;
 				mSpY = -sqrt(2 * SP->GRAVITY * JMPTAKASA);
 				//SE
-				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kaeru_junp.wav");
+				if( !IsGamenGai() )
+					GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kaeru_junp.wav");
 			}	
 			WAIT_END
 			break;

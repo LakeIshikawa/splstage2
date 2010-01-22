@@ -111,6 +111,8 @@ void Stage::UnLoad()
 	mpMap->UnLoad();
 	mpHaichi->UnLoad();
 	mpCheckpointController->UnLoad();
+
+	//GAMECONTROL->GetSoundController()->Rese
 }
 
 /*
@@ -173,7 +175,7 @@ void Stage::Init()
 			if( GAMECONTROL->GetMaku()->IsOpen() ){
 				inited = true;
 				//BGM
-				GAMECONTROL->GetSoundController()->SetBGM(SoundController::STGSTART);
+				//GAMECONTROL->GetSoundController()->SetBGM(SoundController::STGSTART);
 				GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOn();
 				GAMECONTROL->GetJiki()->SetSuperControl();
 				GAMECONTROL->GetJiki()->GetInterface()->Show();

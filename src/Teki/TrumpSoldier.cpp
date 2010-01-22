@@ -193,8 +193,6 @@ void TrumpSoldier::Move()
 	mAnimSet->ElapseTime( SP->FrameTime );
 	mSDrawer->SetAnimation( mAnimSet->GetCurAnimation() );
 	Draw();
-
-	mDrawer->SetCollision(GetCurFrame());
 }
 
 /************************************************************//**
@@ -203,7 +201,6 @@ void TrumpSoldier::Move()
 void TrumpSoldier::Draw()
 {
 	mSDrawer->Draw();
-	mDrawer->Draw();
 }
 
 /************************************************************//**

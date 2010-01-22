@@ -54,9 +54,9 @@ public:
 	void DisableCollision();
 	void EnableCollision();
 
-	void RestoreEmpacy(int n);
-	void RestoreTension(int n);
-	void RestoreLife(int n);
+	void RestoreEmpacy(int n, bool SEdelayed);
+	void RestoreTension(int n, bool SEdelayed);
+	void RestoreLife(int n, bool SEdelayed);
 
 	int GetLife() { return mLife; }
 	float GetEmpa() { return mEmp; }

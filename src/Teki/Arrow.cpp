@@ -94,12 +94,6 @@ void Arrow::Move()
 
 	DieIfGamenGai();
 
-	////ÃÞÊÞ¯¸Þ - “–‚½‚è”»’è‚Ì•\Ž¦
-	//if(mDrawer){
-	//	mDrawer->SetCollision(pCollision->GetCurFrame());
-	//	mDrawer->Draw();
-	//}
-
 	mSpX += mAccX;
 	mSpY += mAccY;
 	mX += mSpX;

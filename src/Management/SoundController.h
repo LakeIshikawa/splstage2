@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <string>
 #include <map>
+#include <list>
 using namespace std;
 
 #define MAX_BGMS 15
@@ -51,6 +52,8 @@ public:
 
 	void SetSound(bool mOnOff);
 
+	pair<string, CSound*> GetSE(string rPath);
+
 	// ÉfÅ[É^
 	static LPTSTR sData[];
 
@@ -59,6 +62,8 @@ private:
 	map<string, CSound*> mMapStrToSnd;
 	Bgm*	arBgms[MAX_BGMS];
 	Bgm*	mCurBgm;
+
+	list<pair<string, CSound*>> mSELst;
 
 	bool	mSoundOn;
 

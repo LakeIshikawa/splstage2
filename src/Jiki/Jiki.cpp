@@ -204,36 +204,36 @@ Jiki::Jiki(int rXPx, int rYPy)
 	AddCircle(FR_ARUKI, SP->GRID_BOGYO, 67, 65, 12);
 	AddCircle(FR_ARUKI, SP->GRID_BOGYO, 69, 99, 20);
 	AddCircle(FR_ARUKI, SP->GRID_HOUSE, mSizeX/2, mSizeY/2, 2);
-	AddIndexedRect(FR_ARUKI, SP->GRID_BOUND, 0, 35, 20, 85, 118);
+	AddIndexedRect(FR_ARUKI, SP->GRID_BOUND, 0, 35, 80, 85, 118);
 
 	AddCircle(FR_TACHI, SP->GRID_BOGYO, 63, 37, 16);
 	AddCircle(FR_TACHI, SP->GRID_BOGYO, 63, 67, 16);
 	AddCircle(FR_TACHI, SP->GRID_BOGYO, 63, 98, 20);
 	AddCircle(FR_TACHI, SP->GRID_HOUSE, mSizeX/2, mSizeY/2, 2);
-	AddIndexedRect(FR_TACHI, SP->GRID_BOUND, 0, 35, 20, 85, 118);
+	AddIndexedRect(FR_TACHI, SP->GRID_BOUND, 0, 35, 80, 85, 118);
 
 	AddCircle(FR_JUMP, SP->GRID_BOGYO, 53, 34, 16);
 	AddCircle(FR_JUMP, SP->GRID_BOGYO, 59, 62, 12);
 	AddCircle(FR_JUMP, SP->GRID_BOGYO, 57, 95, 20);
 	AddCircle(FR_JUMP, SP->GRID_HOUSE, mSizeX/2, mSizeY/2, 2);
-	AddIndexedRect(FR_JUMP, SP->GRID_BOUND, 0, 35, 20, 85, 118);
+	AddIndexedRect(FR_JUMP, SP->GRID_BOUND, 0, 35, 80, 85, 118);
 
 	AddCircle(FR_DRILL, SP->GRID_BOGYO, 76, 44, 16);
 	AddCircle(FR_DRILL, SP->GRID_BOGYO, 53, 67, 16);
 	AddCircle(FR_DRILL, SP->GRID_KOUGEKI, 25, 95, 24);
 	AddCircle(FR_DRILL, SP->GRID_HOUSE, mSizeX/2, mSizeY/2, 2);
-	AddIndexedRect(FR_DRILL, SP->GRID_BOUND, 0, 10, 20, 85, 118);
+	AddIndexedRect(FR_DRILL, SP->GRID_BOUND, 0, 10, 80, 85, 118);
 
 	AddCircle(FR_KOGEKI, SP->GRID_BOGYO, 55, 38, 16);
 	AddCircle(FR_KOGEKI, SP->GRID_BOGYO, 55, 69, 16);
 	AddCircle(FR_KOGEKI, SP->GRID_BOGYO, 55, 101, 16);
 	AddCircle(FR_KOGEKI, SP->GRID_KOUGEKI, 24, 92, 24);
 	AddCircle(FR_KOGEKI, SP->GRID_HOUSE, mSizeX/2, mSizeY/2, 2);
-	AddIndexedRect(FR_KOGEKI, SP->GRID_BOUND, 0, 35, 20, 85, 118);
+	AddIndexedRect(FR_KOGEKI, SP->GRID_BOUND, 0, 35, 80, 85, 118);
 
 	AddCircle(FR_HISATU, SP->GRID_KOUGEKI, 58, 68, 48);
 	AddCircle(FR_HISATU, SP->GRID_HOUSE, mSizeX/2, mSizeY/2, 2);
-	AddIndexedRect(FR_HISATU, SP->GRID_BOUND, 0, 35, 20, 85, 118);
+	AddIndexedRect(FR_HISATU, SP->GRID_BOUND, 0, 35, 80, 85, 118);
 	
 	SetCurFrame(FR_ARUKI);
 }
@@ -375,14 +375,14 @@ void Jiki::IncreaseTensEmpa()
 		//??¾ï½¼?®??
 		if( mStatus == KOGEKI || mStatus == KOGEKI_START || mStatus == KOGEKI_END
 			|| mStatus == DRILL || mStatus == DRILL_START ){
-			RestoreTension(TEN_UP2);
+			RestoreTension(TEN_UP2, false);
 		}
 		//?´?ï¾Šï¾Ÿï½¼?°
 		if( mStatus == HISATU ){
 			mEmpTeki++;
 			if( mEmpTeki == EMP_UP ){
 				mEmpTeki = 0;
-				RestoreEmpacy(1);
+				RestoreEmpacy(1, false);
 			}
 		}
 
@@ -766,9 +766,9 @@ void Jiki::Move()
 						if( mHisatuTime > HISATU_TIME ){
 							GAMECONTROL->GetFader()->SetSpeed( 0.03 );
 							GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
-							GAMECONTROL->GetSoundController()->SetBGM(GAMECONTROL->GetStageManager()->GetCurrentStage()->GetBGM());
 							if( !mHisatuSE ){//SE
 								GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_hiroin_hissatu_end.wav");
+								GAMECONTROL->GetSoundController()->SetBGM(GAMECONTROL->GetStageManager()->GetCurrentStage()->GetBGM());
 								mHisatuSE = true;
 							}
 							//å¿?®ºæŠ?µ‚äº?¾Œï½ª?°??¾?
@@ -1466,7 +1466,7 @@ void	Jiki::Tension()
 		if(	mTenFl ) {
 			if( mTenTime > TEN_UTIME ){
 				mTenTime = 0;
-				RestoreTension(TEN_UP1);
+				RestoreTension(TEN_UP1, false);
 			}
 		}else{
 		//??¾ï½¼?®?æ¸?
@@ -1660,12 +1660,15 @@ bool Jiki::IsBusy()
 /*
 	?—ï½²?ŒUP
 */
-void Jiki::RestoreEmpacy(int n)
+void Jiki::RestoreEmpacy(int n, bool SEdelayed)
 { 
 	if( mEmp < EMP_MAX ) {
 		mEmp += n;
 		//SE
-		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_enpacy_up.wav");
+		if( SEdelayed )
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_enpacy_up_delayed.wav");
+		else
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_enpacy_up.wav");
 	}
 
 	if( mEmp > EMP_MAX ) mEmp = EMP_MAX; 
@@ -1675,7 +1678,7 @@ void Jiki::RestoreEmpacy(int n)
 /*
 	??¾ï½¼?®?UP
 */
-void Jiki::RestoreTension(int n) 
+void Jiki::RestoreTension(int n, bool SEdelayed) 
 { 
 	bool fl = false;
 
@@ -1683,11 +1686,17 @@ void Jiki::RestoreTension(int n)
 		mTen += n;
 		fl = true;
 		//SE
-		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_tensyon_up.wav");
+		if( SEdelayed )
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_tensyon_up_delayed.wav");
+		else
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_tensyon_up.wav");
 	}
 
 	if( mTen >= TEN_MAX && fl )//SE
-		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_tensyon_maxn.wav");
+		if( SEdelayed )
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_tensyon_maxn.wav");
+		else
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_tensyon_maxn_delayed.wav");
 
 	if( mTen > TEN_MAX ) mTen = TEN_MAX;
 }
@@ -1695,12 +1704,15 @@ void Jiki::RestoreTension(int n)
 /*
 	æ®‹æ©ŸUP
 */
-void Jiki::RestoreLife(int n) 
+void Jiki::RestoreLife(int n, bool SEdelayed) 
 { 
 	if( mLife < LIFE_MAX ) {
 		mLife += n;
-		//SE
-		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_zanki_up.wav");
+		//SE[
+		if( SEdelayed )
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_zanki_up_delayed.wav");
+		else
+			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_zanki_up.wav");
 	}
 	if( mLife > LIFE_MAX ) mLife = LIFE_MAX; 
 }
