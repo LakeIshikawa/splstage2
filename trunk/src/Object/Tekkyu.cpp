@@ -62,6 +62,7 @@ Tekkyu::Tekkyu(int rXPx, int rYPx, float rZ, TekkyuStand* rParent)
 
 	// 音声用のフラグ :UGLY:
 	mIsRolling = false;
+	mIsRollSeStopped = false;
 }
 
 /**
@@ -111,6 +112,13 @@ void Tekkyu::Move()
 
 	// ﾏｯﾌﾟから抜けたら死ぬ
 	DieIfGamenGai();
+
+	// 画面外に出たら一回だけSEをストップ
+	if( IsGamenGai() && !mIsRollSeStopped){
+		mIsRollSeStopped = true;
+		// SE
+		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_ttekkyuu_move.wav");
+	}
 
 	// 力学
 	mSpX += mAccX;
@@ -229,12 +237,12 @@ void Tekkyu::Rebound()
 {
 	if( IsHittingGround() ){
 		// SE
-		if( fabs(mSpY) >= 20 )
+		if( fabs(mSpY) >= 1.0f && !IsGamenGai())
 		{
 			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_ttekkyuu_setti.wav");
 		}
 		else{
-			if( !mIsRolling ){
+			if( !mIsRolling && !IsGamenGai()){
 				// SE
 				GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_ttekkyuu_move.wav");
 				mIsRolling = true;
@@ -257,6 +265,9 @@ void Tekkyu::StopIfHitWall()
 		mStatus == ROLLING){
 		mSpX = 0;
 		mStatus = STOP;
+		
+		// SE
+		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_ttekkyuu_move.wav");
 	}
 }
 
@@ -266,9 +277,6 @@ void Tekkyu::StopIfHitWall()
 void Tekkyu::DieIfStopAndNSec()
 {
 	if( mStatus == STOP ){
-		// SE
-		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_ttekkyuu_move.wav");
-
 		WAIT_TIMER( mDieTimer, TEKKYU_SHOMETSUTIME )
 			mStatus = DIE;
 		WAIT_END

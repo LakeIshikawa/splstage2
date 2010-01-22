@@ -4,6 +4,8 @@
 #include "..\\Options.h"
 #include "..\\Light\\Light.h"
 #include <d3dx9.h>
+#include <process.h>
+
 
 // 学校でコンパイルする時、次の行をアンコメントしてください
 //#define GAKKOU
@@ -15,6 +17,9 @@ DXController::DXController(HWND rHwnd)
 	mpHwnd = rHwnd;
 	mFullScreen = true;
 	mPrevMouseClicked = false;
+
+	hMutex = CreateMutex(NULL,FALSE,NULL);	//ミューテックス生成
+
 }
 
 DXController::~DXController(void)
@@ -66,24 +71,6 @@ void DXController::InitD3D()
 //Fontの初期化
 void DXController::InitFont()
 {
-	//HFONT font;
-
-	//font = CreateFont(
-	//40,    //フォント高さ
- //   40,                    //文字幅
- //   0,                    //テキストの角度
- //   0,                    //ベースラインとｘ軸との角度
- //   FW_REGULAR,            //フォントの重さ（太さ）
- //   FALSE,                //イタリック体
- //   FALSE,                //アンダーライン
- //   FALSE,                //打ち消し線
- //   SHIFTJIS_CHARSET,    //文字セット
- //   OUT_DEFAULT_PRECIS,    //出力精度
- //   CLIP_DEFAULT_PRECIS,//クリッピング精度
- //   PROOF_QUALITY,        //出力品質
- //   FIXED_PITCH | FF_MODERN,//ピッチとファミリー
- //   TEXT("Arial"));
-
 	D3DXCreateFont(mpDevice, 10, 10, FW_REGULAR, 0, true, SHIFTJIS_CHARSET, 
 		OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN, TEXT("Arial"), &ppFont);
 }
@@ -112,6 +99,8 @@ void DXController::DrawAlpha(std::string rFname, int rX, int rY, int rTlx, int r
 // ファイル名からテクスチャーを取得
 LPDIRECT3DTEXTURE9	DXController::GetTextureOf( string rFname )
 {
+	WaitForSingleObject(hMutex,INFINITE); //mutex 間は他のスレッドから変数を変更できない
+  
 	LPDIRECT3DTEXTURE9 texture = NULL;
 
 	// マップにあったらマップから
@@ -149,6 +138,7 @@ LPDIRECT3DTEXTURE9	DXController::GetTextureOf( string rFname )
 		mmTextureMap[rFname] = texture;
 	}
 
+	ReleaseMutex(hMutex);
 	return texture;
 }
 

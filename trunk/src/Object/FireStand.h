@@ -75,6 +75,9 @@ protected:
 	float mFireBottom;
 	int flag;
 
+	// Œø‰Ê‰¹—p
+	bool mIsSEStopped;
+
 	// İ’è’è”
 	float FIRESTD_PRODTIME;
 	float HIBASHIRA_HEIGHT;

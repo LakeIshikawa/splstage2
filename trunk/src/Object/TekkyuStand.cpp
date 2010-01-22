@@ -60,7 +60,7 @@ void TekkyuStand::Draw()
 ****************************************************************/
 void TekkyuStand::ProduceTekkyu()
 {
-	Tekkyu* newTekkyu = new Tekkyu( mX, mY+GI("TEKKYU_STARTY"), 0.5f, this );
+	Tekkyu* newTekkyu = new Tekkyu( mX, mY+GI("TEKKYU_STARTY"), mZ-0.5f, this );
 	GAMECONTROL->GetMobManager()->Request( newTekkyu, true );
 }
 

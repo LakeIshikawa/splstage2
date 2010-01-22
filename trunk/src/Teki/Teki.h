@@ -184,8 +184,6 @@ protected:
 	void Finalize();
 	void DisableAshibaCollision();
 
-	bool IsGamenGai();
-
 	BAS_STATUS mBasStatus;	//!< 基本ｽﾃｰﾀｽ
 
 	// ｱﾆﾒｰｼｮﾝ

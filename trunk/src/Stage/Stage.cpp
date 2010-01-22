@@ -97,10 +97,7 @@ void Stage::Load()
 
 	GAMECONTROL->GetUserLightControl()->GetControlLight()->SetPos( SP->SCRSZX/2, SP->SCRSZY/2 );
 	GAMECONTROL->GetJiki()->GetInterface()->Hide();
-
-	GAMECONTROL->GetSoundController()->ResetBGMs();
-	GAMECONTROL->GetSoundController()->SetBGM(mBgm);
-				
+			
 	mpSeigenJikan->SeigenJikanReset();
 
 }
@@ -112,7 +109,7 @@ void Stage::UnLoad()
 	mpHaichi->UnLoad();
 	mpCheckpointController->UnLoad();
 
-	//GAMECONTROL->GetSoundController()->Rese
+	
 }
 
 /*
@@ -134,7 +131,6 @@ void Stage::Process()
 	if( !GAMECONTROL->GetStageManager()->IsCurrentStageTutorial() )
 		mpSeigenJikan->Process();
 
-	//GAMECONTROL->GetLightManager()->Move();
 
 	GAMECONTROL->GetMobManager()->Process();
 
@@ -149,6 +145,8 @@ void Stage::Process()
 */
 void Stage::Init()
 {
+	GAMECONTROL->GetSoundController()->SetBGM(mBgm);
+
 	// ?Œï½ª?°??¾žï½²??
 	if( GAMECONTROL->GetFader()->FadeIn() ){
 		

@@ -37,13 +37,19 @@ FireStand::FireStand(int rXPx, int rYPx, float rZ, bool rUpDown) : mUpDown(rUpDo
 	AddIndexedRect( 0, SP->GRID_KOUGEKI, 0, 0, mFireTop, mSizeX, mFireBottom);
 	AddTarget( GAMECONTROL->GetJiki() );
 
+	mIsSEStopped = false;
 }
 
 /**
 	標準デストラクタ
 */
 FireStand::~FireStand()
-{}
+{
+	if( !mIsSEStopped ){
+		mIsSEStopped = true;
+		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_fire.wav");
+	}
+}
 
 /************************************************************//**
 *	1ﾌﾚｰﾑ処理
@@ -71,6 +77,7 @@ void FireStand::Move()
 				mFireBottom = 0;
 				// SE
 				GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_fire.wav");
+				mIsSEStopped = false;
 				break;
 			}
 
@@ -78,7 +85,10 @@ void FireStand::Move()
 				mStatus = WAIT; 
 				mEmitter->Stop(); 
 				// SE
-				GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_fire.wav");
+				if( !mIsSEStopped ){
+					mIsSEStopped = true;
+					GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_fire.wav");
+				}
 				break; 
 			}
 		}
@@ -93,6 +103,12 @@ void FireStand::Move()
 	mEmitter->Update();
 	mEmitter->Render();
 
+	// SE
+	if( IsGamenGai() && !mIsSEStopped ){
+		mIsSEStopped = true;
+		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_fire.wav");
+	}
+	
 	// 装置の描画
 	Draw();
 }

@@ -126,7 +126,7 @@ void SoundController::Process()
 */
 void SoundController::SetBGM(BGMS rBgm)
 {
-	if( mSoundOn ){
+	if( mSoundOn && mCurBgm != arBgms[rBgm]){
 		if( mCurBgm ) mCurBgm->Stop();
 		mCurBgm = arBgms[rBgm];
 		mCurBgm->Play();
