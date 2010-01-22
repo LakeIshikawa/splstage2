@@ -63,7 +63,7 @@ void Trump::Move()
 		else{
 			//”­ŽË
 			mStatus = THROW;
-			mSpY = GF("TRUMPSHOSP");
+			mSpY = GF("TRUMPSHOSP");			
 		}
 		break;
 

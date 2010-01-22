@@ -100,7 +100,9 @@ void KariudoYumi2::_Move()
 		case WAIT1:
 			WAIT_TIMER(mShootTimer, KARIYUMI2_WTM);
 			mStatus = SHOOT1;
-			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_tame.wav");//SE
+			//SE
+			if( !IsGamenGai() )
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_tame.wav");//SE
 			WAIT_END
 			break;
 		
@@ -109,14 +111,18 @@ void KariudoYumi2::_Move()
 				Arrow* shageki = new Arrow(CenterX(), CenterY(), jx+YUMI2TGT1, jy);
 				GAMECONTROL->GetMobManager()->Request(shageki, true);
 				mStatus = WAIT2;
-				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_hassya.wav");//SE
+				//SE
+				if( !IsGamenGai() )
+					GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_hassya.wav");//SE
 			}
 			break;
 	
 		case WAIT2:
 			WAIT_TIMER(mShootTimer, KARIYUMI2_WTM2);
 			mStatus = SHOOT2;
-			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_tame.wav");//SE
+			//SE
+			if( !IsGamenGai() )
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_tame.wav");//SE
 			WAIT_END
 
 			break;
@@ -126,14 +132,18 @@ void KariudoYumi2::_Move()
 				Arrow* shageki = new Arrow(CenterX(), CenterY(), jx, jy);
 				GAMECONTROL->GetMobManager()->Request(shageki, true);
 				mStatus = WAIT3;
-				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_hassya.wav");//SE
+				//SE
+				if( !IsGamenGai() )
+					GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_hassya.wav");//SE
 			}
 			break;
 
 		case WAIT3:
 			WAIT_TIMER(mShootTimer, KARIYUMI2_WTM2);
 			mStatus = SHOOT3;
-			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_tame.wav");//SE
+			//SE
+			if( !IsGamenGai() )
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_tame.wav");//SE
 			WAIT_END
 			break;
 
@@ -142,7 +152,9 @@ void KariudoYumi2::_Move()
 			Arrow* shageki = new Arrow(CenterX(), CenterY(), jx+YUMI2TGT2, jy);
 			GAMECONTROL->GetMobManager()->Request(shageki, true);
 			mStatus = WAIT1;
-			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_hassya.wav");//SE
+			//SE
+			if( !IsGamenGai() )
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_yumi_hassya.wav");//SE
 			}
 			break;
 

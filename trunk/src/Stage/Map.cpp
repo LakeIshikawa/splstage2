@@ -436,5 +436,5 @@ bool Map::IsGamenGai(int rChipType)
 // Mobが画面外
 bool Map::IsGamenGai(int rX, int rY, int rSx, int rSy)
 {
-	return ((rX+rSx<mScpx) || (rX>mScpx+SP->SCRSZX));
+	return ((rX+rSx<mScpx) || (rX>mScpx+SP->SCRSZX) || (rY+rSy<0) || (rY>SP->SCRSZY));
 }

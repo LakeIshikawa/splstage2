@@ -45,4 +45,5 @@ bool ASOokamiBlowAttackEntering::Update() {
 void ASOokamiBlowAttackEntering::OnExit() 
 {
 	mParent->AddNextAction(new ASOokamiBlowAttackInspire());
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_move.wav");
 }

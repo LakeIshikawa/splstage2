@@ -16,22 +16,15 @@ using namespace std;
 *	初期ｽﾃｰﾄを作ります。
 *	作る方法は実現ｸﾗｽが指定するとします。
 ****************************************************************/
-ActionControllable::ActionControllable(){}
+ActionControllable::ActionControllable(){
+	mIsDead = false;
+}
 
 /************************************************************//**
 *	まだ残っているｱｸｼｮﾝを消去します
 ****************************************************************/
 ActionControllable::~ActionControllable(){
 
-	//// 所属であるｱｸｼｮﾝｽﾃｰﾄを消去
-	//for each( ActionState* st in mStates ){
-	//	delete st;
-	//}
-
-	//// ｽﾚｯﾄﾞの実行
-	//for each( IActionThread* t in mThreads ){
-	//	delete t;
-	//}
 }
 
 
@@ -59,15 +52,21 @@ void ActionControllable::Move() {
 		curAction->OnExit();
 		// 終了したｱｸｼｮﾝをﾘｽﾄから解除
 		mStates.remove( curAction );
+
+		// 消滅の場合は、現ｽﾃｰﾄを開放して終了する
+		if( mIsDead ){
+			delete curAction;
+			return;
+		}
 	
 		// 実行見込みのｱｸｼｮﾝがかったら
-		if( mStates.empty() ){
+		if( mStates.empty()){
 			// 新ｽﾃｰﾄを作る
 			AddNewStates( curAction );
 			if( !mStates.back()->WasInterrupted() ) mStates.back()->OnEnter();
 		}
 		// まだ実行見込みのｱｸｼｮﾝがあったら
-		else{
+		else {
 			// 新しい現ｽﾃｰﾄをﾋﾞﾙﾄﾞ
 			mStates.back()->BuildState( curAction, this );
 			if( !mStates.back()->WasInterrupted() ) mStates.back()->OnEnter();

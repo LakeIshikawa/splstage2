@@ -26,6 +26,9 @@ public:
 	//! @see ActionState
 	void OnEnter(){
 
+		// SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss3_trannp.wav");
+
 		string graphics[] = 
 		{
 			"graphics\\teki\\queen\\boss4_card0.png",

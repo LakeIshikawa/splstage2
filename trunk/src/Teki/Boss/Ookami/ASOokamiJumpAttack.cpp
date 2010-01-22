@@ -46,7 +46,7 @@ void ASOokamiJumpAttack::BuildAnimation(ActionState* rPrevState)
 void ASOokamiJumpAttack::OnEnter()
 {
 	// SE
-	GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_boss2_bress_out.wav");
+	GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_boss2_move.wav");
 }
 
 /************************************************************//**
@@ -74,5 +74,5 @@ bool ASOokamiJumpAttack::Update()
 void ASOokamiJumpAttack::OnExit()
 {
 	// SE
-	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_out.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_move.wav");
 }

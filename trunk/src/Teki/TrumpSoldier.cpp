@@ -244,6 +244,10 @@ void TrumpSoldier::Die()
 	
 		mSpY = -GF("SHINIPATT_SHOSP");
 		mAccY = SP->GRAVITY;	
+
+		//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kougekimeityuu.wav");
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_teki_down.wav");
 	}
 }
 

@@ -9,6 +9,7 @@ using namespace std;
 #include "..\\..\\..\\Management\\GameControl.h"
 #include "..\\..\\..\\Animation\\Animation.h"
 #include "..\\..\\..\\Event\\StageClearEvt.h"
+#include "..\\..\\..\\Mob\\ActionControllable\\ActionControllable.h"
 
 /************************************************************//**
 *	“–‚½‚è”»’è‚È‚µ
@@ -82,6 +83,9 @@ void ASFadeOutAndStageClear::OnEnter()
 					GI("STGCLRMOJI_SX"),GI("STGCLRMOJI_SY"), 
 					"graphics\\txtgraphic\\stage_clear_01.png",
 					GF("STGCLMOJI_DTIME"), GF("STGCLMOJI_FSP"));
+	//BGM
+	GAMECONTROL->GetSoundController()->SetBGM(SoundController::STGCLEAR);
+
 }
 
 /************************************************************//**
@@ -101,5 +105,7 @@ bool ASFadeOutAndStageClear::Update()
 ****************************************************************/
 void ASFadeOutAndStageClear::OnExit() 
 {
+	mParent->SetDead();
+	GAMECONTROL->GetMobManager()->Remove(mParent);
 	GAMECONTROL->GetEventManager()->Request( new StageClearEvt() );
 }
