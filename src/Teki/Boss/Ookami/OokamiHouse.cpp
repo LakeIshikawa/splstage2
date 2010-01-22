@@ -20,7 +20,9 @@ OokamiHouse::OokamiHouse()
 
 	mSizeX = GI("OOKAMI_HSSX");
 	mSizeY = GI("OOKAMI_HSSY");
-	OOKAMI_HSSP = GF("OOKAMI_HSSP");;
+	OOKAMI_HSSP = GF("OOKAMI_HSSP");
+
+	mZ = 101.0f;
 }
 
 /************************************************************//**
