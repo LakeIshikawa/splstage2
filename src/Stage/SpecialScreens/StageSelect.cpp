@@ -122,40 +122,46 @@ void StageSelect::SetSelectedIdx(int rIdx)
 */
 void StageSelect::ProcessUserControl()
 {
-	if( GAMECONTROL->GetDXController()->IsMouseClicked() )
+	// ﾗｲﾄの位置
+	int lx = GAMECONTROL->GetUserLightControl()->GetControlLight()->GetX();
+	int ly = GAMECONTROL->GetUserLightControl()->GetControlLight()->GetY();
+	
+	// 矢印
+	// -- 左
+	int lyx = GI("STGSELECT_LARX") + GI("STGSELECT_ARSX")/2;
+	int lyy = GI("STGSELECT_ARY") + GI("STGSELECT_ARSY")/2;
+	if( (sqrt( pow((float)(lyx-lx), 2) + pow((float)(lyy-ly), 2)) <= LIGHT_AT  && 
+		(GAMECONTROL->GetDXController()->IsMouseClicked() ))
+		|| GAMECONTROL->GetDXController()->KeyPush(DIK_LEFT))
 	{
-		// ﾗｲﾄの位置
-		int lx = GAMECONTROL->GetUserLightControl()->GetControlLight()->GetX();
-		int ly = GAMECONTROL->GetUserLightControl()->GetControlLight()->GetY();
-		
-		// 矢印
-		// -- 左
-		int lyx = GI("STGSELECT_LARX") + GI("STGSELECT_ARSX")/2;
-		int lyy = GI("STGSELECT_ARY") + GI("STGSELECT_ARSY")/2;
-		if( sqrt( pow((float)(lyx-lx), 2) + pow((float)(lyy-ly), 2)) <= LIGHT_AT ){
-			GoToLeft();
-			return;
-		}
+		GoToLeft();
+		return;
+	}
 
-		// -- 右
-		int ryx = GI("STGSELECT_RARX") + GI("STGSELECT_ARSX")/2;
-		if( sqrt( pow((float)(ryx-lx), 2) + pow((float)(lyy-ly), 2) ) <= LIGHT_AT ){
-			GoToRight();
-			return;
-		}
+	// -- 右
+	int ryx = GI("STGSELECT_RARX") + GI("STGSELECT_ARSX")/2;
+	if( (sqrt( pow((float)(ryx-lx), 2) + pow((float)(lyy-ly), 2) ) <= LIGHT_AT && 
+		(GAMECONTROL->GetDXController()->IsMouseClicked() ))
+		|| GAMECONTROL->GetDXController()->KeyPush(DIK_RIGHT))
+	{
+		GoToRight();
+		return;
+	}
 
-		// ｽﾃｰｼﾞ開始
-		int top = GI("STGSELECT_IMGY");
-		int left = SP->SCRSZX/2 - GI("STGSELECT_IMGSX")/2;
-		int bottom = top + GI("STGSELECT_IMGSY");
-		int right = left + GI("STGSELECT_IMGSX");
+	// ｽﾃｰｼﾞ開始
+	int top = GI("STGSELECT_IMGY");
+	int left = SP->SCRSZX/2 - GI("STGSELECT_IMGSX")/2;
+	int bottom = top + GI("STGSELECT_IMGSY");
+	int right = left + GI("STGSELECT_IMGSX");
 
-		// ｽﾃｰｼﾞ開始が選択されたか
-		if( lx >= left && lx <= right && ly>=top && ly <= bottom && selectedIdx <= saveStageTdx && scroll == 0){
-			GAMECONTROL->GetMaku()->Close();
-			GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
-			stage = 4;
-		}
+	// ｽﾃｰｼﾞ開始が選択されたか
+	if( ((lx >= left && lx <= right && ly>=top && ly <= bottom && selectedIdx <= saveStageTdx && scroll == 0) &&
+		GAMECONTROL->GetDXController()->IsMouseClicked() )
+		|| GAMECONTROL->GetDXController()->KeyPush(DIK_Z))
+	{
+		GAMECONTROL->GetMaku()->Close();
+		GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
+		stage = 4;
 	}
 }
 
