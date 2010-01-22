@@ -49,6 +49,9 @@ public:
 	//! ãŸ‚Ì’iŠK
 	void SetHibiStage(int st);
 
+	//! Ž€‚Ë
+	void JumpingDie();
+
 	//! @see IPositionable
 	float GetX() { return mX + mVibrator->GetCurWidth(); }
 

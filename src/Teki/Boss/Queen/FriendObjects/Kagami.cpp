@@ -53,6 +53,10 @@ void Kagami::Move()
 		Shuffle();
 	}
 
+	mSpY += mAccY;
+	mX += mSpX;
+	mY += mSpY;
+
 	// •`‰æ
 	DX_DRAW_BLEND("graphics\\teki\\queen\\boss4_mirror.png",
 		mX + mVibrator->GetCurWidth(), mY, 0, 0, mSizeX, mSizeY, 
@@ -196,6 +200,18 @@ void Kagami::SetHibiStage(int st)
 {
 	mHibi->SetHibiStage(st);
 }
+
+/************************************************************//**
+*	Ž€‚Ë
+****************************************************************/
+void Kagami::JumpingDie()
+{
+	mSpX = -GF("SHINIPATT_SPX");
+	mAccX = 0;
+	mSpY = -GF("SHINIPATT_SHOSP");
+	mAccY = SP->GRAVITY;
+}
+
 
 /************************************************************//**
 *	\return ‚±‚ÌµÌÞ¼Þª¸Ä‚ÌºËß°

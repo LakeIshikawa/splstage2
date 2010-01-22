@@ -637,6 +637,10 @@
 								>
 							</File>
 							<File
+								RelativePath=".\src\Teki\Boss\Queen\Actions\ASQueenJumpingDeath.h"
+								>
+							</File>
+							<File
 								RelativePath=".\src\Teki\Boss\Queen\Actions\ASQueenRodAttack.h"
 								>
 							</File>

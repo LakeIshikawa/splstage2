@@ -11,6 +11,8 @@ using namespace std;
 
 #include "..\\..\\BossShareActions\\ASFadeOutAndStageClear.h"
 #include "..\\..\\BossShareActions\\ASWaitForMaku.h"
+#include "ASQueenJumpingDeath.h"
+
 
 //! —‰¤‚ÌÀŞÒ°¼Ş
 /****************************************************************//**
@@ -42,44 +44,18 @@ public:
 		GAMECONTROL->GetJiki()->IncreaseTensEmpa();
 		GAMECONTROL->GetJiki()->IncrementChain();
 
-		// €–S‚Ìê‡
-		if( mHp <= 0 ) {
-			// €‚Ê
-			mKagami->SetHibiStage(3);
-			GAMECONTROL->GetJiki()->SetSuperPause();
-			GAMECONTROL->GetJiki()->DisableCollision();
-			GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
+		// ’É‚Ş
+		mMutekiJikan->Start();
+		mKagami->StartVibrate();
 
-			GAMECONTROL->GetMobManager()->RemoveAll<TrumpSoldier>();
-			GAMECONTROL->GetMobManager()->RemoveAll<Thorn>();
+		// ‹¾‚ª‰ó‚ê‚é
+		if( mHp <7 ) mKagami->SetHibiStage(1);
+		if( mHp <4 ) mKagami->SetHibiStage(2);
 
-			mParent->RemoveAllActions(this);
-			mParent->BreakInActionNoResume( new ASFadeOutAndStageClear() );
-			
-			// –‹‚ğ•Â‚¶‚é
-			GAMECONTROL->GetMaku()->Close();
-			mParent->QueueAction( new ASWaitForMaku(true) );
+		// SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss3_kagami1.wav");
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kougekimeityuu.wav");
 
-			// Ìª°ÄŞ±³Ä
-			mParent->QueueAction( new ASFadeOutAndStageClear() );
-			
-		}
-
-		// ÀŞÒ°¼Ş‚ğH‚ç‚¤‚¾‚¯‚Ìê‡
-		else{
-			// ’É‚Ş
-			mMutekiJikan->Start();
-			mKagami->StartVibrate();
-
-			// ‹¾‚ª‰ó‚ê‚é
-			if( mHp <7 ) mKagami->SetHibiStage(1);
-			if( mHp <4 ) mKagami->SetHibiStage(2);
-
-			// SE
-			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_boss3_kagami1.wav");
-			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kougekimeityuu.wav");
-
-		}
 	}
 
 	//! @see ActionState

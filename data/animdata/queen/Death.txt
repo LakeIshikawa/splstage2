@@ -1,0 +1,6 @@
+// ÀÞÒ°¼Þ
+
+GRAPHIC_SRC "graphics\\teki\\queen\\boss4_queen_f.png"
+DATA        2
+INTERVAL    0.3
+MODE        STOP

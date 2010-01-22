@@ -151,7 +151,6 @@ void ASQueenBase::BuildOtherInfo(ActionState* rPrevState)
 		// ˆÐ—Í
 		mPowerStage = prev_state->mPowerStage;
 	}
-
 	
 	// Ý’è’è”
 	QUEEN_STARTX		= GI("QUEEN_STARTX");
@@ -194,7 +193,22 @@ void ASQueenBase::CollisionResponse(ICollidable* rCollObject,
 
 		// ËÛ²Ý‚ÌUŒ‚A–hŒä
 		if( rOpGroupId == SP->GRID_KOUGEKI && rThisGroupId == SP->GRID_BOGYO ){
-			mParent->BreakInAction(new ASQueenDamage(this));
+			if( mHp-1 >0 ) 
+				mParent->BreakInAction(new ASQueenDamage(this));
+			else
+			{
+				// Ž€‚Ê
+				mKagami->SetHibiStage(3);
+				GAMECONTROL->GetJiki()->SetSuperPause();
+				GAMECONTROL->GetJiki()->DisableCollision();
+				GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
+
+				GAMECONTROL->GetMobManager()->RemoveAll<TrumpSoldier>();
+				GAMECONTROL->GetMobManager()->RemoveAll<Thorn>();
+
+				mParent->RemoveAllActions(this);
+				mParent->BreakInActionNoResume( new ASQueenJumpingDeath() );		
+			}
 		}
 		// ËÛ²Ý‚Ì–hŒä
 		else if( rOpGroupId == SP->GRID_BOGYO ){
