@@ -140,19 +140,6 @@ void SoundController::Init(HWND rHwnd)
 }
 
 /*
-	効果音の再生
-*/
-void SoundController::PlaySE(string rPath)
-{
-	if( mSoundOn ){
-		CSound* test;
-
-		test = mMapStrToSnd[rPath];
-		test->Play();
-	}
-}
-
-/*
 	BGMの再生を常にチェックしなければならない(ループのため)
 */
 void SoundController::Process()
@@ -199,6 +186,20 @@ void SoundController::PauseBGM()
 bool SoundController::IsBGMPlaying()
 {
 	return ( mCurBgm && mCurBgm->IsPlaying() );
+}
+
+
+/*
+	効果音の再生
+*/
+void SoundController::PlaySE(string rPath)
+{
+	if( mSoundOn ){
+		CSound* test;
+
+		test = mMapStrToSnd[rPath];
+		test->Play();
+	}
 }
 
 /*

@@ -54,7 +54,7 @@ StageManager::StageManager(void)
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg1.png"),
 		string("graphics\\stageselect\\stg11.png"),
-		string("graphics\\stageselect\\title11.png")
+		string("graphics\\stageselect\\titletut1.png")
 		);
 
 	maStages[4] = new Stage( 
@@ -67,7 +67,7 @@ StageManager::StageManager(void)
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg2.png"),
 		string("graphics\\stageselect\\stg11.png"),
-		string("graphics\\stageselect\\title11.png")
+		string("graphics\\stageselect\\titletut2.png")
 		);
 
 	maStages[5] = new Stage( 
@@ -80,7 +80,7 @@ StageManager::StageManager(void)
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg3.png"),
 		string("graphics\\stageselect\\stg11.png"),
-		string("graphics\\stageselect\\title11.png")
+		string("graphics\\stageselect\\titletut3.png")
 		);
 
 	maStages[6] = new Stage( 
@@ -93,7 +93,7 @@ StageManager::StageManager(void)
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg4.png"),
 		string("graphics\\stageselect\\stg11.png"),
-		string("graphics\\stageselect\\title11.png")
+		string("graphics\\stageselect\\titletut4.png")
 		);
 
 	maStages[7] = new Stage( 
@@ -106,7 +106,7 @@ StageManager::StageManager(void)
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg5.png"),
 		string("graphics\\stageselect\\stg11.png"),
-		string("graphics\\stageselect\\title11.png")
+		string("graphics\\stageselect\\titletut5.png")
 		);
 
 	maStages[8] = new Stage( 
@@ -119,7 +119,7 @@ StageManager::StageManager(void)
 		GF("STAGE1_TIME"),
 		string("graphics\\txtgraphic\\ttg6.png"),
 		string("graphics\\stageselect\\stg11.png"),
-		string("graphics\\stageselect\\title11.png")
+		string("graphics\\stageselect\\titletut6.png")
 		);
 
 	maStages[9] = new Stage( 
