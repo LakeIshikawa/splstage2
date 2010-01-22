@@ -330,9 +330,9 @@
 { KAERUKSX          :88}		/* 実画像の幅	*/
 { KAERUKSY          :88}		/* 実画像の高さ */
 { KJUMPSTART_TIME   :0.2}		/* ｼﾞｬﾝﾌﾟの直前の間 */
-{ KTAIKI_TIME       :0.5}		/* ｼﾞｬﾝﾌﾟとｼﾞｬﾝﾌﾟのｲﾝﾀｰﾊﾞﾙ */
+{ KTAIKI_TIME       :1.5}		/* ｼﾞｬﾝﾌﾟとｼﾞｬﾝﾌﾟのｲﾝﾀｰﾊﾞﾙ */
 { KJMPSPX           :2.5}                /* ｼﾞｬﾝﾌﾟの初速(X) */
-{ KJMPTAKASA        :50}		/* ｼﾞｬﾝﾌﾟの高さ(ﾋﾟｸｾﾙ) */
+{ KJMPTAKASA        :150}		/* ｼﾞｬﾝﾌﾟの高さ(ﾋﾟｸｾﾙ) */
 
 //ウサギ
 { USAGISX           :72}		/* 実画像の幅	*/
@@ -411,7 +411,7 @@
 { MAJOSY           :72}			/* 実画像の高さ	*/
 { MAJO_DOORSX      :120}		/* 実画像の幅	*/
 { MAJO_DOORSY      :120}		/* 実画像の高さ	*/
-{ MAJO_ARUKI_SPX   :3.75}		/* 歩く速度     */
+{ MAJO_ARUKI_SPX   :2}		/* 歩く速度     */
 { MAJO_HP          :7}			/* ﾗｲﾌｫﾎﾟｲﾝﾄ　  */
 { APPLESZX         :48}			/* 実画像の幅	*/
 { APPLESZY         :48}			/* 実画像の高さ	*/
@@ -524,8 +524,8 @@
 { HEARTSP         : 2.5 }               /* 速度 */
 { HEART_KAITENSP  : 0.08 }		/* ハートの回転速度 */
 { APPLE_BEFOREAPP: 60.0 }               /* ﾘﾝｺﾞが復活するまでの時間 */
-{ APPLE_BEFOREDISAPP1: 5.0 }            /* ﾘﾝｺﾞが消えるまでの時間 */
-{ APPLE_BEFOREDISAPP2: 5.0 }            /* ﾘﾝｺﾞが消えるまでの時間(長時間) */
+{ APPLE_BEFOREDISAPP1: 20.0 }            /* ﾘﾝｺﾞが消えるまでの時間 */
+{ APPLE_BEFOREDISAPP2: 20.0 }            /* ﾘﾝｺﾞが消えるまでの時間(長時間) */
 { APPLE_GENLTX    : 102 }  		/* 左ﾘﾝｺﾞの出現X */
 { APPLE_GENRTX    : 648 }  		/* 右ﾘﾝｺﾞの出現X */
 { APPLE_GENY      : 200 }		/* ﾘﾝｺﾞの出現Y */
