@@ -252,6 +252,7 @@
     <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenBase.h" />
     <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenChandelierAttack.h" />
     <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenDamage.h" />
+    <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenJumpingDeath.h" />
     <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenRodAttack.h" />
     <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenThornAttack.h" />
     <ClInclude Include="src\Teki\Boss\Queen\Actions\ASQueenTrumpsAttack.h" />

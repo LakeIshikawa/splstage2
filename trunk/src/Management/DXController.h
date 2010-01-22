@@ -49,6 +49,7 @@ public:
 
 	LPDIRECT3DTEXTURE9 GetTextureOf( string rFName );
 	void CreateNewTexture( string rFname, UINT width, UINT height, UINT MipLevels, DWORD usage, D3DFORMAT format, D3DPOOL pool );
+	void CreateNewTexture( UINT width, UINT height, UINT MipLevels, DWORD usage, D3DFORMAT format, D3DPOOL pool, LPDIRECT3DTEXTURE9* txt );
 
 
 	// --DInput関連

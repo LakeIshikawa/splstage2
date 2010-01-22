@@ -145,9 +145,23 @@ LPDIRECT3DTEXTURE9	DXController::GetTextureOf( string rFname )
 // 新しくテクスチャを作成する
 void DXController::CreateNewTexture(string rFname, UINT width, UINT height, UINT MipLevels, DWORD usage, D3DFORMAT format, D3DPOOL pool)
 {
+	WaitForSingleObject(hMutex,INFINITE); //mutex 間は他のスレッドから変数を変更できない
+  
 	LPDIRECT3DTEXTURE9 texture = NULL;
 	D3DXCreateTexture(GetDevice(), width, height, MipLevels, usage, format, pool, &texture);
 	mmTextureMap[rFname] = texture;
+
+	ReleaseMutex(hMutex);
+}
+
+// 新しくテクスチャを作成する
+void DXController::CreateNewTexture(UINT width, UINT height, UINT MipLevels, DWORD usage, D3DFORMAT format, D3DPOOL pool, LPDIRECT3DTEXTURE9* txt )
+{
+	WaitForSingleObject(hMutex,INFINITE); //mutex 間は他のスレッドから変数を変更できない
+  
+	D3DXCreateTexture(GetDevice(), width, height, MipLevels, usage, format, pool, txt);
+
+	ReleaseMutex(hMutex);
 }
 
 // 画面に描画する
