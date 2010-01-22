@@ -22,7 +22,7 @@ void TeamLogo::Process()
 			mAlpha = 1.0f;
 			mStatus = WAIT;
 			//SE
-			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_team_rogo.wav");
+			//GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_team_rogo.wav");
 		}
 		break;
 
