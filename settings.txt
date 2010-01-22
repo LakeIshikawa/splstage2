@@ -465,7 +465,7 @@
 { STORM_SP         :3.5 } 		/* ‹­•—‚Ì—Í */
 
 // —‰¤
-{ QUEEN_HP        :1 }			/* ‰ŠúHP */
+{ QUEEN_HP        :15 }			/* ‰ŠúHP */
 { QUEEN_STARTX    :340 }               	/* ‰Šú X */
 { QUEEN_STARTY    :200 }        	/* ‰Šú Y */
 { QUEEN_SX        :120}			/* ŽÀ‰æ‘œ‚Ì•	 */
