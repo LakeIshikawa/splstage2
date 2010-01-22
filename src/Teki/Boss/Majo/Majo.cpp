@@ -13,7 +13,7 @@
 int Majo::sAniData[][MAX_DATA] =
 {
 	{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 99 },	// WIN
-	{ 6, 5, 4, 3, 2, 1, 99 },						// WINBACK
+	{ 6, 5, 4, 3, 2, 3, 4, 3, 2, 1, 99 },		// WINBACK
 	{ 12, 13, 14, 15, 99 },							// WINDAMAGE
 	{ 0, 1, 2, 1, 99 },								// DOOR
 	{ 3, 4, 5, 6, 7, 8, 9, 10, 99 },				// DOORTHROW
@@ -27,8 +27,8 @@ int Majo::sAniData[][MAX_DATA] =
 
 float Majo::sAniTimeData[][MAX_DATA] =
 {
-	{ 1.0f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f },	// WIN
-	{ 0.5f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f },										// WINBACK
+	{ 1.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f },	// WIN
+	{ 0.6f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f },				// WINBACK
 	{ 0.2f, 0.2f, 0.2f, 0.2f },													// WINDAMAGE
 	{ 0.2f, 0.2f, 0.2f, 0.2f, },												// DOOR
 	{ 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f, 0.2f },							// DOORTHROW
