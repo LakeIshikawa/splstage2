@@ -114,7 +114,7 @@ int	Jiki::sHitY[][4][TENSU] = {
 
 // チェイン
 float Jiki::sChainMultSp[] = {
-	1.2f, 1.3f, 1.6f, 1.9f, 2.2f, 2.4f
+	1.2f, 1.3f, 1.4f, 1.5f, 1.7f, 1.9f
 };
 // チェイン
 float Jiki::sChainMultShoSp[] = {
@@ -358,9 +358,12 @@ void Jiki::InflictDamage()
 			if( mEmp <= 0 ){
 				Die();
 			}
+			if( mEmp > EMP_MAX ) mEmp = EMP_MAX;
+
 			//??��ｼ?�??
 			mTen -= TEN_DOWN2;
 			if( mTen < 0 ) mTen = 0;
+			if( mTen > MAX_TEN ) mTen = MAX_TEN;
 
 			ResetChain();
 		}

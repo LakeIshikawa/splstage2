@@ -42,7 +42,8 @@ void UserLightControl::Move()
 
 			mZXC[i] = max+1;
 			// SE
-			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_raitokirikae.wav");
+			if( GetControlLight()->IsOn() )
+				GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_raitokirikae.wav");
 		}
 		else if( controller->KeyPull( DIK_Z+i ) )
 			mZXC[i] = 0;
@@ -56,7 +57,7 @@ void UserLightControl::Move()
 	}
 
 	// ZXCが全部0の場合は無色
-	if( mZXC[maxidx] == 0 )
+	if( mZXC[maxidx] == 0 || !GetControlLight()->IsOn() )
 		mpControlLight->SetColor( COLOR::MUSHOKU );
 
 	// ZXCの一番値が大きいキーの色に設定
