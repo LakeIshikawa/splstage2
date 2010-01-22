@@ -39,8 +39,8 @@ TrumpSoldier::TrumpSoldier(int rX, int rY)
 
 	AddTarget( GAMECONTROL->GetJiki() );
 
-	GAMECONTROL->GetMobManager()->AddAsTargetAllOf<Thorn>(this);
-	GAMECONTROL->GetMobManager()->AddAsTargetAllOf<Heart>(this);
+	//GAMECONTROL->GetMobManager()->AddAsTargetAllOf<Thorn>(this);
+	//GAMECONTROL->GetMobManager()->AddAsTargetAllOf<Heart>(this);
 
 	// Ï¯Ìß‚Æ‚Ì“–‚½‚è
 	mMapCollider = new PointMapCollider(this);

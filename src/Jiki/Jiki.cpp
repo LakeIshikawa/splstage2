@@ -358,9 +358,12 @@ void Jiki::InflictDamage()
 			if( mEmp <= 0 ){
 				Die();
 			}
+			if( mEmp > EMP_MAX ) mEmp = EMP_MAX;
+
 			//??æùÔΩº?Æ??
 			mTen -= TEN_DOWN2;
 			if( mTen < 0 ) mTen = 0;
+			if( mTen > TEN_MAX ) mTen = TEN_MAX;
 
 			ResetChain();
 		}

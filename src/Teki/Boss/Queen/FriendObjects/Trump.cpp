@@ -137,7 +137,7 @@ void Trump::TransformToSoldier(Chandelier* rChandelier)
 	else if( mGraphic.compare("graphics\\teki\\queen\\boss4_card3.png") == 0 ) ts = new TrumpSoldierSpades( mX, FLOORY );
 	
 
-	ts->AddTarget( rChandelier );
+	//ts->AddTarget( rChandelier );
 	ts->Build();
 	GAMECONTROL->GetMobManager()->Request( ts, true );
 

@@ -97,17 +97,3 @@ private:
 	// Ä×İÌß
 	Trump* trumps[TRUMPS_NUM];
 };
-//
-///****************************************************************//**
-//*	¼¬İÃŞØ±‚ª—‚¿‚Ä—ˆ‚éEˆĞ—Í‹­
-//*
-//*	\nosubgrouping
-//********************************************************************/
-//class ASQueenChandelierAttackStrong: public ASQueenChandelierAttack
-//{
-//public: 
-//	void OnEnter(){ 
-//		ASQueenChandelierAttack::OnEnter();
-//		mChandelier->SetStage(true);
-//	}
-//};
