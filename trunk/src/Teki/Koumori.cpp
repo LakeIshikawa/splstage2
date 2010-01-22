@@ -42,11 +42,16 @@ Koumori::Koumori(int rXPx, int rYPy)
 	// “–‚½‚è”»’è
 	AddFrame(0);
 	AddCircle(0, SP->GRID_BOGYO, 28, 28, 14);
+
+	mIsSEStopped = false;
 }
 
 Koumori::~Koumori(void)
 {
-	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
+	if( !mIsSEStopped){
+		mIsSEStopped = true;
+		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
+	}
 }
 
 void Koumori::_Move()
@@ -81,8 +86,15 @@ void Koumori::_Move()
 	}
 
 	//SE STOP
-	if( IsGamenGai() )
+	if( IsGamenGai()/* && !mIsSEStopped*/ ){
+		mIsSEStopped = true;
 		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
+	}
+
+	if( !IsGamenGai() && mIsSEStopped ){
+		mIsSEStopped = false;
+		GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_bat_fly.wav");
+	}
 
 
 	Teki::Draw();
@@ -152,4 +164,14 @@ void Koumori::Nigeru()
 		mSpX = cos( angle ) * KOMOSPX;
 		mSpY = sin( angle );
 	}
+}
+
+void Koumori::Die()
+{
+	if( !mIsSEStopped){
+		mIsSEStopped = true;
+		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
+	}
+
+	Teki::Die();
 }

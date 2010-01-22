@@ -32,9 +32,14 @@ private:
 		NIGE
 	} mStatus;
 
+	bool mIsSEStopped;
+
 	// 関数
 	float DetermineShosoku(float rRaiseForce);
 	void Nigeru();
+
+	//! オーバーライド
+	void Die();
 
 	// 設定定数
 	int MAAI_HABA;

@@ -358,12 +358,9 @@ void Jiki::InflictDamage()
 			if( mEmp <= 0 ){
 				Die();
 			}
-			if( mEmp > EMP_MAX ) mEmp = EMP_MAX;
-
 			//??æùÔΩº?Æ??
 			mTen -= TEN_DOWN2;
 			if( mTen < 0 ) mTen = 0;
-			if( mTen > TEN_MAX ) mTen = TEN_MAX;
 
 			ResetChain();
 		}
@@ -1562,6 +1559,9 @@ void	Jiki::Die()
 	SetLightResponse(false);
 	SetTransparent(true);
 	GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
+
+	GAMECONTROL->GetSoundController()->SetBGM(SoundController::LIFE0);
+
 }
 
 /*
@@ -1705,7 +1705,7 @@ void Jiki::RestoreLife(int n, bool SEdelayed)
 { 
 	if( mLife < LIFE_MAX ) {
 		mLife += n;
-		//SE[
+		//SE
 		if( SEdelayed )
 			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_zanki_up_delayed.wav");
 		else
