@@ -212,7 +212,7 @@
 { STGSELECT_IMGSX :360}			/* ｲﾒｰｼﾞ画像の横幅 */
 { STGSELECT_IMGSY :270}			/* ｲﾒｰｼﾞ画像の縦幅 */
 { STGSELECT_IMGY  :175}			/* ｲﾒｰｼﾞ画像のY位置 */
-{ STGSELECT_ALLSX :540}			/* 全体図画像の横幅 */
+{ STGSELECT_ALLSX :570}			/* 全体図画像の横幅 */
 { STGSELECT_ALLSY :45}			/* 全体図画像の縦幅 */
 { STGSELECT_ALLY  :475}			/* 全体図画像のY位置 */
 { STGSELECT_ALL1SX :36}			/* 全体図の項目の横幅 */
