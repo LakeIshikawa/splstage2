@@ -561,7 +561,7 @@
 //‘«ê
 { ASHIBASX         :144 }		/* ŽÀ‰æ‘œ‚Ì•	*/
 { ASHIBASY         :48}			/* ŽÀ‰æ‘œ‚Ì‚‚³ */
-{ ASHIBAMOV_SP     :3.5}		/* ‘¬“x		*/
+{ ASHIBAMOV_SP     :2.5}		/* ‘¬“x		*/
 { ASHIBA2SX        :144 }		/* ŽÀ‰æ‘œ‚Ì•	*/
 { ASHIBA2SY        :48}			/* ŽÀ‰æ‘œ‚Ì‚‚³ */
 { ASHIBA2MOV_SP    :3.5}		/* ‘¬“x		*/
