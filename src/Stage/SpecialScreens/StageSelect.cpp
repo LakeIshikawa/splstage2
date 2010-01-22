@@ -82,6 +82,8 @@ void StageSelect::Process()
 	
 	GAMECONTROL->GetLightManager()->Draw();
 
+	DrawInterfaceAboveLight();
+
 	GAMECONTROL->GetMaku()->Draw();
 
 }
@@ -221,6 +223,17 @@ void StageSelect::DrawInterface()
 			GI("STGSELECT_IMGSX"), GI("STGSELECT_IMGSY") );
 	}
 
+	// ˜g
+	DX_DRAW("graphics\\stageselect\\Image_frame.png", SP->SCRSZX/2-GI("STGSELECT_FRAMESX")/2,
+		GI("STGSELECT_IMGY")-10, 0, 0, GI("STGSELECT_FRAMESX"), GI("STGSELECT_FRAMESY"));
+
+}
+
+/**
+* ½Ã°¼Þ‘I‘ð²ÝÀ°Ìª°½‚Ì•`‰æ
+*/
+void StageSelect::DrawInterfaceAboveLight()
+{
 	// ‘S‘Ì}
 	DX_DRAW("graphics\\stageselect\\stageallgray.png", SP->SCRSZX/2-GI("STGSELECT_ALLSX")/2, 
 		GI("STGSELECT_ALLY"), 0, 0, GI("STGSELECT_ALLSX"), GI("STGSELECT_ALLSY") );
@@ -237,10 +250,6 @@ void StageSelect::DrawInterface()
 	if( scrollNLRdir == 0 ) curScroll = 0;
 	DX_DRAW("graphics\\stageselect\\cursor.png", SP->SCRSZX/2-GI("STGSELECT_ALLSX")/2 + selectedIdx*GI("STGSELECT_ALL1SX") + curScroll,
 		GI("STGSELECT_ALLY"), 0, 0, GI("STGSELECT_CURSORSX"), GI("STGSELECT_CURSORSY") );
-
-	// ˜g
-	DX_DRAW("graphics\\stageselect\\Image_frame.png", SP->SCRSZX/2-GI("STGSELECT_FRAMESX")/2,
-		GI("STGSELECT_IMGY")-10, 0, 0, GI("STGSELECT_FRAMESX"), GI("STGSELECT_FRAMESY"));
 
 }
 

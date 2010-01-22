@@ -343,7 +343,7 @@ void StageManager::GoToGameOver()
 */
 void StageManager::GoToStartScreen()
 {
-	GoToStage(0);
+	GoToStage(1);
 }
 
 /**

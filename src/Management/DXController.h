@@ -117,4 +117,6 @@ private:
 	char					mKeyboardState[256];
 	char					mKeyboardStatePrev[256];
 
+	HANDLE	hMutex; //ミューテックスのハンドル
+
 };

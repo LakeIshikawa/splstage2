@@ -145,6 +145,7 @@ protected:
 
 	// âπê∫óp:UGLY:
 	bool mIsRolling;
+	bool mIsRollSeStopped;
 
 	// Ω√∞¿Ω
 	enum STATUS{

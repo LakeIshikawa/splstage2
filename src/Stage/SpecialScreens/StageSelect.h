@@ -23,6 +23,7 @@ private:
 	void LoadSaveData();
 	void ProcessUserControl();
 	void DrawInterface();
+	void DrawInterfaceAboveLight();
 	void GoToLeft();
 	void GoToRight();
 

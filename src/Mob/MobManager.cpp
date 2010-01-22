@@ -98,9 +98,9 @@ void MobManager::Request(int rNo, int rXPx, int rYPx, bool rTransferOwnership)
 	if( rNo == GI("STGCLRDOOR_NO") )newobj = new StgClrDoor( rXPx, rYPx, 101.0f );
 	if( rNo == GI("ASHIBA_NO") )	newobj = new Ashiba( rXPx, rYPx, 1.0f, "graphics\\object\\stage_1_asiba.png", GI("ASHIBASX"), GI("ASHIBASY") );
 	//if( rNo == GI("INVASHIBA_NO") )	newobj = new AshibaInvisible( rXPx, rYPx, 1.0f );
-	if( rNo == GI("TEKKYU_NO") )	newobj = new TekkyuStand( rXPx, rYPx, 1.0f );
-	if( rNo == GI("FIREUP_NO") )	newobj = new FireStand( rXPx, rYPx, 1.0f, false );
-	if( rNo == GI("FIREDN_NO") )	newobj = new FireStand( rXPx, rYPx, 1.0f, true );
+	if( rNo == GI("TEKKYU_NO") )	newobj = new TekkyuStand( rXPx, rYPx, -10.0f );
+	if( rNo == GI("FIREUP_NO") )	newobj = new FireStand( rXPx, rYPx, -10.0f, false );
+	if( rNo == GI("FIREDN_NO") )	newobj = new FireStand( rXPx, rYPx, -10.0f, true );
 	if( rNo == GI("BOSS_OOKAMI_NO")) newobj = new Ookami();
 	if( rNo == GI("TRUMPHEIHEARTNO")) newobj = new TrumpSoldierHearts(rXPx, rYPx);
 	if( rNo == GI("TRUMPHEIDIAMONDNO")) newobj = new TrumpSoldierDiamonds(rXPx, rYPx);

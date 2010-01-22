@@ -75,6 +75,10 @@ public:
 	//! ｾｯﾄ
 	void SetZ(float rZ) { mZ = rZ; }
 
+	
+	//! 画面外にいるか
+	bool IsGamenGai();
+
 
 protected:
 	//変数

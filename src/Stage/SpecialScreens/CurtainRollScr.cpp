@@ -377,6 +377,7 @@ void CurtainRollScr::UpdateStage()
 	case CLOSINGANDFADINGOUT:
 		if( GAMECONTROL->GetMaku()->IsClosed() ){
 			if( GAMECONTROL->GetFader()->FadeOut() ){
+				GAMECONTROL->GetSoundController()->ResetBGMs();
 				GAMECONTROL->GetStageManager()->GoToStage(1);
 			}
 		}

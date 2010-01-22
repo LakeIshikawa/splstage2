@@ -92,6 +92,8 @@ Particle::Particle(float rAngle, float rSpeed, string rGraphic,
 	AddCircle(0, SP->GRID_BOGYO, 24, 24, 24);
 	AddTarget(GAMECONTROL->GetJiki());
 
+	mZ = 111.0f;
+
 }
 
 /************************************************************//**

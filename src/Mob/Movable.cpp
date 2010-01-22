@@ -74,3 +74,12 @@ float Movable::Z()
 {
 	return mZ;
 }
+
+
+/************************************************************//**
+*	\return 画面外に出ているか
+****************************************************************/
+bool Movable::IsGamenGai()
+{
+	return ISGAMENGAI(mX, mY, mSizeX, mSizeY);
+}
