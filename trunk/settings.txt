@@ -629,5 +629,5 @@
 { CONGRATSY        :96}			/* Congratulations縦 */
 { CONGRATSTIME     :3.0}		/* Congratulations表示時間 */
 { STAFF_SCRSP      :1.75 }		/* スタッフロールのｽｸﾛｰﾙ速度 */
-{ STAFF_SX         :560 }		/* ロール幅 */
-{ STAFF_SY         :4000 }		/* ロール縦 */
+{ STAFF_SX         :1024 }		/* ロール幅 */
+{ STAFF_SY         :4096 }		/* ロール縦 */

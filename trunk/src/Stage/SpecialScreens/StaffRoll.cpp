@@ -139,7 +139,7 @@ void StaffRoll::DrawStaffWithAlphaMask()
 {
 	BuildStaffTexture();
 
-	DX_DRAW("_StaffRollTx", 0, SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), scrp );
+	DX_DRAW("_StaffRollTx", 0, SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), min(scrp,GI("STAFF_SY")) );
 }
 
 /**
