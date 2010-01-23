@@ -28,7 +28,7 @@ Thorn::Thorn(int rX, int rY, float rSp)
 	AddTarget(GAMECONTROL->GetJiki());
 
 	// ©•ª‚ğƒgƒ‰ƒ“ƒv•º‚ÌÀ°¹Ş¯Ä‚É“o˜^
-	GAMECONTROL->GetMobManager()->AddAsTargetToAllOf<TrumpSoldier>(this);
+	//GAMECONTROL->GetMobManager()->AddAsTargetToAllOf<TrumpSoldier>(this);
 
 	// ‰Šú‰»
 	mHeight = 0;

@@ -30,7 +30,7 @@ Heart::Heart(int rX, int rY, float rAngle) : mAngle( rAngle )
 	AddTarget(GAMECONTROL->GetJiki());
 
 	// ƒgƒ‰ƒ“ƒv•º
-	GAMECONTROL->GetMobManager()->AddAsTargetToAllOf<TrumpSoldier>(this);
+	//GAMECONTROL->GetMobManager()->AddAsTargetToAllOf<TrumpSoldier>(this);
 
 	// ‰Šú‰»
 	
