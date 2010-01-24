@@ -89,6 +89,7 @@ void Stage::Load()
 		mpZokusei->Load( mZokuseiFname );
 
 	inited = false;
+	bgm_played = false;
 	title_stage = 0;
 	GAMECONTROL->GetJiki()->SetPos(GF("HERINITX"), GF("HERINITY"));
 	GAMECONTROL->GetJiki()->ResetTempParams();
@@ -145,8 +146,11 @@ void Stage::Process()
 */
 void Stage::Init()
 {
-	GAMECONTROL->GetSoundController()->ResetBGMs();
-	GAMECONTROL->GetSoundController()->SetBGM(mBgm);
+	if( !bgm_played){
+		bgm_played = true;
+		GAMECONTROL->GetSoundController()->ResetBGMs();
+		GAMECONTROL->GetSoundController()->SetBGM(mBgm);
+	}
 
 	// ?Œï½ª?°??¾žï½²??
 	if( GAMECONTROL->GetFader()->FadeIn() ){
