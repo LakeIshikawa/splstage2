@@ -59,6 +59,7 @@ protected:
 	string mSelectTitleGraphic;
 
 	bool inited;
+	bool bgm_played;
 	int  title_stage;
 	bool load_completed;
 
