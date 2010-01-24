@@ -260,8 +260,8 @@ void StageSelect::DrawInterfaceAboveLight()
 	float sp = GI("STGSELECT_ALL1SX") / ((float)GI("STGSELECT_SLDDIST")/GI("STGSELECT_SLDSP"));
 	curScroll += scrollNLRdir == 1 ? -0.78 : scrollNLRdir == 2 ? 0.78 : 0;
 	if( scrollNLRdir == 0 ) curScroll = 0;
-	DX_DRAW("graphics\\stageselect\\cursor.png", SP->SCRSZX/2-GI("STGSELECT_ALLSX")/2 + selectedIdx*GI("STGSELECT_ALL1SX") + curScroll,
-		GI("STGSELECT_ALLY"), 0, 0, GI("STGSELECT_CURSORSX"), GI("STGSELECT_CURSORSY") );
+	DX_DRAW("graphics\\stageselect\\cursor.png", SP->SCRSZX/2-GI("STGSELECT_ALLSX")/2 + selectedIdx*GI("STGSELECT_ALL1SX") + curScroll + GI("STGSELECT_CURSORX"),
+		GI("STGSELECT_ALLY") + GI("STGSELECT_CURSORY"), 0, 0, GI("STGSELECT_CURSORSX"), GI("STGSELECT_CURSORSY") );
 
 }
 

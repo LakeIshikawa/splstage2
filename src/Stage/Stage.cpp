@@ -145,6 +145,7 @@ void Stage::Process()
 */
 void Stage::Init()
 {
+	GAMECONTROL->GetSoundController()->ResetBGMs();
 	GAMECONTROL->GetSoundController()->SetBGM(mBgm);
 
 	// ?Œï½ª?°??¾žï½²??
