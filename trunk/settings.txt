@@ -164,12 +164,12 @@
 { STAGE2_BOSS_MAP:"data\\boss2_data.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
 { STAGE2_BOSS_HAICHI:"data\\boss2_teki.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
 
-{ STAGE4_MAP   :"data\\st41_data.txt"}	/* ｽﾃｰｼﾞ4のﾏｯﾌﾟﾃﾞｰﾀ */
-{ STAGE4_HAICHI:"data\\st41_teki.txt"}	/* ｽﾃｰｼﾞ4の配置 */
-{ STAGE4_ZOKUSEI:"data\\st41_zk.txt"}	/* ｽﾃｰｼﾞ4の属性 */
-{ STAGE42_MAP   :"data\\st42_data.txt"}	/* ｽﾃｰｼﾞ4-2のﾏｯﾌﾟﾃﾞｰﾀ */
-{ STAGE42_HAICHI:"data\\st42_teki.txt"}	/* ｽﾃｰｼﾞ4-2の配置 */
-{ STAGE42_ZOKUSEI:"data\\st42_zk.txt"}	/* ｽﾃｰｼﾞ4-2の属性 */
+{ STAGE4_MAP   :"data\\st31_data.txt"}	/* ｽﾃｰｼﾞ4のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE4_HAICHI:"data\\st31_teki.txt"}	/* ｽﾃｰｼﾞ4の配置 */
+{ STAGE4_ZOKUSEI:"data\\st31_zk.txt"}	/* ｽﾃｰｼﾞ4の属性 */
+{ STAGE42_MAP   :"data\\st32_data.txt"}	/* ｽﾃｰｼﾞ4-2のﾏｯﾌﾟﾃﾞｰﾀ */
+{ STAGE42_HAICHI:"data\\st32_teki.txt"}	/* ｽﾃｰｼﾞ4-2の配置 */
+{ STAGE42_ZOKUSEI:"data\\st32_zk.txt"}	/* ｽﾃｰｼﾞ4-2の属性 */
 { STAGE4_BOSS_MAP:"data\\boss4_data.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
 { STAGE4_BOSS_HAICHI:"data\\boss4_teki.txt"}	/* ｽﾃｰｼﾞ2のﾏｯﾌﾟﾃﾞｰﾀ */
 
