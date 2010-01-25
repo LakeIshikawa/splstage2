@@ -535,7 +535,7 @@
 { TRUMPHEISX      : 208 }		/* ﾄﾗﾝﾌﾟ兵の横幅 */
 { TRUMPHEISY      : 208 }		/* ﾄﾗﾝﾌﾟ兵の縦幅 */
 { TRUMPHEISP      : 2.0 }		/* ﾄﾗﾝﾌﾟ兵の速度 */
-{ TRUMPHEIHANI    : 60 }                /* ﾋﾛｲﾝがこれ以上近づいたら */
+{ TRUMPHEIHANI    : 90 }                /* ﾋﾛｲﾝがこれ以上近づいたら */
 
 // ステージクリアの文字
 { STGCLRMOJI_SX    :600}		/* 画像の横幅		*/
