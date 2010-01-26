@@ -67,7 +67,7 @@ public:
 	// OnExit @see ActionState
 	void OnExit(){
 		// s‚«‚¾‚Á‚½‚ç‚Î‹A‚è‚ðŒÄ‚Ô
-		if( D ) mParent->AddNextAction( new ASQueenThornAttack<false>() );
+		//if( D ) mParent->AddNextAction( new ASQueenThornAttack<false>() );
 	}
 
 	// @see ActionState

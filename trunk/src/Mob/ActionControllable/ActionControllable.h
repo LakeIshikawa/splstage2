@@ -44,6 +44,9 @@ class ActionControllable: public CollidableSingleFrame
 		//! すべてのｱｸｼｮﾝを削除
 		void RemoveAllActions(ActionState* rExclude);
 
+		//! 一を決めて追加する
+		void InsertAfter(ActionState* rInsertMe, ActionState* rAfterMe);
+
 		//! ﾗﾝﾀﾞﾑでｼｬｯﾌﾙ(
 		void ShuffleActions();
 
