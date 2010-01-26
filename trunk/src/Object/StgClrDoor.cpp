@@ -74,7 +74,7 @@ void StgClrDoor::Move()
 void StgClrDoor::CollisionResponse(ICollidable *rCollObject, int rThisGroupId, int rOpGroupId)
 {
 	Jiki* jiki = dynamic_cast<Jiki*>(rCollObject);
-	if( jiki != NULL && rOpGroupId == SP->GRID_BOGYO && !stageclear ){
+	if( jiki != NULL && rOpGroupId == SP->GRID_BOGYO && !stageclear && jiki->IsStageclearable() ){
 		stageclear = true;
 		GAMECONTROL->GetJiki()->DisableCollision();
 		GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();

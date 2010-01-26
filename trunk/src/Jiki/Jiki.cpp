@@ -363,7 +363,7 @@ void Jiki::InflictDamage()
 			//??æùÔΩº?Æ??
 			mTen -= TEN_DOWN2;
 			if( mTen < 0 ) mTen = 0;
-			if( mTen > MAX_TEN ) mTen = MAX_TEN;
+			if( mTen > TEN_MAX ) mTen = TEN_MAX;
 
 			ResetChain();
 		}
@@ -1715,4 +1715,10 @@ void Jiki::RestoreLife(int n, bool SEdelayed)
 			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_zanki_up.wav");
 	}
 	if( mLife > LIFE_MAX ) mLife = LIFE_MAX; 
+}
+
+
+bool Jiki::IsStageclearable()
+{
+	return mStatus != HISATU && mFadeFl2 == 0;
 }

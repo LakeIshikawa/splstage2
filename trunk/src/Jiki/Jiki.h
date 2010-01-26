@@ -77,6 +77,8 @@ public:
 
 	bool IsBusy();
 
+	bool IsStageclearable();
+
 	// チェイン
 	void IncrementChain();
 	void ResetChain();
