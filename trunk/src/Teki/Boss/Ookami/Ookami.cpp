@@ -51,6 +51,13 @@ void Ookami::AddInitStates(int rX, int rY) {
 
 	// ·­°‚É’Ç‰Á
 	QueueAction( initAction );
+
+	//SE STOP
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_atack.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_out.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_bress_tame.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_move.wav");
+	GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_boss2_house_break.wav");
 }
 
 

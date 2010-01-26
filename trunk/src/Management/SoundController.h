@@ -49,6 +49,7 @@ public:
 	void SetBGM( BGMS rBgm );
 	void ResetBGMs();
 	bool IsBGMPlaying();
+	void ResetSEs();
 
 	void SetSound(bool mOnOff);
 
