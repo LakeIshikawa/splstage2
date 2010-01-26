@@ -22,8 +22,8 @@ TrumpSoldier::TrumpSoldier(int rX, int rY)
 	mSizeX = GI("TRUMPHEISX");
 	mSizeY = GI("TRUMPHEISY");
 
-	mX = rX;
-	mY = rY - mSizeY;
+	mX = rX - mSizeX/2;
+	mY = rY - mSizeY-8;
 	mMuki = rand()%2;
 
 	// èâä˙âª
