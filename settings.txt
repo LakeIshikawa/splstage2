@@ -590,7 +590,7 @@
 { TEKKYU_STARTY    :-52}                /* 装置相対座標・初期Y */
 { TEKKYU_RLSP      :-2.0} 		/* 転がる速度 */
 { TEKKYU_RLANGSP   :-0.1} 		/* 転がる角速度 */
-{ TEKKYU_REBHG     :50}			/* 弾む高さ(一回目のﾊﾞｳﾝﾄﾞ)
+{ TEKKYU_REBHG     :60}			/* 弾む高さ(一回目のﾊﾞｳﾝﾄﾞ)
 { TEKKYU_SHOMETSUTIME :5.0}             /* とまってから消滅するまでの時間 */
 
 // 噴出す火
