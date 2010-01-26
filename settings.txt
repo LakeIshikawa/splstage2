@@ -216,7 +216,7 @@
 { STGSELECT_ALLSY :45}			/* 全体図画像の縦幅 */
 { STGSELECT_ALLY  :475}			/* 全体図画像のY位置 */
 { STGSELECT_ALL1SX :36}			/* 全体図の項目の横幅 */
-{ STGSELECT_CURSORX :11}		/* ｶｰｿﾙの初期ずれX */
+{ STGSELECT_CURSORX :13}		/* ｶｰｿﾙの初期ずれX */
 { STGSELECT_CURSORY :3}			/* ｶｰｿﾙの初期ずれY */
 { STGSELECT_CURSORSX :40}		/* ｶｰｿﾙの横幅 */
 { STGSELECT_CURSORSY :40}		/* ｶｰｿﾙの縦幅 */
