@@ -15,6 +15,7 @@ void GameOverScr::Process()
 	if( !mIsSEPlayed ){
 		mIsSEPlayed = true;
 		//SE
+		GAMECONTROL->GetSoundController()->ResetSEs();//‘SSTOP
 		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\game_over.wav");
 	}
 

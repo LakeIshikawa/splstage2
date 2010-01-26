@@ -1563,6 +1563,7 @@ void	Jiki::Die()
 	SetTransparent(true);
 	GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
 
+	GAMECONTROL->GetSoundController()->ResetSEs();//SE‘SSTOP
 	GAMECONTROL->GetSoundController()->SetBGM(SoundController::LIFE0);
 
 }

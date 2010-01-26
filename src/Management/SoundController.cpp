@@ -244,3 +244,18 @@ pair<string, CSound*> SoundController::GetSE(string rPath)
 	p.second = NULL;
 	return p;
 }
+
+/*
+	SE‚ð‘S‚ÄŽ~‚ß‚é
+*/
+void SoundController::ResetSEs()
+{
+	if( mSoundOn ){
+		list<pair<string, CSound*>> tmp;
+		tmp = mSELst;
+		for each( pair<string, CSound*> p in tmp){
+			StopSE(p.first);
+		}
+	}
+
+}
