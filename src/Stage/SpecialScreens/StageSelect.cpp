@@ -250,9 +250,9 @@ void StageSelect::DrawInterfaceAboveLight()
 	DX_DRAW("graphics\\stageselect\\stageallgray.png", SP->SCRSZX/2-GI("STGSELECT_ALLSX")/2, 
 		GI("STGSELECT_ALLY"), 0, 0, GI("STGSELECT_ALLSX"), GI("STGSELECT_ALLSY") );
 	DX_DRAW("graphics\\stageselect\\stageall.png", SP->SCRSZX/2-GI("STGSELECT_ALLSX")/2, 
-		GI("STGSELECT_ALLY"), 0, 0, GI("STGSELECT_ALL1SX") * (saveStageTdx+1), GI("STGSELECT_ALLSY") );
-	DX_DRAW_BLEND("graphics\\stageselect\\stageall.png", SP->SCRSZX/2-GI("STGSELECT_ALLSX")/2 + GI("STGSELECT_ALL1SX") * (saveStageTdx+1), 
-		GI("STGSELECT_ALLY"), GI("STGSELECT_ALL1SX") * (saveStageTdx+1), 0, GI("STGSELECT_ALLSX"), GI("STGSELECT_ALLSY"),
+		GI("STGSELECT_ALLY"), 0, 0, GI("STGSELECT_ALL1SX") * (saveStageTdx+1)+GI("STGSELECT_CURSORX"), GI("STGSELECT_ALLSY") );
+	DX_DRAW_BLEND("graphics\\stageselect\\stageall.png", SP->SCRSZX/2-GI("STGSELECT_ALLSX")/2 + GI("STGSELECT_ALL1SX") * (saveStageTdx+1)+ GI("STGSELECT_CURSORX"), 
+		GI("STGSELECT_ALLY"), GI("STGSELECT_ALL1SX") * (saveStageTdx+1)+ GI("STGSELECT_CURSORX"), 0, GI("STGSELECT_ALLSX"), GI("STGSELECT_ALLSY"),
 		D3DXCOLOR(0.5f, 0.5f, 0.5f, 1.0f));
 
 	// ¶°¿Ù
