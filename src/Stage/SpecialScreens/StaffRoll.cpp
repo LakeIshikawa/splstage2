@@ -180,10 +180,10 @@ void StaffRoll::BuildStaffTexture()
 */
 void StaffRoll::DrawStaffWithAlphaMask()
 {
-	BuildStaffTexture();
+	//BuildStaffTexture();
 
-	DX_DRAW("_StaffRollTx", 0, SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), min(scrp,2048) );
-	DX_DRAW("_StaffRollTx", 0, 2048 + SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), min(scrp,2048) );
+	DX_DRAW("graphics\\screen\\ed_str.png", 0, SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), min(scrp,2048) );
+	DX_DRAW("graphics\\screen\\ed_str2.png", 0, 2048 + SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), min(scrp,2048) );
 }
 
 /**
