@@ -40,13 +40,15 @@ void Queen::AddNewStates(ActionState* rPrevState)
 				// Ω√∞ƒÇÃèâä˙âª
 				ASQueenBase* chandelier = new ASQueenAttackInit<ASQueenChandelierAttack>();
 				ASQueenBase* trumps = new ASQueenAttackInit<ASQueenTrumpsAttack>();
-				ASQueenBase* thorn = new ASQueenAttackInit<ASQueenThornAttack<true>>();
+				ASQueenBase* thorn1 = new ASQueenAttackInit<ASQueenThornAttack<true>>();
+				ASQueenBase* thorn2 = new ASQueenAttackInit<ASQueenThornAttack<false>>();
 
 				// ∑≠∞Ç…í«â¡
 				chandelier->BuildState( rPrevState, this );
 				QueueAction( chandelier );
 				QueueAction( trumps );
-				QueueAction( thorn );
+				QueueAction( thorn1 );
+				QueueAction( thorn2 );
 				break;
 			}
 
@@ -56,14 +58,16 @@ void Queen::AddNewStates(ActionState* rPrevState)
 				// Ω√∞ƒÇÃèâä˙âª
 				ASQueenBase* chandelier = new ASQueenAttackInit<ASQueenChandelierAttackStrong>();
 				ASQueenBase* trumps = new ASQueenAttackInit<ASQueenTrumpsAttack>();
-				ASQueenBase* thorn = new ASQueenAttackInit<ASQueenThornAttackStrong<true>>();
+				ASQueenBase* thorn1 = new ASQueenAttackInit<ASQueenThornAttackStrong<true>>();
+				ASQueenBase* thorn2 = new ASQueenAttackInit<ASQueenThornAttackStrong<false>>();
 				ASQueenBase* rod = new ASQueenAttackInit<ASQueenRodAttack>();
 
 				// ∑≠∞Ç…í«â¡
 				chandelier->BuildState( rPrevState, this );
 				QueueAction( chandelier );
 				QueueAction( trumps );
-				QueueAction( thorn );
+				QueueAction( thorn1 );
+				QueueAction( thorn2 );
 				QueueAction( rod );
 
 				break;
@@ -75,15 +79,17 @@ void Queen::AddNewStates(ActionState* rPrevState)
 				// Ω√∞ƒÇÃèâä˙âª
 				ASQueenBase* chandelier = new ASQueenAttackInit<ASQueenChandelierAttackStrong>();
 				ASQueenBase* trumps = new ASQueenAttackInit<ASQueenTrumpsAttack>();
-				ASQueenBase* thorn = new ASQueenAttackInit<ASQueenThornAttackStrong<true>>();
+				ASQueenBase* thorn1 = new ASQueenAttackInit<ASQueenThornAttackStrong<true>>();
+				ASQueenBase* thorn2 = new ASQueenAttackInit<ASQueenThornAttackStrong<false>>();
 				ASQueenBase* rod = new ASQueenAttackInit<ASQueenRodAttackStrong>();
 
 				// ∑≠∞Ç…í«â¡
 				QueueAction( chandelier );
 				QueueAction( trumps );
-				QueueAction( thorn );
+				QueueAction( thorn1 );
 				QueueAction( rod );
 				ShuffleActions();
+				InsertAfter( thorn2, thorn1 );
 
 				ASQueenBase* nextAction = dynamic_cast<ASQueenBase*>(GetFirstState());
 				nextAction->BuildState(rPrevState, this);

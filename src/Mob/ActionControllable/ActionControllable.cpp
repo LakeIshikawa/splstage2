@@ -177,6 +177,14 @@ void ActionControllable::RemoveAllActions(ActionState* rExclude)
 }
 
 /************************************************************//**
+*	リストの決まったとこに追加する
+****************************************************************/
+void ActionControllable::InsertAfter(ActionState* rInsertMe, ActionState* rAfterMe)
+{
+	mStates.insert( find(mStates.begin(), mStates.end(), rAfterMe ), rInsertMe );
+}
+
+/************************************************************//**
 *	現在ﾘｽﾄに入っているアクションをﾗﾝﾄﾞﾑな順番に置き換える
 ****************************************************************/
 void ActionControllable::ShuffleActions() 
