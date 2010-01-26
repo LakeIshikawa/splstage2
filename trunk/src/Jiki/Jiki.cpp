@@ -818,6 +818,8 @@ void Jiki::Move()
 
 							Stage* curStage = GAMECONTROL->GetStageManager()->GetCurrentStage();
 
+							GAMECONTROL->GetSoundController()->ResetSEs();
+
 							// ?�ﾛｲ?��?位置をチェ�?��ポイントに調整
 							int restorePointX = curStage->GetCheckpointController()->GetStartPointX(mX + HERSIZE/2);
 							int restorePointY = curStage->GetCheckpointController()->GetStartPointY(mX + HERSIZE/2);
@@ -1563,7 +1565,6 @@ void	Jiki::Die()
 	SetTransparent(true);
 	GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
 
-	GAMECONTROL->GetSoundController()->ResetSEs();//SE�SSTOP
 	GAMECONTROL->GetSoundController()->SetBGM(SoundController::LIFE0);
 
 }

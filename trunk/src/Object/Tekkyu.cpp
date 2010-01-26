@@ -70,6 +70,10 @@ Tekkyu::Tekkyu(int rXPx, int rYPx, float rZ, TekkyuStand* rParent)
 */
 Tekkyu::~Tekkyu()
 {
+	// SE
+	if( !mIsRollSeStopped )
+		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_ttekkyuu_move.wav");
+
 }
 
 /************************************************************//**
