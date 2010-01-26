@@ -48,7 +48,7 @@ Koumori::Koumori(int rXPx, int rYPy)
 
 Koumori::~Koumori(void)
 {
-	if( !mIsSEStopped){
+	if( !mIsSEStopped ){
 		mIsSEStopped = true;
 		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
 	}
@@ -86,7 +86,7 @@ void Koumori::_Move()
 	}
 
 	//SE STOP
-	if( IsGamenGai()/* && !mIsSEStopped*/ ){
+	if( IsGamenGai() && !mIsSEStopped ){
 		mIsSEStopped = true;
 		GAMECONTROL->GetSoundController()->StopSE("audio\\se\\se_bat_fly.wav");
 	}
