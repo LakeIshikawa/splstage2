@@ -82,18 +82,20 @@ void StaffRoll::BuildStaffTexture()
 	LPD3DXSPRITE spr = GAMECONTROL->GetDXController()->GetMainSprite();
 
 	LPDIRECT3DTEXTURE9 mStaffRollTx = GAMECONTROL->GetDXController()->GetTextureOf("_StaffRollTx");
+	LPDIRECT3DTEXTURE9 mStaffRollTx2 = GAMECONTROL->GetDXController()->GetTextureOf("_StaffRollTx2");
 
 	// ｱﾙﾌｧﾏｽｸをﾚﾝﾀﾞﾘﾝｸﾞﾀｰｹﾞｯﾄとして指定する
 	IDirect3DSurface9* oldsurf, *newsurf, *ed_str;
-	mStaffRollTx->GetSurfaceLevel(0, &newsurf);
 
+	// --------------------- 上半の画像 --------------------------- //
+
+	mStaffRollTx->GetSurfaceLevel(0, &newsurf);
 
 	LPDIRECT3DTEXTURE9 mask = GAMECONTROL->GetDXController()->GetTextureOf("graphics\\screen\\ed_str_mask.png");
 	mEdStr->GetSurfaceLevel(0, &ed_str);
 
 	// まるｺﾋﾟｰ
 	dev->UpdateSurface( ed_str, NULL, newsurf, NULL );
-
 
 	dev->EndScene();
 
@@ -122,6 +124,47 @@ void StaffRoll::BuildStaffTexture()
 
 	// 取得されたﾃｸｽﾁｬを開放する
 	newsurf->Release();
+	ed_str->Release();
+
+
+	// --------------------- 下半の画像 --------------------------- //
+	mStaffRollTx2->GetSurfaceLevel(0, &newsurf);
+
+	mEdStr2->GetSurfaceLevel(0, &ed_str);
+
+	// まるｺﾋﾟｰ
+	dev->UpdateSurface( ed_str, NULL, newsurf, NULL );
+
+
+	dev->EndScene();
+
+	mRenderer->BeginScene(newsurf, NULL);
+	
+	spr->Begin(D3DXSPRITE_ALPHABLEND);
+
+	// ｱﾙﾌｧﾏｽｸ
+	dev->SetRenderState(D3DRS_SEPARATEALPHABLENDENABLE, true);
+	dev->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ZERO);
+	dev->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
+	dev->SetRenderState(D3DRS_DESTBLENDALPHA, D3DBLEND_ONE);
+	dev->SetRenderState(D3DRS_SRCBLENDALPHA, D3DBLEND_ONE);
+	dev->SetRenderState(D3DRS_BLENDOPALPHA, D3DBLENDOP_MIN);
+
+	D3DXMatrixTranslation(&transl, 0, 2048 + scrp - SP->SCRSZY, 0);
+	spr->SetTransform( &transl );
+
+	spr->Draw(mask, NULL, NULL, &D3DXVECTOR3(0, 0, 0), D3DXCOLOR(1,1,1,1));
+
+	D3DXMatrixIdentity( &transl);
+	spr->SetTransform( &transl );
+	spr->End();
+	mRenderer->EndScene(0);
+
+	// 取得されたﾃｸｽﾁｬを開放する
+	newsurf->Release();
+	ed_str->Release();
+
+	// ------------------------ 終了 -----------------------------//
 
 	// ブレンドﾓｰﾄﾞを戻す
 	dev->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
@@ -139,7 +182,8 @@ void StaffRoll::DrawStaffWithAlphaMask()
 {
 	BuildStaffTexture();
 
-	DX_DRAW("_StaffRollTx", 0, SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), min(scrp,GI("STAFF_SY")) );
+	DX_DRAW("_StaffRollTx", 0, SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), min(scrp,2048) );
+	DX_DRAW("_StaffRollTx", 0, 2048 + SP->SCRSZY - scrp, 0, 0, GI("STAFF_SX"), min(scrp,2048) );
 }
 
 /**
@@ -149,7 +193,10 @@ void StaffRoll::LoadResources()
 {
 	// レンダリングターゲットのテクスチャ
 	GAMECONTROL->GetDXController()->CreateNewTexture("_StaffRollTx",
-		1024, 4096, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8R3G3B2, D3DPOOL_DEFAULT);
+		1024, 2048, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8R3G3B2, D3DPOOL_DEFAULT);
+	// レンダリングターゲットのテクスチャ
+	GAMECONTROL->GetDXController()->CreateNewTexture("_StaffRollTx2",
+		1024, 2048, 1, D3DUSAGE_RENDERTARGET, D3DFMT_A8R3G3B2, D3DPOOL_DEFAULT);
 
 	// スタッフロールのテクスチャ
 	D3DXCreateTextureFromFileEx(GAMECONTROL->GetDXController()->GetDevice(),    // the device pointer
@@ -166,6 +213,23 @@ void StaffRoll::LoadResources()
 								NULL,
 								NULL,
 								&mEdStr
+								);
+
+	// スタッフロールのテクスチャ
+	D3DXCreateTextureFromFileEx(GAMECONTROL->GetDXController()->GetDevice(),    // the device pointer
+								"graphics\\screen\\ed_str2.png",
+								D3DX_DEFAULT, 
+								D3DX_DEFAULT,
+								D3DX_DEFAULT,
+								NULL,				// regular usage
+								D3DFMT_A8R8G8B8,     // 32-bit pixels with alpha
+								D3DPOOL_SYSTEMMEM,    // typical memory handling
+								D3DX_DEFAULT,		// no filtering
+								D3DX_DEFAULT,		// no mip filtering
+								0,	
+								NULL,
+								NULL,
+								&mEdStr2
 								);
 
 	// サイズと形式の取得
@@ -193,6 +257,8 @@ void StaffRoll::ReleaseResources()
 {
 	// スタッフロールのテクスチャ
 	mEdStr->Release();
+	mEdStr = NULL;
+	mEdStr2->Release();
 	mEdStr = NULL;
 
 	// サイズと形式の取得

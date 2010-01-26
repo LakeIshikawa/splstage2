@@ -40,5 +40,6 @@ private:
 	float scrp;
 
 	LPDIRECT3DTEXTURE9 mEdStr;
+	LPDIRECT3DTEXTURE9 mEdStr2;
 	LPD3DXRENDERTOSURFACE mRenderer;
 };

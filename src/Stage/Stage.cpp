@@ -148,7 +148,6 @@ void Stage::Init()
 {
 	if( !bgm_played){
 		bgm_played = true;
-		GAMECONTROL->GetSoundController()->ResetBGMs();
 		GAMECONTROL->GetSoundController()->SetBGM(mBgm);
 	}
 
