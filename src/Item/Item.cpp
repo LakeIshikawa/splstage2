@@ -28,7 +28,12 @@ Item::Item( int rX, int rY )
 	// Ï¯Ìß‚ ‚½‚è”»’è
 	mMapCollider = new PointMapCollider( this );
 	mMapCollider->AddCollisionPoint( MapCollider::MCSD_DOWN, mSizeX/2, mSizeY );
+	mMapCollider->AddCollisionPoint( MapCollider::MCSD_DOWN, mSizeX, mSizeY );
+	mMapCollider->AddCollisionPoint( MapCollider::MCSD_DOWN, 0, mSizeY );
+
 	mMapCollider->AddCollisionPoint( MapCollider::MCSD_FRONT, mSizeX, 0 );
+	mMapCollider->AddCollisionPoint( MapCollider::MCSD_FRONT, mSizeX, mSizeY );
+	mMapCollider->AddCollisionPoint( MapCollider::MCSD_FRONT, mSizeX, mSizeY/2 );
 }
 
 /************************************************************//**
