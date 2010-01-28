@@ -9,7 +9,8 @@
 using namespace std;
 
 #define OVERWRITE_DOWN ((i==0) || (chip == SP->CHIP_AMHIT || chip == SP->CHIP_KGHIT || outAtari[j] == SP->CHIP_NOHIT))
-#define OVERWRITE_FRONT ((i==0) || (chip == SP->CHIP_HIT || (outAtari[j] == SP->CHIP_NOHIT)))
+#define OVERWRITE_FRONT ((i==0) || (chip == SP->CHIP_HIT || chip == SP->CHIP_KGHIT || (outAtari[j] == SP->CHIP_NOHIT)))
+#define OVERWRITE_BACK ((i==0) || (chip == SP->CHIP_HIT || chip == SP->CHIP_KGHIT))
 
 Map::Map()
 {
@@ -360,7 +361,7 @@ void Map::SuperAtariHantei(float rX, float rY, bool rMuki, float rSpX, float rSp
 
 				int chip = GAMECONTROL->GetStageManager()->GetCurMap()->AtariHantei(curx,cury);
 				if( chip == SP->CHIP_HIT || chip == SP->CHIP_AMHIT|| chip == SP->CHIP_KGHIT || IsGamenGai(chip)){
-					if( (j==0 && OVERWRITE_DOWN) || (j==2 && OVERWRITE_FRONT) || (j==1 || j==3)){
+					if( (j==0 && OVERWRITE_DOWN) || (j==2 && OVERWRITE_FRONT) || j==1 || (j==3 && OVERWRITE_BACK)){
 						outAtari[j] = chip;
 					}
 				}
