@@ -94,7 +94,7 @@ char Jiki::sGraphic[][GRAME] = {
 //å½“ãŸã‚Šåˆ¤å®šï¾?¾žï½°??
 int	Jiki::sHitX[][4][TENSU] = {
 	{
-		{ 40, 57, 89,-1}, 		//ä¸?
+		{ 40, 57, 90,-1}, 		//ä¸?
 		{ 62, -1},				//ä¸?
 		{ 90, 90, 90, 90, 90, 90,-1}, 		//å‰?
 		{ 31, 19, -1}, 			//å¾?
@@ -753,8 +753,12 @@ void Jiki::Move()
 									}
 								}
 						}
-						if( mHitFl[0] == SP->CHIP_AMHIT || mHitFl[0] == SP->CHIP_KGHIT ){
-							if( mSpY > 0 ) mSpY = 0;//ä¸?
+						if( mHitFl[0] == SP->CHIP_AMHIT || mHitFl[0] == SP->CHIP_KGHIT || mHitFl[0] == SP->CHIP_HIT ){
+							if( mSpY >= 0 ) {
+								mSpY = 0;//ä¸?
+								mAccY = 0;
+								//if(!mCurAshiba && mHitFl[0] != SP->CHIP_KGHIT) mY = (float)mKabeIchi[0] - sHitY[0][0][0];
+							}
 						}
 						if( mHitFl[1] == SP->CHIP_HIT || mHitFl[1] == SP->CHIP_KGHIT ){
 							if( mSpY < 0 ) {
