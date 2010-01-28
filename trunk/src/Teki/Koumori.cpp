@@ -93,7 +93,8 @@ void Koumori::_Move()
 
 	if( !IsGamenGai() && mIsSEStopped ){
 		mIsSEStopped = false;
-		GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_bat_fly.wav");
+		if( mStatus !=  WAIT )
+			GAMECONTROL->GetSoundController()->LoopSE("audio\\se\\se_bat_fly.wav");
 	}
 
 
