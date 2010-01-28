@@ -168,8 +168,7 @@ void StageSelect::ProcessUserControl()
 
 	// ½Ã°¼ÞŠJŽn‚ª‘I‘ð‚³‚ê‚½‚©
 	if( ((lx >= left && lx <= right && ly>=top && ly <= bottom && selectedIdx <= saveStageTdx && scroll == 0) &&
-		GAMECONTROL->GetDXController()->IsMouseClicked() )
-		|| GAMECONTROL->GetDXController()->KeyPush(DIK_Z))
+		(GAMECONTROL->GetDXController()->IsMouseClicked() || GAMECONTROL->GetDXController()->KeyPush(DIK_Z))))
 	{
 		GAMECONTROL->GetMaku()->Close();
 		GAMECONTROL->GetUserLightControl()->GetControlLight()->TurnOff();
