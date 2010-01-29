@@ -54,6 +54,8 @@ public:
 	void DisableCollision();
 	void EnableCollision();
 
+	void ToggleNoDamageMode();
+
 	void RestoreEmpacy(int n, bool SEdelayed);
 	void RestoreTension(int n, bool SEdelayed);
 	void RestoreLife(int n, bool SEdelayed);
@@ -232,6 +234,9 @@ private:
 	float	mTen;
 	float	mTenTime;
 	bool	mTenFl;
+
+	// 完全無敵
+	bool	mNoDamage;
 
 	// インターフェースビュー
 	InterfaceView *mInterface;
