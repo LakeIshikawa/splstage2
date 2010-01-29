@@ -114,7 +114,7 @@ void ASOokamiBase::CollisionResponse(ICollidable* rCollObject,
 	Jiki* jiki = dynamic_cast<Jiki*>(rCollObject);
 
 	// ﾋﾛｲﾝ
-	if( jiki && !mMutekiJikan->IsMuteki() ){
+	if( jiki && !mMutekiJikan->IsMuteki() && !jiki->IsDying()){
 
 		// ﾋﾛｲﾝの攻撃、狼の防御
 		if( rOpGroupId == SP->GRID_KOUGEKI && rThisGroupId == SP->GRID_BOGYO ){
@@ -129,6 +129,7 @@ void ASOokamiBase::CollisionResponse(ICollidable* rCollObject,
 			if( mHp <= 0 ) {
 				// 死ぬ
 				mParent->BreakInActionNoResume( new ASOokamiJumpingDeath() );
+				jiki->SetSuperPause();
 			}
 
 			// ﾀﾞﾒｰｼﾞを食らうだけの場合
