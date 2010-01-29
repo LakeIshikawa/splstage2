@@ -439,6 +439,9 @@ void Majo::Die()
 		// ƒqƒƒCƒ“‚ðŽ~‚ß‚é
 		GAMECONTROL->GetJiki()->SetSuperPause();
 
+		//SE
+		GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_teki_down.wav");
+
 	}
 }
 
