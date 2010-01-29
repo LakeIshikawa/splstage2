@@ -94,7 +94,7 @@ char Jiki::sGraphic[][GRAME] = {
 //å½“ãŸã‚Šåˆ¤å®šï¾?¾žï½°??
 int	Jiki::sHitX[][4][TENSU] = {
 	{
-		{ 40, 57, 90,-1}, 		//ä¸?
+		{ 40, 57, 89,-1}, 		//ä¸?
 		{ 62, -1},				//ä¸?
 		{ 90, 90, 90, 90, 90, 90,-1}, 		//å‰?
 		{ 31, 19, -1}, 			//å¾?
@@ -106,7 +106,7 @@ int	Jiki::sHitY[][4][TENSU] = {
 	{
 		{118,118,118,-1 }, 		//ä¸?
 		{ 0, -1},				//ä¸?
-		{118, 110, 95, 65, 40, 25, -1}, 		//å‰?
+		{117, 110, 95, 65, 40, 25, -1}, 		//å‰?
 		{115, 11, -1}, 			//å¾?
 	}
 
@@ -188,6 +188,8 @@ Jiki::Jiki(int rXPx, int rYPy)
 
 
 	collisionEnabled = true;
+
+	mNoDamage = false;
 
 	mChainIdx = 0;
 
@@ -337,7 +339,7 @@ void Jiki::InflictDamage()
 	if( mDgMutekiFl == 0 && !mHouseProtected){
 		if( mStatus != DAMAGE && mStatus != DAMAGE_END && 
 			mStatus != DEAD && mStatus != FADEIN && mStatus != FADEOUT 
-			&& mSuperStatus == CONTROL ){
+			&& mSuperStatus == CONTROL && !mNoDamage){
 			// SE
 			GAMECONTROL->GetSoundController()->PlaySE("audio\\se\\se_kougekimeityuu.wav");
 			mStatus = DAMAGE;
@@ -1727,4 +1729,9 @@ void Jiki::RestoreLife(int n, bool SEdelayed)
 bool Jiki::IsStageclearable()
 {
 	return mStatus != HISATU && mFadeFl2 == 0;
+}
+
+void Jiki::ToggleNoDamageMode()
+{
+	mNoDamage = !mNoDamage;
 }

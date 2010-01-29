@@ -7,6 +7,7 @@
 #include "Cheats\\ChtInflictDamage.h"
 #include "Cheats\\ChtDie.h"
 #include "Cheats\\ChtJumpToStage.h"
+#include "Cheats\\ChtNoDamage.h"
 
 #include "..\\Options.h"
 
@@ -201,6 +202,7 @@ void GameControl::GameInit(HWND rHwnd)
 	// チートを作成する
 	GetCheatsController()->Add( new ChtInflictDamage( DIK_I ) );
 	GetCheatsController()->Add( new ChtDie( DIK_D ) );
+	GetCheatsController()->Add( new ChtNoDamage( DIK_N ) );
 
 	for( int i=0; i<GetStageManager()->GetNumStages(); i++){
 		GetCheatsController()->Add( new ChtJumpToStage( DIK_1 + i ) );

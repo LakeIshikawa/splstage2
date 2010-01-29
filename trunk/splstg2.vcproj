@@ -834,6 +834,14 @@
 						RelativePath=".\src\Management\Cheats\ChtJumpToStage.h"
 						>
 					</File>
+					<File
+						RelativePath=".\src\Management\Cheats\ChtNoDamage.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\src\Management\Cheats\ChtNoDamage.h"
+						>
+					</File>
 				</Filter>
 			</Filter>
 			<Filter
