@@ -365,7 +365,7 @@ void Majo::CollisionResponse(ICollidable *rCollObject, int rThisGroupId, int rOp
 
 	Jiki* jiki = dynamic_cast<Jiki*>(rCollObject);
 
-	if(jiki){ //“–‚½‚èI
+	if(jiki && !jiki->IsDying() ){ //“–‚½‚èI
 		if( rOpGroupId == SP->GRID_KOUGEKI && rThisGroupId == SP->GRID_BOGYO ){
 			InflictDamage();
 			}
@@ -424,7 +424,7 @@ void Majo::Die()
 	mSpY = -SHINIPATT_SHOSP;
 	mAccY = SP->GRAVITY;
 
-	if( mStatus != DIYING ){
+	if( mStatus != DIYING && !GAMECONTROL->GetJiki()->IsDying()){
 		if( mStatus == WINDAMAGE ){
 			mSizeX = GI("MAJO_DOORSX");
 			mSizeY = GI("MAJO_DOORSY");

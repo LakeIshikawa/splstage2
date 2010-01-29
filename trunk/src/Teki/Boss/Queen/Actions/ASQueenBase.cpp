@@ -189,7 +189,7 @@ void ASQueenBase::CollisionResponse(ICollidable* rCollObject,
 	Jiki* jiki = dynamic_cast<Jiki*>(rCollObject);
 
 	// ËÛ²Ý
-	if( jiki && !mMutekiJikan->IsMuteki() ){
+	if( jiki && !mMutekiJikan->IsMuteki() && !jiki->IsDying()){
 
 		// ËÛ²Ý‚ÌUŒ‚A–hŒä
 		if( rOpGroupId == SP->GRID_KOUGEKI && rThisGroupId == SP->GRID_BOGYO ){
